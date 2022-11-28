@@ -17,6 +17,15 @@ public class StockHandler {
         this.practise = practise;
     }
 
+    public int getStock(Item item) throws Exception {
+        for (StockItem i : stock) {
+            if (i.getItem().equals(item)) {
+                return i.getStock();
+            }
+        }
+        throw new Exception("Item not in assortment");
+    }
+
     public void buy(Item item, int amount, double pricePerPiece) {
         for (StockItem i : stock) {
             if (i.getItem().equals(item)) {
