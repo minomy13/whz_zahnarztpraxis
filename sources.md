@@ -1,1 +1,1 @@
-[](https://java-design-patterns.com/patterns/callback/#explanation)
+https://java-design-patterns.com/patterns/callback/#explanation
