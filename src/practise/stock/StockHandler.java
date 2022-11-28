@@ -15,6 +15,7 @@ public class StockHandler {
 
     public StockHandler(Practise practise) {
         this.practise = practise;
+        this.stock = new ArrayList<>();
     }
 
     public int getStock(Item item) throws Exception {
