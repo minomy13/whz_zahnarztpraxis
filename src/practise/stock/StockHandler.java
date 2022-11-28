@@ -39,4 +39,8 @@ public class StockHandler {
         }
         throw new Exception("Item not in assortment");
     }
+
+    private void lowLevelCheck(Item item) {
+        // TODO
+    }
 }
