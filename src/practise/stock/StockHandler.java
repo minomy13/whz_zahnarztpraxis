@@ -28,4 +28,15 @@ public class StockHandler {
         stock.add(new StockItem(item, amount));
         practise.decreaseBudget(amount * pricePerPiece);
     }
+
+    public void take(Item item, int amount) throws Exception {
+        for (StockItem i : stock) {
+            if (i.getItem().equals(item)) {
+                if (i.getStock() - amount < 0) throw new Exception("Not enough of this item in stock");
+                i.decreaseStock(amount);
+                return;
+            }
+        }
+        throw new Exception("Item not in assortment");
+    }
 }
