@@ -2,9 +2,9 @@ package practise.stock;
 
 class StockItem {
     private Item item;
-    private double stock;
+    private int stock;
 
-    public StockItem(Item item, double stock) {
+    public StockItem(Item item, int stock) {
         this.item = item;
         this.stock = stock;
     }
@@ -13,15 +13,15 @@ class StockItem {
         return item;
     }
 
-    public double getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void increaseStock(double amount) {
+    public void increaseStock(int amount) {
         this.stock += amount;
     }
 
-    public void decreaseStock(double amount) throws Exception {
+    public void decreaseStock(int amount) throws Exception {
         if (stock - amount < 0) throw new Exception("Stock must not be smaller than 0");
         this.stock -= amount;
     }
