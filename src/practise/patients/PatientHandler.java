@@ -17,11 +17,20 @@ public class PatientHandler {
         treatments.add(new Treatment(name,cost));
     }
 
+    /** Removes a type of treatment
+     *
+     * @param index Treatment index, use viewTreatments to view indexes
+     */
+    public void removeTreatment(int index) {
+        treatments.remove(index);
+    }
+
     /** Displays all Treatment names and costs with their index */
     public void viewTreatments() {
         int i = 0;
         for(Treatment t : treatments) {
             System.out.println(i+": "+t.getName()+", "+t.getCost());
+            i++;
         }
     }
 
