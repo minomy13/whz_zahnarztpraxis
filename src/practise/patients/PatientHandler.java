@@ -1,5 +1,6 @@
 package practise.patients;
 
+import practise.Practise;
 import practise.patients.patientFiles.PatientFileHandler;
 import practise.patients.treatment.Treatment;
 
@@ -8,6 +9,11 @@ import java.util.ArrayList;
 public class PatientHandler {
     final PatientFileHandler patientFileHandler = new PatientFileHandler();
     final ArrayList<Treatment> treatments = new ArrayList<>();
+    private final Practise practise;
+
+    public PatientHandler(Practise practise) {
+        this.practise = practise;
+    }
 
     /**
      * Creates a new type of treatment

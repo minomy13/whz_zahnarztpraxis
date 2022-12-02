@@ -27,7 +27,7 @@ public class Practise {
         this.calendar = new Calendar();
         this.consultationHandler = new ConsultationHandler();
         this.employeeHandler = new EmployeeHandler();
-        this.patientHandler = new PatientHandler();
+        this.patientHandler = new PatientHandler(this);
         this.stockHandler = new StockHandler(this);
     }
 
