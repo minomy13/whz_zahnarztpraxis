@@ -3,6 +3,9 @@ package practise.patients;
 import practise.Practise;
 import practise.patients.patientFiles.PatientFileHandler;
 import practise.patients.treatment.Treatment;
+import practise.stock.Item;
+import utils.logger.Logger;
+import utils.touple.Touple;
 
 import java.util.ArrayList;
 
@@ -21,8 +24,12 @@ public class PatientHandler {
      * @param name Name of treatment
      * @param cost Cost of treatment
      */
-    public void startTreatment(String name, double cost) {
-        treatments.add(new Treatment(name, cost));
+    public void startTreatment(String name, double cost, ArrayList<Touple<Item, Integer>> needs) {
+        try {
+            treatments.add(new Treatment(name, cost, needs, practise));
+        } catch (Exception e) {
+            new Logger().error("Failed to start new Treatment: " + e.getMessage());
+        }
     }
 
     /**
