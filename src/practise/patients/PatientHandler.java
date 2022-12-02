@@ -15,7 +15,7 @@ public class PatientHandler {
      * @param name Name of treatment
      * @param cost Cost of treatment
      */
-    public void createTreatment(String name, double cost) {
+    public void startTreatment(String name, double cost) {
         treatments.add(new Treatment(name, cost));
     }
 
@@ -24,7 +24,7 @@ public class PatientHandler {
      *
      * @param index Treatment index, use viewTreatments to view indexes
      */
-    public void removeTreatment(int index) {
+    public void endTreatment(int index) {
         treatments.remove(index);
     }
 
