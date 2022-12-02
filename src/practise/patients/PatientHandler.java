@@ -31,6 +31,7 @@ public class PatientHandler {
      * @param index Treatment index, use viewTreatments to view indexes
      */
     public void endTreatment(int index) {
+        practise.increaseBudget(treatments.get(index).getCost());
         treatments.remove(index);
     }
 
