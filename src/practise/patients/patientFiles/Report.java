@@ -1,6 +1,6 @@
-package practise.patientFiles;
+package practise.patients.patientFiles;
 
-import practise.treatment.Treatment;
+import practise.patients.treatment.Treatment;
 
 public class Report {
     final String report;

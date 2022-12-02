@@ -1,12 +1,13 @@
-package practise.patientFiles;
+package practise.patients.patientFiles;
 
-import practise.treatment.Treatment;
+import practise.patients.treatment.Treatment;
 
 public class PatientFile {
     final Patient patient;
     private Report report;
 
-    /** Creates a new patient file
+    /**
+     * Creates a new patient file
      *
      * @param name Name of new patient
      */
@@ -14,9 +15,10 @@ public class PatientFile {
         this.patient = new Patient(name);
     }
 
-    /** Creates a new report for this patient, replacing any previous reports
+    /**
+     * Creates a new report for this patient, replacing any previous reports
      *
-     * @param report Report text for this patient
+     * @param report    Report text for this patient
      * @param treatment Treatment for this patient
      */
     public void createReport(String report, Treatment treatment) {

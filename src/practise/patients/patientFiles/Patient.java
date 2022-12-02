@@ -1,4 +1,4 @@
-package practise.patientFiles;
+package practise.patients.patientFiles;
 
 public class Patient {
     final String name;

@@ -1,4 +1,4 @@
-package practise.treatment;
+package practise.patients.treatment;
 
 public class Treatment {
     final String name;
