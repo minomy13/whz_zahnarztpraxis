@@ -4,11 +4,6 @@ import practise.Practise;
 
 import java.util.ArrayList;
 
-enum Item {
-    BEAKER,
-    COTTON_PAD
-}
-
 public class StockHandler {
     private Practise practise;
     private ArrayList<StockItem> stock;
