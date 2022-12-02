@@ -5,6 +5,14 @@ public class Logger {
         System.out.println(String.format("[Info]    %s", message));
     }
 
+    public void info(int message) {
+        System.out.println(String.format("[Info]    %s", message));
+    }
+
+    public void info(double message) {
+        System.out.println(String.format("[Info]    %s", message));
+    }
+
     public void warning(String message) {
         System.out.println(String.format("\u001B[33m[Warning] %s\u001B[0m", message));
     }
