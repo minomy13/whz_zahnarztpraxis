@@ -40,22 +40,27 @@ public class PatientHandler {
     }
 
     /**
-     * Starts new treatment and occupies room
+     * Starts new treatment, takes needed items from stock and occupies room
      *
      * @param treatmentIndex Index of treatment type to do
      * @param patient        Patient to be treated
      */
-    public void startTreatment(int treatmentIndex, Patient patient) {
+    public void startTreatment(int treatmentIndex, Patient patient) throws Exception {
         runningTreatments.add(new Treatment(treatments.get(treatmentIndex), patient));
+        // takes needed items from stock
+        for (Touple<Item, Integer> i : treatments.get(treatmentIndex).getNeeds()) {
+            practise.getStockHandler().take(i.t1, i.t2);
+        }
         // TODO occupy room
     }
 
     /**
-     * Ends running treatment
+     * Ends running treatment and increases budget by treatment cost
      *
      * @param index Index of treatment to be ended
      */
     public void endTreatment(int index) {
+        practise.increaseBudget(treatments.get(index).getCost());
         runningTreatments.remove(index);
         // TODO free room
     }
