@@ -10,4 +10,12 @@ public class Treatment {
         this.treatmentType = treatmentType;
         this.patient = patient;
     }
+
+    public TreatmentType getTreatmentType() {
+        return treatmentType;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
 }
