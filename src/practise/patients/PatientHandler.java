@@ -71,6 +71,17 @@ public class PatientHandler {
         }
     }
 
+    /**
+     * Displays all running treatments; index, name of patients and the type of treatment they get
+     */
+    public void viewRunningTreatments() {
+        int i = 0;
+        for (Treatment t : runningTreatments) {
+            practise.logger.info(String.format("%s: %s, %s",
+                    (i++), t.getPatient().getName(), t.getTreatmentType().getName()));
+        }
+    }
+
     public ArrayList<TreatmentType> getTreatmentTypes() {
         return treatments;
     }
