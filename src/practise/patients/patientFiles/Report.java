@@ -1,21 +1,21 @@
 package practise.patients.patientFiles;
 
-import practise.patients.treatment.Treatment;
+import practise.patients.treatment.TreatmentType;
 
 public class Report {
     final String report;
-    final Treatment treatment;
+    final TreatmentType treatmentType;
 
-    public Report(String report, Treatment treatment) {
+    public Report(String report, TreatmentType treatmentType) {
         this.report = report;
-        this.treatment = treatment;
+        this.treatmentType = treatmentType;
     }
 
     public String getReport() {
         return report;
     }
 
-    public Treatment getTreatment() {
-        return treatment;
+    public TreatmentType getTreatmentType() {
+        return treatmentType;
     }
 }

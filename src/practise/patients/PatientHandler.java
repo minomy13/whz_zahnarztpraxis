@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PatientHandler {
     final PatientFileHandler patientFileHandler = new PatientFileHandler();
-    final ArrayList<Treatment> treatments = new ArrayList<>();
+    private final ArrayList<TreatmentType> treatments = new ArrayList<>();
     private final Practise practise;
 
     public PatientHandler(Practise practise) {
@@ -23,8 +23,8 @@ public class PatientHandler {
      * @param name Name of treatment
      * @param cost Cost of treatment
      */
-    public void addTreatment(String name, double cost, ArrayList<Touple<Item, Integer>> needs) {
-        treatments.add(new Treatment(name, cost, needs));
+    public void addTreatmentType(String name, double cost, ArrayList<Touple<Item, Integer>> needs) {
+        treatments.add(new TreatmentType(name, cost, needs));
     }
 
     /**
@@ -32,7 +32,7 @@ public class PatientHandler {
      *
      * @param index Treatment index, use viewTreatments to view indexes
      */
-    public void removeTreatment(int index) {
+    public void removeTreatmentType(int index) {
         treatments.remove(index);
     }
 
