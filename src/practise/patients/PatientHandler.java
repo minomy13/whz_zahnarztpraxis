@@ -91,6 +91,10 @@ public class PatientHandler {
         return treatments;
     }
 
+    public ArrayList<Treatment> getRunningTreatments() {
+        return runningTreatments;
+    }
+
     public PatientFileHandler getPatientFileHandler() {
         return patientFileHandler;
     }
