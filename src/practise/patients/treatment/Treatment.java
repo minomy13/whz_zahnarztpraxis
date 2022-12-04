@@ -1,6 +1,5 @@
 package practise.patients.treatment;
 
-import practise.Practise;
 import practise.stock.Item;
 import utils.touple.Touple;
 
@@ -9,14 +8,12 @@ import java.util.ArrayList;
 public class Treatment {
     final String name;
     final double cost;
+    private ArrayList<Touple<Item, Integer>> needs;
 
-    public Treatment(String name, double cost, ArrayList<Touple<Item, Integer>> needs, Practise practise) throws Exception {
+    public Treatment(String name, double cost, ArrayList<Touple<Item, Integer>> needs) {
         this.name = name;
         this.cost = cost;
-
-        for (Touple<Item, Integer> i : needs) {
-            practise.getStockHandler().take(i.t1, i.t2);
-        }
+        this.needs = needs;
     }
 
     public String getName() {
@@ -25,5 +22,9 @@ public class Treatment {
 
     public double getCost() {
         return cost;
+    }
+
+    public ArrayList<Touple<Item, Integer>> getNeeds() {
+        return needs;
     }
 }
