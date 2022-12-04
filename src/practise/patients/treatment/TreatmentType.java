@@ -1,16 +1,16 @@
 package practise.patients.treatment;
 
 import practise.stock.Item;
-import utils.touple.Touple;
+import utils.tuple.Tuple;
 
 import java.util.ArrayList;
 
 public class TreatmentType {
     final String name;
     final double cost;
-    private ArrayList<Touple<Item, Integer>> needs;
+    private ArrayList<Tuple<Item, Integer>> needs;
 
-    public TreatmentType(String name, double cost, ArrayList<Touple<Item, Integer>> needs) {
+    public TreatmentType(String name, double cost, ArrayList<Tuple<Item, Integer>> needs) {
         this.name = name;
         this.cost = cost;
         this.needs = needs;
@@ -24,7 +24,7 @@ public class TreatmentType {
         return cost;
     }
 
-    public ArrayList<Touple<Item, Integer>> getNeeds() {
+    public ArrayList<Tuple<Item, Integer>> getNeeds() {
         return needs;
     }
 }

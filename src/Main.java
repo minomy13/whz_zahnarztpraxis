@@ -1,7 +1,7 @@
 import practise.Practise;
 import practise.stock.Item;
 import utils.logger.Logger;
-import utils.touple.Touple;
+import utils.tuple.Tuple;
 
 import java.util.ArrayList;
 
@@ -10,8 +10,8 @@ public class Main {
         Logger logger = new Logger();
         Practise practise = new Practise(1000);
 
-        ArrayList<Touple<Item, Integer>> a = new ArrayList<>();
-        a.add(new Touple(Item.COTTON_PAD, 3));
+        ArrayList<Tuple<Item, Integer>> a = new ArrayList<>();
+        a.add(new Tuple(Item.COTTON_PAD, 3));
         logger.info(practise.getBudget());
 
         practise.getStockHandler().buy(Item.COTTON_PAD, 15, .36);

@@ -6,7 +6,7 @@ import practise.patients.patientFiles.PatientFileHandler;
 import practise.patients.treatment.Treatment;
 import practise.patients.treatment.TreatmentType;
 import practise.stock.Item;
-import utils.touple.Touple;
+import utils.tuple.Tuple;
 
 import java.util.ArrayList;
 
@@ -26,7 +26,7 @@ public class PatientHandler {
      * @param name Name of treatment
      * @param cost Cost of treatment
      */
-    public void addTreatmentType(String name, double cost, ArrayList<Touple<Item, Integer>> needs) {
+    public void addTreatmentType(String name, double cost, ArrayList<Tuple<Item, Integer>> needs) {
         treatments.add(new TreatmentType(name, cost, needs));
     }
 
@@ -48,7 +48,7 @@ public class PatientHandler {
     public void startTreatment(int treatmentIndex, Patient patient) throws Exception {
         runningTreatments.add(new Treatment(treatments.get(treatmentIndex), patient));
         // takes needed items from stock
-        for (Touple<Item, Integer> i : treatments.get(treatmentIndex).getNeeds()) {
+        for (Tuple<Item, Integer> i : treatments.get(treatmentIndex).getNeeds()) {
             practise.getStockHandler().take(i.t1, i.t2);
         }
         // TODO occupy room
