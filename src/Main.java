@@ -17,7 +17,6 @@ public class Main {
         practise.getStockHandler().buy(Item.COTTON_PAD, 15, .36);
 
         practise.getPatientHandler().getPatientFileHandler().create("Bob");
-        practise.getPatientHandler().startTreatment("A", 360.90, a);
 
         try {
             logger.info(practise.getStockHandler().getStock(Item.COTTON_PAD));
