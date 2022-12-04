@@ -1,8 +1,10 @@
 package practise.patients;
 
 import practise.Practise;
+import practise.patients.patientFiles.Patient;
 import practise.patients.patientFiles.PatientFileHandler;
 import practise.patients.treatment.Treatment;
+import practise.patients.treatment.TreatmentType;
 import practise.stock.Item;
 import utils.touple.Touple;
 
@@ -12,6 +14,7 @@ public class PatientHandler {
     final PatientFileHandler patientFileHandler = new PatientFileHandler();
     private final ArrayList<TreatmentType> treatments = new ArrayList<>();
     private final Practise practise;
+    private ArrayList<Treatment> runningTreatments = new ArrayList<>();
 
     public PatientHandler(Practise practise) {
         this.practise = practise;
@@ -37,17 +40,38 @@ public class PatientHandler {
     }
 
     /**
+     * Starts new treatment and occupies room
+     *
+     * @param treatmentIndex Index of treatment type to do
+     * @param patient        Patient to be treated
+     */
+    public void startTreatment(int treatmentIndex, Patient patient) {
+        runningTreatments.add(new Treatment(treatments.get(treatmentIndex), patient));
+        // TODO occupy room
+    }
+
+    /**
+     * Ends running treatment
+     *
+     * @param index Index of treatment to be ended
+     */
+    public void endTreatment(int index) {
+        runningTreatments.remove(index);
+        // TODO free room
+    }
+
+    /**
      * Displays all Treatment names and costs with their index
      */
-    public void viewTreatments() {
+    public void viewTreatmentTypes() {
         int i = 0;
-        for (Treatment t : treatments) {
+        for (TreatmentType t : treatments) {
             System.out.println(i + ": " + t.getName() + ", " + t.getCost());
             i++;
         }
     }
 
-    public ArrayList<Treatment> getTreatments() {
+    public ArrayList<TreatmentType> getTreatmentTypes() {
         return treatments;
     }
 
