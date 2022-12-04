@@ -5,10 +5,11 @@ import practise.consulatation.ConsultationHandler;
 import practise.employees.EmployeeHandler;
 import practise.patients.PatientHandler;
 import practise.stock.StockHandler;
+import utils.logger.Logger;
 
 public class Practise {
+    public Logger logger = new Logger();
     private double budget;
-
     private Calendar calendar;
     private ConsultationHandler consultationHandler;
     private EmployeeHandler employeeHandler;
