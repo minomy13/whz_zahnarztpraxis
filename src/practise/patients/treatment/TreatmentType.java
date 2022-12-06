@@ -1,16 +1,15 @@
 package practise.patients.treatment;
 
 import practise.stock.Item;
-import utils.tuple.Tuple;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TreatmentType {
     final String name;
     final double cost;
-    private ArrayList<Tuple<Item, Integer>> needs;
+    private HashMap<Item, Integer> needs;
 
-    public TreatmentType(String name, double cost, ArrayList<Tuple<Item, Integer>> needs) {
+    public TreatmentType(String name, double cost, HashMap<Item, Integer> needs) {
         this.name = name;
         this.cost = cost;
         this.needs = needs;
@@ -24,7 +23,7 @@ public class TreatmentType {
         return cost;
     }
 
-    public ArrayList<Tuple<Item, Integer>> getNeeds() {
+    public HashMap<Item, Integer> getNeeds() {
         return needs;
     }
 }

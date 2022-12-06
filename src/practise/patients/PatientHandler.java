@@ -6,9 +6,9 @@ import practise.patients.patientFiles.PatientFileHandler;
 import practise.patients.treatment.Treatment;
 import practise.patients.treatment.TreatmentType;
 import practise.stock.Item;
-import utils.tuple.Tuple;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PatientHandler {
     final PatientFileHandler patientFileHandler = new PatientFileHandler();
@@ -26,7 +26,7 @@ public class PatientHandler {
      * @param name Name of treatment
      * @param cost Cost of treatment
      */
-    public void addTreatmentType(String name, double cost, ArrayList<Tuple<Item, Integer>> needs) {
+    public void addTreatmentType(String name, double cost, HashMap<Item, Integer> needs) {
         treatments.add(new TreatmentType(name, cost, needs));
     }
 
@@ -48,9 +48,13 @@ public class PatientHandler {
     public void startTreatment(int treatmentIndex, Patient patient) throws Exception {
         runningTreatments.add(new Treatment(treatments.get(treatmentIndex), patient));
         // takes needed items from stock
-        for (Tuple<Item, Integer> i : treatments.get(treatmentIndex).getNeeds()) {
-            practise.getStockHandler().take(i.t1, i.t2);
-        }
+        treatments.get(treatmentIndex).getNeeds().forEach((key, val) -> {
+            try {
+                practise.getStockHandler().take(key, val);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
         // TODO occupy room
     }
 
