@@ -5,6 +5,7 @@ import practise.consulatation.ConsultationHandler;
 import practise.employees.EmployeeHandler;
 import practise.patients.PatientHandler;
 import practise.stock.StockHandler;
+import practise.clock.Clock;
 import utils.logger.Logger;
 
 public class Practise {
@@ -15,13 +16,16 @@ public class Practise {
     private EmployeeHandler employeeHandler;
     private PatientHandler patientHandler;
     private StockHandler stockHandler;
+    private final Clock clock;
 
     /**
      * Creates a new practise.
      *
      * @param budget Budget to start with
+     * @param hour Time: amount of full hours since 00:00
+     * @param minute Time: amount of full minutes since last full hour
      */
-    public Practise(double budget) {
+    public Practise(double budget,int hour,int minute) {
         this.budget = budget;
 
         // creates a new instance for every handler
@@ -30,6 +34,7 @@ public class Practise {
         this.employeeHandler = new EmployeeHandler();
         this.patientHandler = new PatientHandler(this);
         this.stockHandler = new StockHandler(this);
+        this.clock = new Clock(hour,minute,1);
     }
 
     /**
