@@ -1,7 +1,7 @@
 package practise.patients.patientFiles;
 
 public class Patient {
-    final String name;
+    private final String name;
 
     public Patient(String name) {
         this.name = name;
