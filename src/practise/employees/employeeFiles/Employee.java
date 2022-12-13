@@ -1,4 +1,4 @@
-package practise.employees.employeesFiles;
+package practise.employees.employeeFiles;
 
 public class Employee {
 
