@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class Main {
     public static void main(String[] args) {
         Logger logger = new Logger();
-        Practise practise = new Practise(1000);
+        Practise practise = new Practise(1000,5,0);
 
         HashMap<Item, Integer> n = new HashMap<>();
         n.put(Item.COTTON_PAD, 15);
