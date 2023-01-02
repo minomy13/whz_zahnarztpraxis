@@ -2,7 +2,6 @@ package practise;
 
 import practise.calendar.Calendar;
 import practise.consulatation.ConsultationHandler;
-import practise.employees.EmployeeHandler;
 import practise.patients.PatientHandler;
 import practise.stock.StockHandler;
 
