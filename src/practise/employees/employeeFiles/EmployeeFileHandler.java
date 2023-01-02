@@ -1,7 +1,5 @@
 package practise.employees.employeeFiles;
 
-import practise.patients.patientFiles.PatientFile;
-
 import java.util.ArrayList;
 
 public class EmployeeFileHandler {
