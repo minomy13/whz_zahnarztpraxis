@@ -1,4 +1,4 @@
-package utils.logger;
+package src.utils.logger;
 
 public class Logger {
     public void info(String message) {

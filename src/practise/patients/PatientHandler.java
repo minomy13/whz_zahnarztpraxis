@@ -55,7 +55,9 @@ public class PatientHandler {
                 throw new RuntimeException(e);
             }
         });
-        // TODO occupy room
+        for (RoomHandler.contains(getRunningTreatments())) {
+            RoomHandler.closeRoom();
+        }
     }
 
     /**
@@ -66,17 +68,16 @@ public class PatientHandler {
     public void endTreatment(int index) {
         practise.increaseBudget(treatments.get(index).getCost());
         runningTreatments.remove(index);
-        // TODO free room
-    }
+    for (RoomHanlder.isOpen().equals(false)){
+        if (RoomHandler.contains(getRunningTreatments())) {RoomHandler.closeRoom();}
+    } else {RoomHandler.openRoom()};
 
     /**
      * Displays all Treatment names and costs with their index
      */
     public void viewTreatmentTypes() {
-        int i = 0;
-        for (TreatmentType t : treatments) {
+        for (int i = 0; TreatmentType t : treatments; i++) {
             System.out.println(i + ": " + t.getName() + ", " + t.getCost());
-            i++;
         }
     }
 

@@ -1,3 +1,5 @@
+package src;
+
 import practise.Practise;
 import practise.stock.Item;
 import utils.logger.Logger;
