@@ -1,6 +1,6 @@
-package practise;
+package src.practise;
 
-import practise.calendar.Calendar;
+import practise.calendar1.Calendar1;
 import practise.consulatation.ConsultationHandler;
 import practise.patients.PatientHandler;
 import practise.stock.StockHandler;
@@ -10,8 +10,7 @@ import utils.logger.Logger;
 public class Practise {
     public Logger logger = new Logger();
     private double budget;
-    private Calendar calendar;
-    private ConsultationHandler consultationHandler;
+    private Calendar1 calendar;
     private EmployeeHandler employeeHandler;
     private PatientHandler patientHandler;
     private StockHandler stockHandler;
@@ -28,8 +27,7 @@ public class Practise {
         this.budget = budget;
 
         // creates a new instance for every handler
-        this.calendar = new Calendar();
-        this.consultationHandler = new ConsultationHandler();
+        this.calendar = new Calendar1(int year, int month, int dayOfMonth, int hours, int minutes);
         this.employeeHandler = new EmployeeHandler();
         this.patientHandler = new PatientHandler(this);
         this.stockHandler = new StockHandler(this);
@@ -58,12 +56,8 @@ public class Practise {
         return budget;
     }
 
-    public Calendar getCalendar() {
+    public Calendar1 getCalendar() {
         return calendar;
-    }
-
-    public ConsultationHandler getConsultationHandler() {
-        return consultationHandler;
     }
 
     public EmployeeHandler getEmployeeHandler() {
