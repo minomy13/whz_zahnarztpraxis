@@ -1,20 +1,25 @@
-package src.practise;
+package practise;
 
 import practise.calendar1.Calendar1;
-import practise.consulatation.ConsultationHandler;
+import practise.employees.employeeFiles.EmployeeFileHandler;
 import practise.patients.PatientHandler;
+import practise.patients.treatment.Treatment;
 import practise.stock.StockHandler;
-import practise.clock.Clock;
+import practise.patients.treatment.Rooms;
 import utils.logger.Logger;
+
+import java.util.ArrayList;
 
 public class Practise {
     public Logger logger = new Logger();
     private double budget;
     private Calendar1 calendar;
-    private EmployeeHandler employeeHandler;
+    private EmployeeFileHandler employeeHandler;
     private PatientHandler patientHandler;
     private StockHandler stockHandler;
-    private final Clock clock;
+
+    private ArrayList<Rooms> roomHandler = new ArrayList<>();
+    //private final Clock clock;
 
     /**
      * Creates a new practise.
@@ -23,17 +28,21 @@ public class Practise {
      * @param hour Time: amount of full hours since 00:00
      * @param minute Time: amount of full minutes since last full hour
      */
-    public Practise(double budget,int hour,int minute) {
+    public Practise(double budget,int year, int month, int dayOfMonth, int hour,int minute) {
         this.budget = budget;
 
         // creates a new instance for every handler
-        this.calendar = new Calendar1(int year, int month, int dayOfMonth, int hours, int minutes);
-        this.employeeHandler = new EmployeeHandler();
+        this.calendar = new Calendar1(this, this, this, this, this);
+        this.employeeHandler = new EmployeeFileHandler();
         this.patientHandler = new PatientHandler(this);
         this.stockHandler = new StockHandler(this);
-        this.clock = new Clock(hour,minute,1);
+        //this.clock = new Clock(hour,minute,1);
     }
 
+    public void addRoom(int roomNumber, Treatment treatment)
+    {
+        roomHandler.add(new Rooms(roomNumber, treatment));
+    }
     /**
      * Increases budget of practise by given amount.
      *
@@ -60,7 +69,7 @@ public class Practise {
         return calendar;
     }
 
-    public EmployeeHandler getEmployeeHandler() {
+    public EmployeeFileHandler getEmployeeHandler() {
         return employeeHandler;
     }
 
@@ -71,4 +80,6 @@ public class Practise {
     public StockHandler getStockHandler() {
         return stockHandler;
     }
+
+    //public Rooms getRoomHandler() {return roomHandler;}
 }
