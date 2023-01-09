@@ -3,7 +3,7 @@ package practise;
 import practise.calendar1.Calendar1;
 import practise.employees.employeeFiles.EmployeeFileHandler;
 import practise.patients.PatientHandler;
-import practise.patients.treatment.Treatment;
+import practise.patients.treatment.*;
 import practise.stock.StockHandler;
 import practise.patients.treatment.Rooms;
 import utils.logger.Logger;
@@ -32,16 +32,16 @@ public class Practise {
         this.budget = budget;
 
         // creates a new instance for every handler
-        this.calendar = new Calendar1(this, this, this, this, this);
+        this.calendar = new Calendar1(year, month, dayOfMonth, hour, minute);
         this.employeeHandler = new EmployeeFileHandler();
         this.patientHandler = new PatientHandler(this);
         this.stockHandler = new StockHandler(this);
         //this.clock = new Clock(hour,minute,1);
     }
 
-    public void addRoom(int roomNumber, Treatment treatment)
+    public void addRoom(int roomNumber, TreatmentType treatmenttype)
     {
-        roomHandler.add(new Rooms(roomNumber, treatment));
+        roomHandler.add(new Rooms(roomNumber, treatmenttype));
     }
     /**
      * Increases budget of practise by given amount.

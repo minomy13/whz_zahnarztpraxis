@@ -61,7 +61,7 @@ public class PatientHandler {
             }
         });
         for (int i = 0; i < roomHandler.size(); i++) {
-            if (roomHandler.get(i).getTreatment().contains(runningTreatments()))
+            if (roomHandler.get(i).getTreatmenttype().equals(treatments.get(treatmentIndex)))
             {roomHandler.get(i).closeRoom();}
 
         }
@@ -75,9 +75,12 @@ public class PatientHandler {
     public void endTreatment(int index) {
         practise.increaseBudget(treatments.get(index).getCost());
         runningTreatments.remove(index);
-    for (int i = 0; i < roomHandler.size(); i++) {
-        if (roomHandler.get(i).isOpen() == false && roomHandler.get(i).getTreatment().contains(runningTreatments.getRunningTreatments())) {
-        } else {roomHandler.get(i).openRoom();}
+        for (int i = 0; i < roomHandler.size(); i++) {
+            if (!roomHandler.get(i).isOpen() && roomHandler.get(i).getTreatmenttype().equals(treatments.get(index))) {
+            } else {
+                roomHandler.get(i).openRoom();
+            }
+        }
     }
 
     /**
