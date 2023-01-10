@@ -1,7 +1,7 @@
 package practise;
 
+import practise.employees.employeeFiles.EmployeeHandler;
 import practise.calendar1.Calendar1;
-import practise.employees.employeeFiles.EmployeeFileHandler;
 import practise.patients.PatientHandler;
 import practise.patients.treatment.*;
 import practise.stock.StockHandler;
@@ -13,13 +13,11 @@ import java.util.ArrayList;
 public class Practise {
     public Logger logger = new Logger();
     private double budget;
-    private Calendar1 calendar;
-    private EmployeeFileHandler employeeHandler;
     private PatientHandler patientHandler;
     private StockHandler stockHandler;
-
+    private EmployeeHandler employeeHandler;
+    private Calendar1 calendar;
     private ArrayList<Rooms> roomHandler = new ArrayList<>();
-    //private final Clock clock;
 
     /**
      * Creates a new practise.
