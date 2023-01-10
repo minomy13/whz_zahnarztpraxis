@@ -9,7 +9,8 @@ public class Calendar1 {
     {
         Calendar cal = new GregorianCalendar(year, month, dayOfMonth, hours, minutes);
     }
-    public void setYearAndMonth(int year, int month, int dayOfMonth, int hours, int minutes) {
+
+    public void setCalendar(int year, int month, int dayOfMonth, int hours, int minutes) {
         cal.set(Calendar.YEAR, year);
         cal.set(Calendar.MONTH, month);
         cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -20,12 +21,21 @@ public class Calendar1 {
     public Date getTime() {
         return cal.getTime();
     }
+
+    /**
+     * moves the calendar one day ahead
+     */
     public void nextDay(){
         cal.add(Calendar.DAY_OF_MONTH, +1);
         //System.out.println("Date: " + cal.getTime());
     }
+
+    /**
+     * moves the current calendar day one hour ahead
+     */
     public void nextHour(){
         cal.add(Calendar.HOUR, +1);
         //System.out.println("Date: " + cal.getTime());
      }
+
 }

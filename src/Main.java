@@ -28,7 +28,7 @@ public class Main {
         }
         logger.info(practise.getBudget());
         System.out.println(practise.getCalendar().getTime());
-
+        //TODO calendar, termine, etc.
 
     }
 }
