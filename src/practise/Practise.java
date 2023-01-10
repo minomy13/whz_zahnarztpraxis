@@ -31,7 +31,7 @@ public class Practise {
 
         // creates a new instance for every handler
         this.calendar = new Calendar1(year, month, dayOfMonth, hour, minute);
-        this.employeeHandler = new EmployeeFileHandler();
+        this.employeeHandler = new EmployeeHandler();
         this.patientHandler = new PatientHandler(this);
         this.stockHandler = new StockHandler(this);
         //this.clock = new Clock(hour,minute,1);
@@ -67,7 +67,7 @@ public class Practise {
         return calendar;
     }
 
-    public EmployeeFileHandler getEmployeeHandler() {
+    public EmployeeHandler getEmployeeHandler() {
         return employeeHandler;
     }
 
