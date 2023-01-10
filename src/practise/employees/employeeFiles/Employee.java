@@ -36,6 +36,6 @@ public class Employee {
     }
 
     public void addToTimeStampList() {
-        EmployeeFileHandler.addEmployee(this);
+        EmployeeFileHandler.addEmployee(this));
     }
 }
