@@ -35,7 +35,4 @@ public class Employee {
         return go;
     }
 
-    public void addToTimeStampList() {
-        EmployeeFileHandler.addEmployee(this);
-    }
 }

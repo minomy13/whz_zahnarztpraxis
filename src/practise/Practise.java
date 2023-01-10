@@ -2,6 +2,7 @@ package practise;
 
 import practise.calendar.Calendar;
 import practise.consulatation.ConsultationHandler;
+import practise.employees.employeeFiles.EmployeeHandler;
 import practise.patients.PatientHandler;
 import practise.stock.StockHandler;
 
@@ -10,9 +11,10 @@ public class Practise {
 
     private Calendar calendar;
     private ConsultationHandler consultationHandler;
-    private EmployeeHandler employeeHandler;
     private PatientHandler patientHandler;
     private StockHandler stockHandler;
+
+    private EmployeeHandler employeeHandler;
 
     /**
      * Creates a new practise.
