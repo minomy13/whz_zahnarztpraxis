@@ -36,7 +36,6 @@ public class Practise {
         this.employeeHandler = new EmployeeFileHandler();
         this.patientHandler = new PatientHandler(this);
         this.stockHandler = new StockHandler(this);
-        //this.clock = new Clock(hour,minute,1);
     }
 
     public void addRoom(int roomNumber, TreatmentType treatmenttype)
@@ -80,6 +79,4 @@ public class Practise {
     public StockHandler getStockHandler() {
         return stockHandler;
     }
-
-    //public Rooms getRoomHandler() {return roomHandler;}
 }
