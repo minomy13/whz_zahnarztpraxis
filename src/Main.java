@@ -1,23 +1,21 @@
 import practise.Practise;
 import practise.stock.Item;
 import utils.logger.Logger;
-import utils.touple.Touple;
 
-import java.util.ArrayList;
-
+import java.util.HashMap;
+import practise.*;
 public class Main {
     public static void main(String[] args) {
         Logger logger = new Logger();
-        Practise practise = new Practise(1000);
+        Practise practise = new Practise(1000,5,0,1 ,8,00);
 
-        ArrayList<Touple<Item, Integer>> a = new ArrayList<>();
-        a.add(new Touple(Item.COTTON_PAD, 3));
+        HashMap<Item, Integer> n = new HashMap<>();
+        n.put(Item.COTTON_PAD, 15);
         logger.info(practise.getBudget());
 
         practise.getStockHandler().buy(Item.COTTON_PAD, 15, .36);
 
         practise.getPatientHandler().getPatientFileHandler().create("Bob");
-        practise.getPatientHandler().startTreatment("A", 360.90, a);
 
         try {
             logger.info(practise.getStockHandler().getStock(Item.COTTON_PAD));

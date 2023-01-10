@@ -1,29 +1,21 @@
 package practise.patients.treatment;
 
-import practise.Practise;
-import practise.stock.Item;
-import utils.touple.Touple;
-
-import java.util.ArrayList;
+import practise.patients.patientFiles.Patient;
 
 public class Treatment {
-    final String name;
-    final double cost;
+    private final TreatmentType treatmentType;
+    private final Patient patient;
 
-    public Treatment(String name, double cost, ArrayList<Touple<Item, Integer>> needs, Practise practise) throws Exception {
-        this.name = name;
-        this.cost = cost;
-
-        for (Touple<Item, Integer> i : needs) {
-            practise.getStockHandler().take(i.t1, i.t2);
-        }
+    public Treatment(TreatmentType treatmentType, Patient patient) {
+        this.treatmentType = treatmentType;
+        this.patient = patient;
     }
 
-    public String getName() {
-        return name;
+    public TreatmentType getTreatmentType() {
+        return treatmentType;
     }
 
-    public double getCost() {
-        return cost;
+    public Patient getPatient() {
+        return patient;
     }
 }

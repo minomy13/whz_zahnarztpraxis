@@ -1,6 +1,6 @@
 package practise.patients.patientFiles;
 
-import practise.patients.treatment.Treatment;
+import practise.patients.treatment.TreatmentType;
 
 public class PatientFile {
     final Patient patient;
@@ -21,7 +21,7 @@ public class PatientFile {
      * @param report    Report text for this patient
      * @param treatment Treatment for this patient
      */
-    public void createReport(String report, Treatment treatment) {
+    public void createReport(String report, TreatmentType treatment) {
         this.report = new Report(report, treatment);
     }
 

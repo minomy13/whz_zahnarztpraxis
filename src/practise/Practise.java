@@ -1,37 +1,46 @@
 package practise;
 
-import practise.calendar.Calendar;
-import practise.consulatation.ConsultationHandler;
 import practise.employees.employeeFiles.EmployeeHandler;
+import practise.calendar1.Calendar1;
 import practise.patients.PatientHandler;
+import practise.patients.treatment.*;
 import practise.stock.StockHandler;
+import practise.patients.treatment.Rooms;
+import utils.logger.Logger;
+
+import java.util.ArrayList;
 
 public class Practise {
+    public Logger logger = new Logger();
     private double budget;
-
-    private Calendar calendar;
-    private ConsultationHandler consultationHandler;
     private PatientHandler patientHandler;
     private StockHandler stockHandler;
-
     private EmployeeHandler employeeHandler;
+    private Calendar1 calendar;
+    private ArrayList<Rooms> roomHandler = new ArrayList<>();
 
     /**
      * Creates a new practise.
      *
      * @param budget Budget to start with
+     * @param hour Time: amount of full hours since 00:00
+     * @param minute Time: amount of full minutes since last full hour
      */
-    public Practise(double budget) {
+    public Practise(double budget,int year, int month, int dayOfMonth, int hour,int minute) {
         this.budget = budget;
 
         // creates a new instance for every handler
-        this.calendar = new Calendar();
-        this.consultationHandler = new ConsultationHandler();
-        this.employeeHandler = new EmployeeHandler();
+        this.calendar = new Calendar1(year, month, dayOfMonth, hour, minute);
+        this.employeeHandler = new EmployeeFileHandler();
         this.patientHandler = new PatientHandler(this);
         this.stockHandler = new StockHandler(this);
+        //this.clock = new Clock(hour,minute,1);
     }
 
+    public void addRoom(int roomNumber, TreatmentType treatmenttype)
+    {
+        roomHandler.add(new Rooms(roomNumber, treatmenttype));
+    }
     /**
      * Increases budget of practise by given amount.
      *
@@ -54,15 +63,11 @@ public class Practise {
         return budget;
     }
 
-    public Calendar getCalendar() {
+    public Calendar1 getCalendar() {
         return calendar;
     }
 
-    public ConsultationHandler getConsultationHandler() {
-        return consultationHandler;
-    }
-
-    public EmployeeHandler getEmployeeHandler() {
+    public EmployeeFileHandler getEmployeeHandler() {
         return employeeHandler;
     }
 
@@ -73,4 +78,6 @@ public class Practise {
     public StockHandler getStockHandler() {
         return stockHandler;
     }
+
+    //public Rooms getRoomHandler() {return roomHandler;}
 }
