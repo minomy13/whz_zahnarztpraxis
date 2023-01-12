@@ -3,6 +3,7 @@ package practise;
 import practise.employees.EmployeeHandler;
 import practise.calendar1.Calendar1;
 import practise.patients.PatientHandler;
+import practise.patients.patientFiles.*;
 import practise.patients.treatment.*;
 import practise.stock.StockHandler;
 import practise.patients.treatment.Rooms;
@@ -18,6 +19,8 @@ public class Practise {
     private EmployeeHandler employeeHandler;
     private Calendar1 calendar;
     private ArrayList<Rooms> roomHandler = new ArrayList<>();
+
+    private ArrayList<Treatment> treatments = new ArrayList<>();
 
     /**
      * Creates a new practise.
@@ -40,6 +43,9 @@ public class Practise {
     {
         roomHandler.add(new Rooms(treatmenttype));
     }
+
+    public void addTreatment(Treatment treatment) {treatments.add(treatment);}
+
     /**
      * Increases budget of practise by given amount.
      *
@@ -77,4 +83,6 @@ public class Practise {
     public StockHandler getStockHandler() {
         return stockHandler;
     }
+
+    //TODO getTreatment?
 }

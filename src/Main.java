@@ -23,12 +23,20 @@ public class Main {
         practise.getPatientHandler().getPatientFileHandler().create("Bob");
         //TODO create more Patients & their Reports
 
-        HashMap<Item, Integer> n = new HashMap<>();
-        n.put(Item.BEAKER, 4);
-        n.put(Item.COTTON_PAD, 15);
-        n.put(Item.MOUTH_MIRROR, 23);
-        n.put(Item.DENTAL_SYRINGE, 11);
-        n.put(Item.DENTAL_PROBE, 18);
+        HashMap<Item, Integer> stock = new HashMap<>();
+        stock.put(Item.BEAKER, 4);
+        stock.put(Item.COTTON_PAD, 15);
+        stock.put(Item.MOUTH_MIRROR, 23);
+        stock.put(Item.DENTAL_SYRINGE, 11);
+        stock.put(Item.DENTAL_PROBE, 18);
+
+        HashMap<Item, Integer> needs = new HashMap<>();
+        //TreatmentType(String name, double cost, HashMap<Item, Integer> needs)
+        //Treatment(TreatmentType treatmentType, Patient patient)
+
+        practise.get
+        practise.addTreatment(("Check-up", 25, needs.put(Item.MOUTH_MIRROR, 1), //TODO access Patient);
+        practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
         logger.info(practise.getBudget());
 
         practise.getStockHandler().buy(Item.COTTON_PAD, 15, .36);
@@ -43,9 +51,9 @@ public class Main {
         //TODO calendar, termine, etc.
 
         practise.getEmployeeHandler().employeeGo(2);
-        //halbe stunde vergeht
+        practise.getCalendar().addMinutes(30);
         practise.getEmployeeHandler().employeeGo(1);
-        //halbe stunde vergeht
+        practise.getCalendar().addMinutes(30);
         practise.getEmployeeHandler().employeeGo(0);
 
         //muss am ende des tages ausgeführt werden (speichert alle come and go zeiten in eine liste)
