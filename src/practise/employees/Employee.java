@@ -39,8 +39,4 @@ public class Employee {
     public Date getGo() {
         return go;
     }
-    
-    public void addToTimeStampList() {
-        EmployeeFileHandler.addEmployee(this));
-    }
 }
