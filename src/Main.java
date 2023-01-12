@@ -7,7 +7,7 @@ import practise.*;
 public class Main {
     public static void main(String[] args) {
         Logger logger = new Logger();
-        Practise practise = new Practise(1000,5,0,1 ,8,00);
+        Practise practise = new Practise(1000,2005,0,1 ,8,00);
 
         practise.getEmployeeHandler().hireEmployee("Karl", "Dentist");
         practise.getEmployeeHandler().hireEmployee("Amy", "Dentist Assistant");
