@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Calendar1 {
     private Calendar cal = Calendar.getInstance();
-    public Calendar1(int year, int month, int dayOfMonth, int hours, int minutes)
+    public Calendar1(int year, int month, int dayOfMonth, int hours, int minutes, int seconds)
     {
-        cal.set(year, month, dayOfMonth, hours, minutes);
+        cal.set(year, month, dayOfMonth, hours, minutes, seconds);
     }
 
     public void setCalendar(int year, int month, int dayOfMonth, int hours, int minutes) {
