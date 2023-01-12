@@ -1,13 +1,12 @@
 package practise.calendar1;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Date;
 
 public class Calendar1 {
-    private GregorianCalendar cal;
+    Calendar cal = Calendar.getInstance();
     public Calendar1(int year, int month, int dayOfMonth, int hours, int minutes)
     {
-        Calendar cal = new GregorianCalendar(year, month, dayOfMonth, hours, minutes);
+        cal.set(year, month, dayOfMonth, hours, minutes);
     }
 
     public void setCalendar(int year, int month, int dayOfMonth, int hours, int minutes) {
