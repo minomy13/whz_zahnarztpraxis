@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EmployeeFileHandler {
+public class EmployeeHandler {
 
     public final ArrayList<Employee> employees = new ArrayList<>();
     public final Map<String/*Date*/,Map<String/*Name*/,Employee>> timeStampMap = new HashMap<>();
@@ -26,7 +26,7 @@ public class EmployeeFileHandler {
         }
     }
 
-    public void addEmployeesComeAndGo() {
+    public void addEmployeesComeAndGo() { //soll am Ende des "Tages" ausgeführt werden
         employees.forEach(e -> timeStampMap.put(Calendar1.getDate(), secondMap.put(e.getName(),e)));
     }
 

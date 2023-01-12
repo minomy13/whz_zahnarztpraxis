@@ -34,7 +34,7 @@ public class Employee {
     public String getGo() {
         return go;
     }
-
+    
     public void addToTimeStampList() {
         EmployeeFileHandler.addEmployee(this));
     }
