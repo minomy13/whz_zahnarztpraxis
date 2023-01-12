@@ -21,7 +21,8 @@ public class Employee {
     }
 
     public String getJob() {
-        return job; }
+        return job;
+    }
 
     public void setCome(Date date) {
         this.come = date;
