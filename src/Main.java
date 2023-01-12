@@ -2,6 +2,7 @@ import practise.Practise;
 import practise.stock.Item;
 import utils.logger.Logger;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import practise.*;
 public class Main {
@@ -14,20 +15,23 @@ public class Main {
         practise.getEmployeeHandler().hireEmployee("ALice", "Receptionist");
 
         practise.getEmployeeHandler().employeeCome(0);
-        //halbe stunde vergeht
+        practise.getCalendar().addMinutes(30);
         practise.getEmployeeHandler().employeeCome(1);
-        //halbe stunde vergeht
+        practise.getCalendar().addMinutes(30);
         practise.getEmployeeHandler().employeeCome(2);
 
         practise.getPatientHandler().getPatientFileHandler().create("Bob");
         //TODO create more Patients & their Reports
 
         HashMap<Item, Integer> n = new HashMap<>();
+        n.put(Item.BEAKER, 4);
         n.put(Item.COTTON_PAD, 15);
+        n.put(Item.MOUTH_MIRROR, 23);
+        n.put(Item.DENTAL_SYRINGE, 11);
+        n.put(Item.DENTAL_PROBE, 18);
         logger.info(practise.getBudget());
 
         practise.getStockHandler().buy(Item.COTTON_PAD, 15, .36);
-        //TODO enter more items
 
         try {
             logger.info(practise.getStockHandler().getStock(Item.COTTON_PAD));

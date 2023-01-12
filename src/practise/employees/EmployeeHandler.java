@@ -40,6 +40,7 @@ public class EmployeeHandler {
         employees.get(index).setCome(practise.getCalendar().getTime());
     }
 
+
     public void addEmployeesComeAndGo() { //soll am Ende des Tages ausgeführt werden
         HashMap<String, Employee> buffer = new HashMap<>();
         for (Employee e : employees) {

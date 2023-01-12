@@ -41,4 +41,8 @@ public class Calendar1 {
         //System.out.println("Date: " + cal.getTime());
      }
 
+    public void addMinutes(int time){
+        cal.add(Calendar.MINUTE, +time);
+    }
+
 }
