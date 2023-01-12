@@ -33,12 +33,20 @@ public class Calendar1 {
         //System.out.println("Date: " + cal.getTime());
     }
 
+    public void advanceDays(int days) {
+        cal.add(Calendar.DAY_OF_MONTH, +days);
+    }
+
     /**
      * moves the current calendar day one hour ahead
      */
     public void nextHour(){
         cal.add(Calendar.HOUR_OF_DAY, +1);
         //System.out.println("Date: " + cal.getTime());
+    }
+
+    public void advanceHours(int hours) {
+        cal.add(Calendar.HOUR_OF_DAY, +hours);
     }
 
     public String getDay() {

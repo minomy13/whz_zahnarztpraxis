@@ -109,4 +109,8 @@ public class AppointmentCalendar {
             throw new Exception("This patient has no appointment!");
         }
     }
+
+    public HashMap<Appointment, PatientFile> getAppointmentMap() {
+        return appointmentMap;
+    }
 }
