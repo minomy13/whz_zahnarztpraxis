@@ -42,7 +42,16 @@ public class Main {
         System.out.println(practise.getCalendar().getTime());
         //TODO calendar, termine, etc.
 
-        //muss am ende des tages ausgeführt werden(speichert alle come and go zeiten in eine liste
+        practise.getEmployeeHandler().employeeGo(2);
+        //halbe stunde vergeht
+        practise.getEmployeeHandler().employeeGo(1);
+        //halbe stunde vergeht
+        practise.getEmployeeHandler().employeeGo(0);
+
+        //muss am ende des tages ausgeführt werden (speichert alle come and go zeiten in eine liste)
         practise.getEmployeeHandler().addEmployeesComeAndGo();
+        //gibt come and go von einem eployee(index) aus
+        System.out.println(practise.getEmployeeHandler().getEmployee(1) + ": " + practise.getEmployeeHandler().getComeAndGo("1.0.5", practise.getEmployeeHandler().getEmployee(1)));
+        System.out.println(practise.getEmployeeHandler().getComeAndGoAll("1.0.5"));
     }
 }

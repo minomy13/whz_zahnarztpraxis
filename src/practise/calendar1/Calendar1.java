@@ -45,4 +45,10 @@ public class Calendar1 {
         cal.add(Calendar.MINUTE, +time);
     }
 
+    public String getDay() {
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        return day + "." + month + "." + year;
+    }
 }

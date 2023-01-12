@@ -2,16 +2,13 @@ package practise.employees;
 
 import practise.Practise;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class EmployeeHandler {
 
     private final Practise practise;
     public final ArrayList<Employee> employees = new ArrayList<>();
-    public final Map<Date/*Date*/,Map<String/*Name*/,Employee>> timeStampMap = new HashMap<>();
+    public final Map<String/*Date*/,Map<String/*Name*/,Employee>> timeStampMap = new HashMap<>();
 
     public EmployeeHandler(Practise practise) {
         this.practise = practise;
@@ -32,12 +29,16 @@ public class EmployeeHandler {
         }
     }
 
+    public String getEmployee(int index) {
+        return employees.get(index).getName();
+    }
+
     public void employeeCome(int index) {
-        employees.get(index).setCome(practise.getCalendar().getTime());
+        employees.get(index).setCome(practise.getCalendar().getCal());
     }
 
     public void employeeGo(int index) {
-        employees.get(index).setCome(practise.getCalendar().getTime());
+        employees.get(index).setGo(practise.getCalendar().getCal());
     }
 
 
@@ -45,12 +46,22 @@ public class EmployeeHandler {
         HashMap<String, Employee> buffer = new HashMap<>();
         for (Employee e : employees) {
             buffer.put(e.getName(), e);
-            timeStampMap.put(practise.getCalendar().getTime(), buffer);
+            timeStampMap.put(practise.getCalendar().getDay(), buffer);
         }
     }
 
     public String getComeAndGo(String keyDate, String keyName) { //gibt datum und namen wieder
-        return keyDate + " gekommen: " + timeStampMap.get(keyDate).get(keyName).getCome() +
-                         " gegangen: " + timeStampMap.get(keyDate).get(keyName).getGo();
+        return keyDate + ": Gekommen: " + timeStampMap.get(keyDate).get(keyName).getCome().getTime() +
+                         ", Gegangen: " + timeStampMap.get(keyDate).get(keyName).getGo().getTime();
+    }
+
+    public String getComeAndGoAll(String keyDate) { //gibt datum und namen wieder
+        String buffer = "";
+        ArrayList<String> j = new ArrayList<>();
+        timeStampMap.get(keyDate).keySet().stream().forEach(k -> j.add(k));
+        for(int i = 0; i < j.size(); i++) {
+            buffer = buffer + timeStampMap.get(keyDate).get(j.get(i)).getName() + ": " + timeStampMap.get(keyDate).get(j.get(i)).getCome().getTime() + "; ";
+        }
+        return buffer;
     }
 }
