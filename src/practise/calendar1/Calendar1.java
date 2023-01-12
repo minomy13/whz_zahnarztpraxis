@@ -39,6 +39,12 @@ public class Calendar1 {
     public void nextHour(){
         cal.add(Calendar.HOUR, +1);
         //System.out.println("Date: " + cal.getTime());
-     }
+    }
 
+    public String getDay() {
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        return day + "." + month + "." + year;
+    }
 }
