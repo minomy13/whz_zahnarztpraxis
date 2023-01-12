@@ -5,6 +5,8 @@ import practise.patients.treatment.TreatmentType;
 public class PatientFile {
     final Patient patient;
     private Report report;
+    final int id;
+    private static int currentId = 0;
 
     /**
      * Creates a new patient file
@@ -13,6 +15,7 @@ public class PatientFile {
      */
     public PatientFile(String name) {
         this.patient = new Patient(name);
+        this.id = currentId++;
     }
 
     /**

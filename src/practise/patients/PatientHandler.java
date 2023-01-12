@@ -35,6 +35,8 @@ public class PatientHandler {
 
     public void addRoom(Rooms room) {roomHandler.add(room);}
     //public int getRoomNumber(int index) {return rooms.get(index).getRoomNumber();}
+
+    public void removeRoom(int roomNumber) {roomHandler.remove(roomNumber);}
     /**
      * Removes a type of treatment
      *
@@ -105,15 +107,10 @@ public class PatientHandler {
         }
     }
 
-    public ArrayList<TreatmentType> getTreatmentTypes() {
-        return treatments;
-    }
+    public ArrayList<Rooms> getRooms() {return roomHandler;}
+    public ArrayList<TreatmentType> getTreatmentTypes() {return treatments;}
 
-    public ArrayList<Treatment> getRunningTreatments() {
-        return runningTreatments;
-    }
+    public ArrayList<Treatment> getRunningTreatments() {return runningTreatments;}
 
-    public PatientFileHandler getPatientFileHandler() {
-        return patientFileHandler;
-    }
+    public PatientFileHandler getPatientFileHandler() {return patientFileHandler;}
 }
