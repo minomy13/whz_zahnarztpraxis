@@ -17,6 +17,10 @@ public class Calendar1 {
         cal.set(Calendar.MINUTE, minutes);
     }
 
+    public Calendar getCal() {
+        return cal;
+    }
+
     public Date getTime() {
         return cal.getTime();
     }
