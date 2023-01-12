@@ -26,11 +26,11 @@ public class Practise {
      * @param hour Time: amount of full hours since 00:00
      * @param minute Time: amount of full minutes since last full hour
      */
-    public Practise(double budget,int year, int month, int dayOfMonth, int hour,int minute) {
+    public Practise(double budget,int year, int month, int dayOfMonth, int hour,int minute, int second) {
         this.budget = budget;
 
         // creates a new instance for every handler
-        this.calendar = new Calendar1(year, month, dayOfMonth, hour, minute);
+        this.calendar = new Calendar1(year, month, dayOfMonth, hour, minute, second);
         this.employeeHandler = new EmployeeHandler(this);
         this.patientHandler = new PatientHandler(this);
         this.stockHandler = new StockHandler(this);
