@@ -1,12 +1,10 @@
 package practise.patients.patientFiles;
 
-import practise.patients.treatment.TreatmentType;
-
 public class PatientFile {
-    final Patient patient;
-    private Report report;
-    final int id;
     private static int currentId = 0;
+    final Patient patient;
+    final int id;
+    private Report report;
 
     /**
      * Creates a new patient file
@@ -21,11 +19,11 @@ public class PatientFile {
     /**
      * Creates a new report for this patient, replacing any previous reports
      *
-     * @param report    Report text for this patient
-     * @param treatment Treatment for this patient
+     * @param report             Report text for this patient
+     * @param treatmentTypeIndex Treatment for this patient
      */
-    public void createReport(String report, TreatmentType treatment) {
-        this.report = new Report(report, treatment);
+    public void createReport(String report, int treatmentTypeIndex) {
+        this.report = new Report(report, treatmentTypeIndex);
     }
 
     public Patient getPatient() {
