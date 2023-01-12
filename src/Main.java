@@ -10,7 +10,15 @@ public class Main {
         Practise practise = new Practise(1000,5,0,1 ,8,00);
 
         practise.getEmployeeHandler().hireEmployee("Karl", "Dentist");
-        // TODO employee timestamp/ comeandgo
+        practise.getEmployeeHandler().hireEmployee("Amy", "Dentist Assistant");
+        practise.getEmployeeHandler().hireEmployee("ALice", "Receptionist");
+
+        practise.getEmployeeHandler().employeeCome(0);
+        //halbe stunde vergeht
+        practise.getEmployeeHandler().employeeCome(1);
+        //halbe stunde vergeht
+        practise.getEmployeeHandler().employeeCome(2);
+
         practise.getPatientHandler().getPatientFileHandler().create("Bob");
         //TODO create more Patients & their Reports
 
@@ -30,5 +38,7 @@ public class Main {
         System.out.println(practise.getCalendar().getTime());
         //TODO calendar, termine, etc.
 
+        //muss am ende des tages ausgeführt werden(speichert alle come and go zeiten in eine liste
+        practise.getEmployeeHandler().addEmployeesComeAndGo();
     }
 }
