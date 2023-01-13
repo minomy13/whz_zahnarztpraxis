@@ -19,7 +19,6 @@ public class Practise {
     private EmployeeHandler employeeHandler;
     private Calendar1 calendar;
     private ArrayList<Rooms> roomHandler = new ArrayList<>();
-
     private ArrayList<Treatment> treatments = new ArrayList<>();
 
     /**
@@ -39,10 +38,12 @@ public class Practise {
         this.stockHandler = new StockHandler(this);
     }
 
-    public void addRoom(TreatmentType treatmenttype)
-    {
-        roomHandler.add(new Rooms(treatmenttype));
-    }
+    public void addRoom(Rooms room) {roomHandler.add(room);}
+    //public int getRoomNumber(int index) {return rooms.get(index).getRoomNumber();}
+
+    public void removeRoom(int roomNumber) {roomHandler.remove(roomNumber);}
+
+
 
     public void addTreatment(Treatment treatment) {treatments.add(treatment);}
 
@@ -84,5 +85,6 @@ public class Practise {
         return stockHandler;
     }
 
-    //TODO getTreatment?
+    public ArrayList<Rooms> getRoomHandler() {return roomHandler;}
+
 }

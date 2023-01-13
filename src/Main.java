@@ -30,12 +30,13 @@ public class Main {
         stock.put(Item.DENTAL_SYRINGE, 11);
         stock.put(Item.DENTAL_PROBE, 18);
 
-        HashMap<Item, Integer> needs = new HashMap<>();
+        HashMap<Item, Integer> needs1 = new HashMap<>();
+        needs1.put(Item.MOUTH_MIRROR, 1);
         //TreatmentType(String name, double cost, HashMap<Item, Integer> needs)
         //Treatment(TreatmentType treatmentType, Patient patient)
 
-        practise.get
-        practise.addTreatment(("Check-up", 25, needs.put(Item.MOUTH_MIRROR, 1), //TODO access Patient);
+        practise.getPatientHandler().addTreatmentType("Check-Up", 25, needs1);
+        practise.addTreatment(practise.getPatientHandler().getTreatmenType(),);
         practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
         logger.info(practise.getBudget());
 
