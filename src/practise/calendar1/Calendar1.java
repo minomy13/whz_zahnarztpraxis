@@ -55,4 +55,10 @@ public class Calendar1 {
         int day = cal.get(Calendar.DAY_OF_MONTH);
         return day + "." + month + "." + year;
     }
+
+    public String getCurrentTime() {
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int min = cal.get(Calendar.MINUTE);
+        return hour + "." + min;
+    }
 }

@@ -1,14 +1,13 @@
 package practise.employees;
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class Employee {
 
     private final String name;
     private final String job;
-    private Calendar come;
-    private Calendar go;
+
+    private String come = null;
+
+    private String go = null;
 
     public Employee(String name, String job) {
         this.name = name;
@@ -23,19 +22,18 @@ public class Employee {
         return job;
     }
 
-    public void setCome(Calendar date) {
-        this.come = date;
+    public void setCome(String come) {
+        this.come = come;
+    }
+    public void setGo(String go) {
+        this.go = go;
     }
 
-    public void setGo(Calendar date) {
-        this.go = date;
-    }
-
-    public Calendar getCome() {
+    public String getCome() {
         return come;
     }
 
-    public Calendar getGo() {
+    public String getGo() {
         return go;
     }
 }

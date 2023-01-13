@@ -54,7 +54,7 @@ public class Practise {
                 boolean found=false;
                 boolean through=false;
                 Iterator<Entry<Appointment, PatientFile>> it = appointmentCalendar.getAppointmentMap().entrySet().iterator();
-                Entry<Appointment, PatientFile> result;
+                Entry<Appointment, PatientFile> result = null;
                 while (!found && !through) {
                     if (!it.hasNext()) {
                         through=true;
