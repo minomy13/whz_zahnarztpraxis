@@ -253,6 +253,9 @@ public class Main {
         System.out.println();
         practise.getEmployeeHandler().getWorkTime();
 
+        logger.info(String.format("Practise budget is now %s €", practise.getBudget()));
+
+        System.out.println();
         System.out.println("\n\n ------------------------- \n");
 
         try {
@@ -262,14 +265,13 @@ public class Main {
         }
         System.out.println("Skip to: " + practise.getCalendar().getTime());
 
-        System.out.println();
-
         logger.info("Hiring new employee...");
         practise.getEmployeeHandler().hireEmployee("Paul", "dental hygenienist");
         System.out.println(practise.getEmployeeHandler().getEmployeeName(3) + " : " + practise.getEmployeeHandler().getEmployeesJob(3));
 
         System.out.println();
         practise.getEmployeeHandler().viewEmployees();
+        System.out.println();
 
         System.out.println("\n ------------------------- \n");
 
@@ -434,6 +436,9 @@ public class Main {
         //System.out.println(practise.getEmployeeHandler().getComeAndGo("10.0.2022", practise.getEmployeeHandler().getEmployeeName(0)));
         practise.getEmployeeHandler().getComeAndGoAll("10.0.2022");
         System.out.println();
+
         practise.getEmployeeHandler().getWorkTime();
+        System.out.println();
+        logger.info(String.format("Practise budget is now %s €", Math.floor(practise.getBudget())));
     }
 }

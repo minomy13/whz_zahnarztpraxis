@@ -44,7 +44,7 @@ public class PatientHandler {
     }
 
     /**
-     * Starts new treatment, closes Room, takes needed items from stock and occupies room
+     * Starts new treatment, closes Room, takes needed items, increases budget by treatment cost from stock and occupies room
      *
      * @param treatmentIndex Index of treatment type to do
      * @param patientFile    Patient to be treated
@@ -52,6 +52,7 @@ public class PatientHandler {
      */
     public void startTreatment(int treatmentIndex, PatientFile patientFile, Rooms room) throws Exception {
         runningTreatments.add(new Treatment(treatments.get(treatmentIndex), patientFile));
+        practise.increaseBudget(treatments.get(treatmentIndex).getCost());
         // takes needed items from stock
         treatments.get(treatmentIndex).getNeeds().forEach((key, val) -> {
             try {
@@ -64,13 +65,12 @@ public class PatientHandler {
     }
 
     /**
-     * Ends running treatment, frees up room and increases budget by treatment cost
+     * Ends running treatment, frees up room
      *
      * @param index Index of treatment to be ended
      * @param room  Room to be opened after appointment
      */
-    public void endTreatment(int index, Rooms room ) {
-        practise.increaseBudget(treatments.get(index).getCost());
+    public void endTreatment(int index, Rooms room) {
         runningTreatments.remove(index);
         room.openRoom();
     }
@@ -99,6 +99,7 @@ public class PatientHandler {
 
     /**
      * Returns index for treatment type with specified name
+     *
      * @param name Name of treatment type
      * @return Index for use with createReport in PatientFile
      * @throws Exception In case there is no treatment type with specified name
@@ -142,6 +143,7 @@ public class PatientHandler {
 
     /**
      * returns TreatmentType by given name
+     *
      * @param name name of TreatmentType
      */
     public TreatmentType getTreatmentType(String name) throws Exception {
