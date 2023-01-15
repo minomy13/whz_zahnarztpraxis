@@ -10,6 +10,7 @@ import practise.stock.Item;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class PatientHandler {
@@ -29,7 +30,7 @@ public class PatientHandler {
      * @param cost Cost of treatment
      */
     public void addTreatmentType(String name, double cost, Map<Item, Integer> needs) throws Exception {
-        if (treatments.stream().filter(t -> t.getName() == name).collect(Collectors.toList()).size() > 0)
+        if (treatments.stream().filter(t -> Objects.equals(t.getName(), name)).toList().size() > 0)
             throw new Exception("Treatment type name already in use");
         treatments.add(new TreatmentType(name, cost, needs));
     }
@@ -127,7 +128,10 @@ public class PatientHandler {
         }
     }
 
-    //TODO documentation
+    /**
+     * returns TreatmentType by given name
+     * @param name name of TreatmentType
+     */
     public TreatmentType getTreatmentType(String name) throws Exception {
         TreatmentType t = null;
         for (int i = 0; i < treatments.size(); i++) {

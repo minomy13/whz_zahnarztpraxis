@@ -21,6 +21,7 @@ public class StockHandler {
         this.refillAmount = refillAmount;
     }
 
+
     public int getStock(Item item) throws Exception {
         for (StockItem i : stock) {
             if (i.getItem().equals(item)) {
