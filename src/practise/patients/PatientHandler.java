@@ -155,10 +155,6 @@ public class PatientHandler {
         return t;
     }
 
-    public ArrayList<TreatmentType> getTreatmentTypes() {
-        return treatments;
-    }
-
     public ArrayList<Treatment> getRunningTreatments() {
         return runningTreatments;
     }

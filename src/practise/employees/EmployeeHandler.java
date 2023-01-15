@@ -40,7 +40,7 @@ public class EmployeeHandler {
     public void viewEmployees() {
         int i = 1;
         for (Employee e : employees) {
-            System.out.println(i + ": " + e.getName() + e.getJob());
+            System.out.println(i + ": " + e.getName() + " " + e.getJob());
             i++;
         }
     }

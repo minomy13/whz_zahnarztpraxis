@@ -26,7 +26,6 @@ public class Main {
                 practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2));
 
-
         practise.getStockHandler().buy(Item.BEAKER, 5, 0.02);
         practise.getStockHandler().buy(Item.COTTON_PAD, 15, 0.05);
         practise.getStockHandler().buy(Item.MOUTH_MIRROR, 23, 5.99);
@@ -62,6 +61,7 @@ public class Main {
             logger.error(e.getMessage());
         }
 
+        practise.getPatientHandler().viewTreatmentTypes();
 
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1996);
         try {
@@ -69,6 +69,7 @@ public class Main {
                     .createReport("Due for regular Check-Up", practise.getPatientHandler().getTreatmentTypeIndex("Check-Up"));
         } catch (Exception e) {
             logger.error(e.getMessage());
+        //TODO console output
         }
         practise.getPatientHandler().getPatientFileHandler().create("Max", 2001);
         try {
@@ -77,6 +78,7 @@ public class Main {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
+        //TODO console output
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1987);
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1987)
@@ -84,15 +86,14 @@ public class Main {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-
+        //TODO console output
         try {
             practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         logger.info(practise.getBudget());
-
-        practise.getStockHandler().buy(Item.COTTON_PAD, 15, .36);
+        //TODO console output
 
         try {
             logger.info(practise.getStockHandler().getStock(Item.COTTON_PAD));
@@ -102,8 +103,6 @@ public class Main {
         logger.info(practise.getBudget());
 
         //TODO calendar, termine, etc.
-
-        practise.getCalendar().nextHour();
 
         practise.getEmployeeHandler().employeeGo(2);
         practise.getCalendar().advanceMinutes(30);
