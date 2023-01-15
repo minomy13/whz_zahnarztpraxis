@@ -17,6 +17,7 @@ public class PatientHandler {
     private final ArrayList<TreatmentType> treatments = new ArrayList<>();
     private final Practise practise;
     private ArrayList<Treatment> runningTreatments = new ArrayList<>();
+    //private ArrayList<Rooms> roomHandler = new ArrayList<>();
 
     public PatientHandler(Practise practise) {
         this.practise = practise;
@@ -32,7 +33,6 @@ public class PatientHandler {
         if (treatments.stream().filter(t -> t.getName() == name).collect(Collectors.toList()).size() > 0)
             throw new Exception("Treatment type name already in use");
         treatments.add(new TreatmentType(name, cost, needs));
-        //TODO check if treatment name is already in use
     }
 
     /**
@@ -86,13 +86,14 @@ public class PatientHandler {
 
     /**
      * Returns runningTreatments index for specified patient
+     *
      * @param patientFile Patient to search
      * @return Index of runningTreatments for use with endTreatment()
      * @throws Exception In case specified patient is not in runningTreatments
      */
     public int getIndex(PatientFile patientFile) throws Exception {
         boolean found = false;
-        int i=0;
+        int i = 0;
         while (!found) {
             if (i >= runningTreatments.size()) {
                 throw new Exception("Specified patient not in runningTreatments!");
@@ -127,10 +128,10 @@ public class PatientHandler {
         }
     }
 
-    public TreatmentType getTreatmenttype(String name) throws Exception {
+    public TreatmentType getTreatmentType(String name) throws Exception {
         TreatmentType t = null;
         for (int i = 0; i < treatments.size(); i++) {
-            if (treatments.get(i).getName().trim().toLowerCase().equals(name.trim().toLowerCase())) {
+            if (treatments.get(i).getName().trim().equalsIgnoreCase(name.trim())) {
                 t = treatments.get(i);
                 if (t == null) throw new Exception("Name missing.");
             }

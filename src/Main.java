@@ -42,7 +42,12 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        practise.addTreatment(practise.getPatientHandler().getTreatmenType());
+        try {
+            practise.addTreatment(practise.getPatientHandler().getTreatmentType("CHECK-UP"),
+                    practise.getPatientHandler().getPatientFileHandler().getFiles().get(0));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
         try {
             practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
         } catch (Exception e) {

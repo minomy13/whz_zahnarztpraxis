@@ -1,15 +1,15 @@
 package practise;
 
-import org.jetbrains.annotations.NotNull;
-import practise.employees.EmployeeHandler;
 import practise.calendar1.Calendar1;
+import practise.employees.EmployeeHandler;
 import practise.patients.AppointmentCalendar;
 import practise.patients.PatientHandler;
 import practise.patients.patientFiles.Appointment;
 import practise.patients.patientFiles.PatientFile;
-import practise.patients.treatment.*;
-import practise.stock.StockHandler;
 import practise.patients.treatment.Rooms;
+import practise.patients.treatment.Treatment;
+import practise.patients.treatment.TreatmentType;
+import practise.stock.StockHandler;
 import utils.logger.Logger;
 
 import java.util.ArrayList;
@@ -18,39 +18,45 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 public class Practise {
-    public Logger logger = new Logger();
-    private double budget;
     private final PatientHandler patientHandler = new PatientHandler(this);
     private final StockHandler stockHandler = new StockHandler(this);
     private final EmployeeHandler employeeHandler = new EmployeeHandler(this);
-    private Calendar1 calendar;
     private final ArrayList<Rooms> roomHandler = new ArrayList<>();
     private final ArrayList<Treatment> treatments = new ArrayList<>();
+    public Logger logger = new Logger();
+    private double budget;
+    private Calendar1 calendar;
 
     /**
      * Creates a new practise.
      *
      * @param budget Budget to start with
-     * @param hour Time: amount of full hours since 00:00
+     * @param hour   Time: amount of full hours since 00:00
      * @param minute Time: amount of full minutes since last full hour
      */
-    public Practise(double budget,int year, int month, int dayOfMonth, int hour,int minute, int second) {
+    public Practise(double budget, int year, int month, int dayOfMonth, int hour, int minute, int second) {
         this.budget = budget;
         this.calendar = new Calendar1(year, month, dayOfMonth, hour, minute, second);
     }
 
-    public void addRoom(Rooms room) {roomHandler.add(room);}
+    public void addRoom(Rooms room) {
+        roomHandler.add(room);
+    }
 
     //public int getRoomNumber(int index) {return rooms.get(index).getRoomNumber();}
 
-    public void removeRoom(int roomNumber) {roomHandler.remove(roomNumber);}
+    public void removeRoom(int roomNumber) {
+        roomHandler.remove(roomNumber);
+    }
 
 
-
-    public void addTreatment(Treatment treatment) {treatments.add(treatment);}
+    public void addTreatment(TreatmentType treatmentType, PatientFile patientFile) {
+        treatments.add(
+                new Treatment(treatmentType, patientFile));
+    }
 
     public void advanceTime(int days, int hours) throws Exception {
-        if (days<0 || hours<0) {
+        if (days < 0 || hours < 0) {
             throw new RuntimeException("Invalid parameters! Need to be at least 0!");
         } else {
             calendar.advanceDays(days);
@@ -59,7 +65,7 @@ public class Practise {
                 room.getAppointmentCalendar().getAppointmentMap().entrySet().stream()
                         .filter(e -> {
                             Calendar ca = Calendar.getInstance();
-                            ca.set(e.getKey().getYear(), e.getKey().getMonth(), e.getKey().getDayOfMonth(), e.getKey().getHour(),0);
+                            ca.set(e.getKey().getYear(), e.getKey().getMonth(), e.getKey().getDayOfMonth(), e.getKey().getHour(), 0);
                             return !calendar.getCal().before(ca);
                         })
                         .forEach(e -> {
@@ -92,6 +98,7 @@ public class Practise {
 
     /**
      * Returns first Appointment with past end time in specified Appointment Calendar
+     *
      * @param appointmentCalendar Appointment Calendar to search
      * @return Resulting Entry of Appointment and PatientFile, or null if there are no more Appointments with past end time
      */
@@ -102,7 +109,7 @@ public class Practise {
         Entry<Appointment, PatientFile> result = null;
         while (!found && !through) {
             if (!it.hasNext()) {
-                through=true;
+                through = true;
             } else {
                 Entry<Appointment, PatientFile> entry = it.next();
                 Calendar ca = Calendar.getInstance();
@@ -154,6 +161,8 @@ public class Practise {
         return stockHandler;
     }
 
-    public ArrayList<Rooms> getRoomHandler() {return roomHandler;}
+    public ArrayList<Rooms> getRoomHandler() {
+        return roomHandler;
+    }
 
 }
