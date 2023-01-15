@@ -5,7 +5,7 @@ import practise.Practise;
 import java.util.*;
 
 public class EmployeeHandler {
-
+    //TODO documentations
     private final Practise practise;
     private final ArrayList<Employee> employees = new ArrayList<>();
     private final Map<String/*Date*/,Map<String/*Name*/, String>> timeStampMap = new HashMap<>();

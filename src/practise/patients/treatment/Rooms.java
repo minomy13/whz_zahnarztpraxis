@@ -4,7 +4,7 @@ import practise.patients.AppointmentCalendar;
 
 public class Rooms {
     private final int roomNumber;
-    private final TreatmentType treatmenttype;
+    private final TreatmentType treatmentType;
     private final AppointmentCalendar appointmentCalendar;
     private static int currentRoomNumber = 1;
     private boolean open;
@@ -12,17 +12,18 @@ public class Rooms {
     /**
      * Creates a new room
      *
-     * @param treatmenttype type of treatments that can be performed in this room
+     * @param treatmentType type of treatments that can be performed in this room
      */
-    public Rooms(TreatmentType treatmenttype, AppointmentCalendar appointmentCalendar) {
+    public Rooms(TreatmentType treatmentType, AppointmentCalendar appointmentCalendar) {
     this.roomNumber = currentRoomNumber++;
-    this.treatmenttype = treatmenttype;
+    this.treatmentType = treatmentType;
     this.appointmentCalendar = appointmentCalendar;
     this.open = true;
     }
 
+    //TODO documentation
     public int getRoomNumber() {return roomNumber;}
-    public TreatmentType getTreatmenttype() {return treatmenttype;}
+    public TreatmentType getTreatmenttype() {return treatmentType;}
     public boolean isOpen() {return open;}
 
     /**

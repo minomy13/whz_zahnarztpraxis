@@ -33,6 +33,10 @@ public class Calendar1 {
         //System.out.println("Date: " + cal.getTime());
     }
 
+    /**
+     * Advances the time
+     * @param days Amount of days to advance time by
+     */
     public void advanceDays(int days) {
         cal.add(Calendar.DAY_OF_MONTH, +days);
     }
@@ -43,12 +47,17 @@ public class Calendar1 {
     public void nextHour(){
         cal.add(Calendar.HOUR_OF_DAY, +1);
         //System.out.println("Date: " + cal.getTime());
-     }
+    }
 
+    //TODO documentation
     public void addMinutes(int time){
         cal.add(Calendar.MINUTE, +time);
     }
 
+    /**
+     * Advances the time
+     * @param hours Amount of hours to advance time by
+     */
     public void advanceHours(int hours) {
         cal.add(Calendar.HOUR_OF_DAY, +hours);
     }

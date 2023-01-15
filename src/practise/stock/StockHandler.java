@@ -6,6 +6,7 @@ import utils.logger.Logger;
 import java.util.ArrayList;
 
 public class StockHandler {
+    //TODO documentations
     private Practise practise;
     private ArrayList<StockItem> stock;
     private int criticalStockLevel;
