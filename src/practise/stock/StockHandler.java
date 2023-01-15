@@ -4,16 +4,21 @@ import practise.Practise;
 import utils.logger.Logger;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class StockHandler {
     //TODO documentations
     private Practise practise;
     private ArrayList<StockItem> stock;
     private int criticalStockLevel;
+    private int refillAmount;
+    private Map<Item, Double> prices;
 
-    public StockHandler(Practise practise, int criticalStockLevel) {
+    public StockHandler(Practise practise, int criticalStockLevel, int refillAmount) {
         this.practise = practise;
         this.stock = new ArrayList<>();
+        this.criticalStockLevel = criticalStockLevel;
+        this.refillAmount = refillAmount;
     }
 
     public int getStock(Item item) throws Exception {
@@ -35,6 +40,10 @@ public class StockHandler {
     }
 
     public void buy(Item item, int amount, double pricePerPiece) {
+        if (prices.containsKey(item)) {
+            prices.replace(item, pricePerPiece);
+        } else prices.put(item, pricePerPiece);
+
         for (StockItem i : stock) {
             if (i.getItem().equals(item)) {
                 i.increaseStock(amount);
@@ -60,8 +69,12 @@ public class StockHandler {
     }
 
     private void lowLevelCheck(StockItem item) {
-        if (item.getStock() <= criticalStockLevel)
-            new Logger().warning(String.format("Stock level for item %s critical.",
+        if (item.getStock() <= criticalStockLevel) {
+            Logger logger = new Logger();
+            logger.warning(String.format("Stock level for item %s critical.",
                     item.getItem().name()));
+            buy(item.getItem(), refillAmount, prices.get(item.getItem()));
+            if (item.getStock() > criticalStockLevel) logger.success("Item refilled.");
+        }
     }
 }
