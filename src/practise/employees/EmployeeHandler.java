@@ -49,6 +49,7 @@ public class EmployeeHandler {
         return employees.get(index).getName();
     }
 
+    public String getEmployeesJob(int index) { return employees.get(index).getJob();}
     /**
      * Sets "come" of an Employee
      *
