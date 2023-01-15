@@ -120,7 +120,6 @@ public class Main {
             logger.success("Success!");
         } catch (Exception e) {
             logger.error(e.getMessage());
-            //TODO console output
         }
 
         logger.info("Creating patient \"Max\", born 2001...");
