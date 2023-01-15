@@ -19,16 +19,14 @@ public class Main {
         //dental hygienists, dental assistants, dental laboratory technicians, and receptionists
 
         practise.getEmployeeHandler().employeeCome(0);
-        practise.getCalendar().addMinutes(30);
+        practise.getCalendar().advanceMinutes(30);
         practise.getEmployeeHandler().employeeCome(1);
-        practise.getCalendar().addMinutes(30);
+        practise.getCalendar().advanceMinutes(30);
         practise.getEmployeeHandler().employeeCome(2);
         System.out.println (practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
                             practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
                             practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2));
 
-        practise.getPatientHandler().getPatientFileHandler().create("Bob");
-        //TODO create more Patients & their Reports
 
         HashMap<Item, Integer> stock = new HashMap<>();
         stock.put(Item.BEAKER, 5);
@@ -67,8 +65,29 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-
         System.out.println(practise.getPatientHandler().getTreatmentTypes());
+
+        practise.getPatientHandler().getPatientFileHandler().create("Bob", 1996);
+        try {
+            practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1996)
+                    .createReport("Due for regular Check-Up", practise.getPatientHandler().getTreatmentTypeIndex("Check-Up"));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        practise.getPatientHandler().getPatientFileHandler().create("Max", 2001);
+        try {
+            practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 2001)
+                    .createReport("Patient requested whitening", practise.getPatientHandler().getTreatmentTypeIndex("Whitening"));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        practise.getPatientHandler().getPatientFileHandler().create("Bob", 1987);
+        try {
+            practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1987)
+                    .createReport("Needs tooth removed", practise.getPatientHandler().getTreatmentTypeIndex("Removal"));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
 
         try {
             practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
@@ -91,9 +110,9 @@ public class Main {
         practise.getCalendar().nextHour();
 
         practise.getEmployeeHandler().employeeGo(2);
-        practise.getCalendar().addMinutes(30);
+        practise.getCalendar().advanceMinutes(30);
         practise.getEmployeeHandler().employeeGo(1);
-        practise.getCalendar().addMinutes(30);
+        practise.getCalendar().advanceMinutes(30);
         practise.getEmployeeHandler().employeeGo(0);
         System.out.println (practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n" +
                             practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n" +

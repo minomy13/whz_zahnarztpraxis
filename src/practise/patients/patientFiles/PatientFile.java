@@ -11,8 +11,8 @@ public class PatientFile {
      *
      * @param name Name of new patient
      */
-    public PatientFile(String name) {
-        this.patient = new Patient(name);
+    public PatientFile(String name, int yearOfBirth) {
+        this.patient = new Patient(name, yearOfBirth);
         this.id = currentId++;
     }
 

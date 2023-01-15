@@ -5,7 +5,7 @@ import practise.patients.AppointmentCalendar;
 public class Rooms {
     private final int roomNumber;
     private final TreatmentType treatmentType;
-    private final AppointmentCalendar appointmentCalendar;
+    private final AppointmentCalendar appointmentCalendar = new AppointmentCalendar();
     private static int currentRoomNumber = 1;
     private boolean open;
 
@@ -14,10 +14,9 @@ public class Rooms {
      *
      * @param treatmentType type of treatments that can be performed in this room
      */
-    public Rooms(TreatmentType treatmentType, AppointmentCalendar appointmentCalendar) {
+    public Rooms(TreatmentType treatmentType) {
     this.roomNumber = currentRoomNumber++;
     this.treatmentType = treatmentType;
-    this.appointmentCalendar = appointmentCalendar;
     this.open = true;
     }
 
