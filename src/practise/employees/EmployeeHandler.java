@@ -79,12 +79,12 @@ public class EmployeeHandler {
      * calculates work time for given employee index and prints it on console
      */
     public void getWorkTime() {
-        for(int i = 0; i < employees.size(); i++) {
+        for (int i = 0; i < employees.size(); i++) {
             String a1 = employees.get(i).getGo();
-            String a2 = a1.substring(0, a1.length() - 2);
+            String[] a2 = a1.split("\\.");
             String b1 = employees.get(i).getCome();
-            String b2 = b1.substring(0, b1.length() - 2);
-            System.out.println(employees.get(i).getName() + " worked: " + (Integer.parseInt(a2) - Integer.parseInt(b2)) + " hours today");
+            String[] b2 = b1.split("\\.");
+            System.out.println(employees.get(i).getName() + " worked: " + (Integer.parseInt(a2[0]) - Integer.parseInt(b2[0])) + " hours today");
         }
     }
 
