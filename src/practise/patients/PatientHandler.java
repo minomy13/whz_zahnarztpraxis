@@ -124,7 +124,7 @@ public class PatientHandler {
     public void viewTreatmentTypes() {
         int i = 0;
         for (TreatmentType t : treatments) {
-            System.out.println(i + ": " + t.getName() + ", " + t.getCost());
+            System.out.println(i + ": " + t.getName() + ", " + t.getCost() + " €");
             i++;
         }
     }

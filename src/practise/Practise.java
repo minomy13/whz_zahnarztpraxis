@@ -32,13 +32,13 @@ public class Practise {
      * @param year Current year
      * @param month Current month
      * @param dayOfMonth Current day of month
-     * @param hour Current hour of day
+     * @param hourOfDay Current hour of day
      * @param minute Current minute of hour
      * @param second Current second of minute
      */
-    public Practise(double budget, int year, int month, int dayOfMonth, int hour, int minute, int second) {
+    public Practise(double budget, int year, int month, int dayOfMonth, int hourOfDay, int minute, int second) {
         this.budget = budget;
-        this.calendar = new Calendar1(year, month, dayOfMonth, hour, minute, second);
+        this.calendar = new Calendar1(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
     public void addRoom(Rooms room) {

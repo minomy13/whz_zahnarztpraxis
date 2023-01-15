@@ -76,6 +76,15 @@ public class EmployeeHandler {
     }
 
     /**
+     * calculates work time for given employee index
+     * @param index index of employee in "ArrayList" employees
+     * @return Integer for work hours
+     */
+    public int getWorkTime(int index) {
+        return Integer.parseInt(employees.get(index).getGo()) - Integer.parseInt(employees.get(index).getCome());
+    }
+
+    /**
      * At the End of the Day: safes all Employee timeStamps to a HashMap with:
      * first key: today date, second key: employee.name, entry: timeStamps
      */
