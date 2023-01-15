@@ -62,7 +62,7 @@ public class Main {
         practise.getStockHandler().buy(Item.WHITENING_STRIPS, 8, 11);
 
         try {
-            logger.info("Stock is now: " + practise.getStockHandler().getAllStocks());
+            logger.info("Stock is now: \n " + practise.getStockHandler().getAllStocks());
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
@@ -319,21 +319,34 @@ public class Main {
         System.out.println("\n ------------------------- \n");
 
         logger.info("Buying some additional stock...");
-        practise.getStockHandler().buy(Item.PLASTIC_CUP, 9, 0.02);
-        practise.getStockHandler().buy(Item.COTTON_PAD, 5, 0.05);
+        practise.getStockHandler().buy(Item.PLASTIC_CUP, 1, 0.02);
+        practise.getStockHandler().buy(Item.COTTON_PAD, 2, 0.05);
         practise.getStockHandler().buy(Item.MOUTH_MIRROR, 2, 5.99);
-        practise.getStockHandler().buy(Item.DENTAL_SYRINGE, 6, 1.3);
         practise.getStockHandler().buy(Item.DENTAL_PROBE, 6, 4.03);
         practise.getStockHandler().buy(Item.ANESTHETIC, 4, 23);
-        practise.getStockHandler().buy(Item.WHITENING_STRIPS, 5, 11);
-
+        practise.getStockHandler().buy(Item.WHITENING_STRIPS, 1, 11);
+        try {
+            practise.getStockHandler().take(Item.WHITENING_STRIPS, 4);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        try {
+            practise.getStockHandler().take(Item.ANESTHETIC, 9);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        try {
+            practise.getStockHandler().take(Item.PLASTIC_CUP, 12);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
         try {
             logger.info("Stock is now:\n" + practise.getStockHandler().getAllStocks());
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Creating new patient file...");
         logger.info("Creating patient file for \"Kathrine\", born in 1965...");
@@ -384,8 +397,8 @@ public class Main {
         }
         practise.getCalendar().getCurrentTime();
 
-        practise.getEmployeeHandler().employeeGo(2);
-        logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(2)));
+        practise.getEmployeeHandler().employeeGo(1);
+        logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(1)));
 
         System.out.println("\n --> advance time by 2h --> \n");
         try {
@@ -409,12 +422,6 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        System.out.println("\n --> advance time by 30min --> \n");
-        try {
-            practise.advanceTime(0, 0, 30);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
         practise.getEmployeeHandler().employeeGo(1);
         logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(1)));
 
