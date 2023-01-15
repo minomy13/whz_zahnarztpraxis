@@ -7,8 +7,8 @@ import java.util.*;
 public class EmployeeHandler {
 
     private final Practise practise;
-    public final ArrayList<Employee> employees = new ArrayList<>();
-    public final Map<String/*Date*/,Map<String/*Name*/,Employee>> timeStampMap = new HashMap<>();
+    private final ArrayList<Employee> employees = new ArrayList<>();
+    private final Map<String/*Date*/,Map<String/*Name*/, String>> timeStampMap = new HashMap<>();
 
     public EmployeeHandler(Practise practise) {
         this.practise = practise;
@@ -29,39 +29,36 @@ public class EmployeeHandler {
         }
     }
 
-    public String getEmployee(int index) {
+    public String getEmployeeName(int index) {
         return employees.get(index).getName();
     }
 
     public void employeeCome(int index) {
-        employees.get(index).setCome(practise.getCalendar().getCal());
+        employees.get(index).setCome(practise.getCalendar().getCurrentTime());
     }
 
     public void employeeGo(int index) {
-        employees.get(index).setGo(practise.getCalendar().getCal());
+        employees.get(index).setGo(practise.getCalendar().getCurrentTime());
     }
 
-
-    public void addEmployeesComeAndGo() { //soll am Ende des Tages ausgeführt werden
-        HashMap<String, Employee> buffer = new HashMap<>();
-        for (Employee e : employees) {
-            buffer.put(e.getName(), e);
-            timeStampMap.put(practise.getCalendar().getDay(), buffer);
+    public void addEmployeeTimeStamp() {
+        HashMap<String, String> buffer = new HashMap<>();
+        for(Employee e: employees) {
+            buffer.put(e.getName(), ": " + "Gekommen: " + e.getCome() + ", Gegangen: " + e.getGo());
         }
+        timeStampMap.put(practise.getCalendar().getDay(), buffer);
     }
 
-    public String getComeAndGo(String keyDate, String keyName) { //gibt datum und namen wieder
-        return keyDate + ": Gekommen: " + timeStampMap.get(keyDate).get(keyName).getCome().getTime() +
-                         ", Gegangen: " + timeStampMap.get(keyDate).get(keyName).getGo().getTime();
+    public String getComeAndGo(String keyDate, String keyName) { //gibt Datum und Damen eines Employee wieder
+        return keyName + ", " + keyDate + timeStampMap.get(keyDate).get(keyName);
     }
 
-    public String getComeAndGoAll(String keyDate) { //gibt datum und namen wieder
-        String buffer = "";
+    public void getComeAndGoAll(String keyDate) { //gibt Datum und Namen wieder
+        System.out.println("Datum: " + keyDate);
         ArrayList<String> j = new ArrayList<>();
         timeStampMap.get(keyDate).keySet().stream().forEach(k -> j.add(k));
-        for(int i = 0; i < j.size(); i++) {
-            buffer = buffer + timeStampMap.get(keyDate).get(j.get(i)).getName() + ": " + timeStampMap.get(keyDate).get(j.get(i)).getCome().getTime() + "; ";
+        for(int i = 0; i < timeStampMap.get(keyDate).size(); i++) {
+            System.out.println(j.get(i) + timeStampMap.get(keyDate).get(j.get(i)));
         }
-        return buffer;
     }
 }
