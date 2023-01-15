@@ -134,7 +134,20 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        //TODO calendar, termine, etc.
+        try {
+            practise.getRoomHandler().get(0).getAppointmentCalendar().addAppointment(2022, 0, 1, 11, 20, 11, 40,
+                    practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob",1996));
+        } catch (Exception e) { logger.error(e.getMessage()); }
+        try {
+            practise.getRoomHandler().get(0).getAppointmentCalendar().addAppointment(2022, 0, 1, 11, 30, 12, 0,
+                    practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Max",2001));
+        } catch (Exception e) { logger.error(e.getMessage()); }
+        try {
+            practise.getRoomHandler().get(0).getAppointmentCalendar().addAppointment(2022, 0, 1, 13, 0, 13, 20,
+                    practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob",1987));
+        } catch (Exception e) { logger.error(e.getMessage()); }
+
+        try { practise.advanceTime(0, 8, 0); } catch (Exception e) { logger.error(e.getMessage()); }
 
         practise.getEmployeeHandler().employeeGo(2);
         try {
