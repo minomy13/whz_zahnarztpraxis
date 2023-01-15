@@ -184,7 +184,6 @@ public class Main {
             logger.success("Success!");
 
         System.out.println("\n --> advance time by 8h --> \n");
-
         try {
             practise.advanceTime(0, 8, 0);
         } catch (Exception e) {
@@ -195,26 +194,35 @@ public class Main {
 
         System.out.println("\n --- \n");
 
+        logger.info("Employees going home...");
         practise.getEmployeeHandler().employeeGo(2);
+        logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(2)));
+
+        System.out.println("\n --> advance time by 30min --> \n");
         try {
             practise.advanceTime(0, 0, 30);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         practise.getEmployeeHandler().employeeGo(1);
+        logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(1)));
+
+        System.out.println("\n --> advance time by 30min --> \n");
         try {
             practise.advanceTime(0, 0, 30);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         practise.getEmployeeHandler().employeeGo(0);
-        //System.out.println(practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n" +
-        // practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n" +
-        // practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeGo(2));
+        logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(0)));
 
+        System.out.println("\n --- \n");
+
+        logger.info("Summary of day 1:");
         practise.getEmployeeHandler().addEmployeeTimeStamp();
         //System.out.println(practise.getEmployeeHandler().getComeAndGo("1.0.2022", practise.getEmployeeHandler().getEmployeeName(0)));
         practise.getEmployeeHandler().getComeAndGoAll("1.0.2022");
+        System.out.println();
         practise.getEmployeeHandler().getWorkTime();
     }
 }
