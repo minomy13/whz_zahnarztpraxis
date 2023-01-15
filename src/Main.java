@@ -112,7 +112,7 @@ public class Main {
         System.out.println("\n --- \n");
 
         logger.info("Creating new patient files...");
-        logger.info("Creating patient \"Bob\", born 1996...");
+        logger.info("Creating patient file for \"Bob\", born 1996...");
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1996);
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1996)
@@ -122,7 +122,7 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        logger.info("Creating patient \"Max\", born 2001...");
+        logger.info("Creating patient file for \"Max\", born 2001...");
         practise.getPatientHandler().getPatientFileHandler().create("Max", 2001);
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Max", 2001)
@@ -132,7 +132,7 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        logger.info("Creating patient \"Bob\", born 1987...");
+        logger.info("Creating patient file for \"Bob\", born 1987...");
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1987);
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1987)
@@ -145,14 +145,14 @@ public class Main {
         System.out.println("\n --- \n");
 
         try {
-            logger.info("Amount of moth mirrors in stock is " + practise.getStockHandler().getStock(Item.MOUTH_MIRROR));
+            logger.info("Amount of mouth mirrors in stock is " + practise.getStockHandler().getStock(Item.MOUTH_MIRROR));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         logger.info("Taking a mouth mirror from stock...");
         try {
             practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
-            logger.success("Success! Amount of moth mirrors in stock is now " +
+            logger.success("Success! Amount of mouth mirrors in stock is now " +
                     practise.getStockHandler().getStock(Item.MOUTH_MIRROR));
         } catch (Exception e) {
             logger.error(e.getMessage());
@@ -183,6 +183,7 @@ public class Main {
             logger.success("Success!");
 
         System.out.println("\n --> advance time by 8h --> \n");
+        logger.info("Time is now " + practise.getCalendar().getCurrentTime());
         try {
             practise.advanceTime(0, 8, 0);
         } catch (Exception e) {
