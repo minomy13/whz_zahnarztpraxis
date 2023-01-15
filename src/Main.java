@@ -41,9 +41,6 @@ public class Main {
         } catch (Exception e) {
             logger.error(e.getMessage());}
 
-        //TreatmentType(String name, double cost, HashMap<Item, Integer> needs)
-        //Treatment(TreatmentType treatmentType, Patient patient)
-
         try {
             practise.getPatientHandler().addTreatmentType("Check-Up", 25, Map.of(Item.MOUTH_MIRROR, 1));
         } catch (Exception e) {
