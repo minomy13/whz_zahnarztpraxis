@@ -261,7 +261,7 @@ public class Main {
             logger.error(e.getMessage());
         }
         System.out.println("Skip to: " + practise.getCalendar().getTime());
-
+        practise.increaseBudget(1293.84);
         System.out.println();
 
         logger.info("Hiring new employee...");
@@ -319,24 +319,17 @@ public class Main {
         System.out.println("\n ------------------------- \n");
 
         logger.info("Buying some additional stock...");
-        practise.getStockHandler().buy(Item.PLASTIC_CUP, 1, 0.02);
         practise.getStockHandler().buy(Item.COTTON_PAD, 2, 0.05);
         practise.getStockHandler().buy(Item.MOUTH_MIRROR, 2, 5.99);
         practise.getStockHandler().buy(Item.DENTAL_PROBE, 6, 4.03);
-        practise.getStockHandler().buy(Item.ANESTHETIC, 4, 23);
-        practise.getStockHandler().buy(Item.WHITENING_STRIPS, 1, 11);
+
         try {
-            practise.getStockHandler().take(Item.WHITENING_STRIPS, 4);
+            practise.getStockHandler().take(Item.ANESTHETIC, 8);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         try {
-            practise.getStockHandler().take(Item.ANESTHETIC, 9);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
-        try {
-            practise.getStockHandler().take(Item.PLASTIC_CUP, 12);
+            practise.getStockHandler().take(Item.PLASTIC_CUP, 6);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
