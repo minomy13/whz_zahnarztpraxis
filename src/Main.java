@@ -69,7 +69,7 @@ public class Main {
                     .createReport("Due for regular Check-Up", practise.getPatientHandler().getTreatmentTypeIndex("Check-Up"));
         } catch (Exception e) {
             logger.error(e.getMessage());
-        //TODO console output
+            //TODO console output
         }
         practise.getPatientHandler().getPatientFileHandler().create("Max", 2001);
         try {
@@ -92,7 +92,6 @@ public class Main {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-        logger.info(practise.getBudget());
         //TODO console output
 
         try {
@@ -100,7 +99,6 @@ public class Main {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-        logger.info(practise.getBudget());
 
         //TODO calendar, termine, etc.
 
