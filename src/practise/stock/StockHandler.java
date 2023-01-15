@@ -22,6 +22,15 @@ public class StockHandler {
         throw new Exception("Item not in assortment");
     }
 
+    public String getAllStocks() throws Exception {
+        String buffer = "";
+        for (StockItem item : stock) {
+            buffer += String.format("%s: %s; ", item.getItem().name(), item.getStock());
+        }
+        if (buffer.isEmpty()) throw new Exception("No items in stock.");
+        return buffer;
+    }
+
     public void buy(Item item, int amount, double pricePerPiece) {
         for (StockItem i : stock) {
             if (i.getItem().equals(item)) {
