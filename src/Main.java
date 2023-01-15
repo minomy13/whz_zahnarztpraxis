@@ -161,6 +161,7 @@ public class Main {
 
         System.out.println("\n --- \n");
 
+        logger.info("Adding appointments to calendar...");
         try {
             practise.getRoomHandler().get(0).getAppointmentCalendar().addAppointment(2022, 0, 1, 11, 20, 11, 40,
                     practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1996));
@@ -179,12 +180,20 @@ public class Main {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
+        if (practise.getRoomHandler().get(0).getAppointmentCalendar().getAppointmentMap().size() == 3)
+            logger.success("Success!");
+
+        System.out.println("\n --> advance time by 8h --> \n");
 
         try {
             practise.advanceTime(0, 8, 0);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
+
+        logger.success("Appointments done!");
+
+        System.out.println("\n --- \n");
 
         practise.getEmployeeHandler().employeeGo(2);
         try {
