@@ -106,29 +106,29 @@ public class Main {
         }
 
         practise.getPatientHandler().viewTreatmentTypes();
-        System.out.println("\n");
+        System.out.println();
         practise.viewRoomHandler();
 
         System.out.println("\n --- \n");
 
+        logger.info("Creating new patient files...");
         logger.info("Creating patient \"Bob\", born 1996...");
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1996);
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1996)
                     .createReport("Due for regular Check-Up", practise.getPatientHandler().getTreatmentTypeIndex("Check-Up"));
-            logger.success("Succeed!");
+            logger.success("Success!");
         } catch (Exception e) {
             logger.error(e.getMessage());
             //TODO console output
         }
 
-        logger.info("Creating new patient files...");
         logger.info("Creating patient \"Max\", born 2001...");
         practise.getPatientHandler().getPatientFileHandler().create("Max", 2001);
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Max", 2001)
                     .createReport("Patient requested whitening", practise.getPatientHandler().getTreatmentTypeIndex("Whitening"));
-            logger.success("Succeed!");
+            logger.success("Success!");
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
@@ -138,24 +138,28 @@ public class Main {
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1987)
                     .createReport("Needs tooth removed", practise.getPatientHandler().getTreatmentTypeIndex("Removal"));
-            logger.success("Succeed!");
+            logger.success("Success!");
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
 
-        //TODO console output
+        System.out.println("\n --- \n");
+
+        try {
+            logger.info("Amount of moth mirrors in stock is " + practise.getStockHandler().getStock(Item.MOUTH_MIRROR));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        logger.info("Taking a mouth mirror from stock...");
         try {
             practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
+            logger.success("Success! Amount of moth mirrors in stock is now " +
+                    practise.getStockHandler().getStock(Item.MOUTH_MIRROR));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-        //TODO console output
 
-        try {
-            logger.info(practise.getStockHandler().getStock(Item.COTTON_PAD));
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
+        System.out.println("\n --- \n");
 
         try {
             practise.getRoomHandler().get(0).getAppointmentCalendar().addAppointment(2022, 0, 1, 11, 20, 11, 40,
