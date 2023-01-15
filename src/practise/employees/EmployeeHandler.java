@@ -99,7 +99,7 @@ public class EmployeeHandler {
     /**
      * Gets the timeStamps of an Employee
      *
-     * @param keyDate Date in format "1.14.2029" -> Day, Month, Year
+     * @param keyDate Date in format MM.DD.YYYY
      * @param keyName Name of the Employee
      * @return timeStamps
      */
