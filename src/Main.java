@@ -62,7 +62,6 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        System.out.println(practise.getPatientHandler().getTreatmentTypes());
 
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1996);
         try {
