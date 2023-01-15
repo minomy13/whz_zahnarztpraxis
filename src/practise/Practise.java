@@ -1,6 +1,7 @@
 package practise;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNull;
 import practise.employees.EmployeeHandler;
 import practise.calendar1.Calendar1;
 import practise.patients.AppointmentCalendar;
@@ -40,7 +41,7 @@ public class Practise {
     }
 
     public void addRoom(Rooms room) {roomHandler.add(room);}
-
+    
     //public int getRoomNumber(int index) {return rooms.get(index).getRoomNumber();}
 
     public void removeRoom(int roomNumber) {roomHandler.remove(roomNumber);}

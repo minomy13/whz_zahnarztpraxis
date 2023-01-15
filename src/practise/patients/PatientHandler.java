@@ -1,7 +1,7 @@
 package practise.patients;
 
 import practise.Practise;
-import practise.patients.patientFiles.PatientFile;
+import practise.patients.patientFiles.*;
 import practise.patients.patientFiles.PatientFileHandler;
 import practise.patients.treatment.Treatment;
 import practise.patients.treatment.TreatmentType;
@@ -17,6 +17,7 @@ public class PatientHandler {
     private final ArrayList<TreatmentType> treatments = new ArrayList<>();
     private final Practise practise;
     private ArrayList<Treatment> runningTreatments = new ArrayList<>();
+    //private ArrayList<Rooms> roomHandler = new ArrayList<>();
 
     public PatientHandler(Practise practise) {
         this.practise = practise;
@@ -124,10 +125,10 @@ public class PatientHandler {
         }
     }
 
-    public TreatmentType getTreatmenttype(String name) throws Exception {
+    public TreatmentType getTreatmentType(String name) throws Exception {
         TreatmentType t = null;
         for(int i = 0; i < treatments.size(); i++) {
-            if(treatments.get(i).getName().trim().toLowerCase().equals(name.trim().toLowerCase()))
+            if(treatments.get(i).getName().trim().equalsIgnoreCase(name.trim()))
             {t = treatments.get(i);
                 if (t == null) throw new Exception("Name missing.");
         }
