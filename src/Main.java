@@ -43,7 +43,12 @@ public class Main {
         //TreatmentType(String name, double cost, HashMap<Item, Integer> needs)
         //Treatment(TreatmentType treatmentType, Patient patient)
 
-        practise.getPatientHandler().addTreatmentType("Check-Up", 25, needs1);
+        try {
+            practise.getPatientHandler().addTreatmentType("Check-Up", 25, needs1);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
         practise.addTreatment(practise.getPatientHandler().getTreatmentType("CHECK-UP"));
         try {
             practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
