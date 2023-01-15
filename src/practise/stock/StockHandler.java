@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class StockHandler {
-    //TODO documentations
     private Practise practise;
     private ArrayList<StockItem> stock;
     private int criticalStockLevel;

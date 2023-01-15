@@ -2,13 +2,14 @@ package practise.employees;
 
 import practise.Practise;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EmployeeHandler {
-    //TODO documentations
     private final Practise practise;
     private final ArrayList<Employee> employees = new ArrayList<>();
-    private final Map<String/*Date*/,Map<String/*Name*/, String>> timeStampMap = new HashMap<>();
+    private final Map<String/*Date*/, Map<String/*Name*/, String>> timeStampMap = new HashMap<>();
 
     public EmployeeHandler(Practise practise) {
         this.practise = practise;
@@ -16,8 +17,9 @@ public class EmployeeHandler {
 
     /**
      * Creates a new Employee
+     *
      * @param name Name of new Employee
-     * @param job Job of new Employee
+     * @param job  Job of new Employee
      */
     public void hireEmployee(String name, String job) {
         employees.add(new Employee(name, job));
@@ -25,6 +27,7 @@ public class EmployeeHandler {
 
     /**
      * Deletes a Employee
+     *
      * @param index Index of Employee in ArrayList "employees"
      */
     public void fireEmployee(int index) {
@@ -48,6 +51,7 @@ public class EmployeeHandler {
 
     /**
      * Sets "come" of an Employee
+     *
      * @param index Index of Employee in Arraylist "employees"
      */
     public void employeeCome(int index) {
@@ -56,6 +60,7 @@ public class EmployeeHandler {
 
     /**
      * Sets "go" of an Employee
+     *
      * @param index Index of Employee in Arraylist "employees"
      */
     public void employeeGo(int index) {
@@ -76,7 +81,7 @@ public class EmployeeHandler {
      */
     public void addEmployeeTimeStamp() {
         HashMap<String, String> buffer = new HashMap<>();
-        for(Employee e: employees) {
+        for (Employee e : employees) {
             buffer.put(e.getName(), ": " + "Gekommen: " + e.getCome() + ", Gegangen: " + e.getGo());
         }
         timeStampMap.put(practise.getCalendar().getDay(), buffer);
@@ -84,6 +89,7 @@ public class EmployeeHandler {
 
     /**
      * Gets the timeStamps of an Employee
+     *
      * @param keyDate Date in format "1.14.2029" -> Day, Month, Year
      * @param keyName Name of the Employee
      * @return timeStamps
@@ -94,12 +100,13 @@ public class EmployeeHandler {
 
     /**
      * Gets the timeStamps of all Employees from a specific Date
+     *
      * @param keyDate Date in format "1.14.2029" -> Day, Month, Year
      */
     public void getComeAndGoAll(String keyDate) {
         System.out.println("Datum: " + keyDate);
         ArrayList<String> j = new ArrayList<>(timeStampMap.get(keyDate).keySet());
-        for(int i = 0; i < timeStampMap.get(keyDate).size(); i++) {
+        for (int i = 0; i < timeStampMap.get(keyDate).size(); i++) {
             System.out.println(j.get(i) + timeStampMap.get(keyDate).get(j.get(i)));
         }
     }

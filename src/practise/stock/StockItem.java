@@ -1,7 +1,6 @@
 package practise.stock;
 
 class StockItem {
-    //TODO documentations
     private Item item;
     private int stock;
 
@@ -20,12 +19,18 @@ class StockItem {
 
     /**
      * Increases stock by given amount
-     * @param amount
+     *
+     * @param amount Amount to increase
      */
     public void increaseStock(int amount) {
         this.stock += amount;
     }
 
+    /**
+     * Decreases stock by given amount
+     *
+     * @param amount Amount to decrease
+     */
     public void decreaseStock(int amount) throws Exception {
         if (stock - amount < 0) throw new Exception("Stock must not be smaller than 0");
         this.stock -= amount;
