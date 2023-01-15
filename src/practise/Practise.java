@@ -23,7 +23,7 @@ public class Practise {
     private final StockHandler stockHandler = new StockHandler(this, 5, 10);
     private final EmployeeHandler employeeHandler = new EmployeeHandler(this);
     private final ArrayList<Rooms> roomHandler = new ArrayList<>();
-    private final ArrayList<Treatment> treatments = new ArrayList<>();
+    private final ArrayList<TreatmentType> treatmentType = new ArrayList<>();
     public Logger logger = new Logger();
     private double budget;
     private Calendar1 calendar;
@@ -50,11 +50,6 @@ public class Practise {
         roomHandler.remove(roomNumber);
     }
 
-
-    public void addTreatment(TreatmentType treatmentType, PatientFile patientFile) {
-        treatments.add(
-                new Treatment(treatmentType, patientFile));
-    }
 
     /**
      * Advances the time by the specified amount and executes any appointments that are scheduled for the time that is now past or present

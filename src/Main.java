@@ -36,6 +36,7 @@ public class Main {
         stock.put(Item.DENTAL_PROBE, 18);
         stock.put(Item.ANESTHETIC, 5);
         stock.put(Item.WHITENING_STRIPS, 8);
+        practise.getStockHandler().buy(Item.COTTON_PAD, 15, .36);
 
         try{System.out.println(practise.getStockHandler().getAllStocks());
         } catch (Exception e) {
@@ -62,7 +63,7 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        System.out.println(practise.getPatientHandler().getTreatmentTypes());
+        practise.getPatientHandler().viewTreatmentTypes();
 
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1996);
         try {
@@ -70,6 +71,7 @@ public class Main {
                     .createReport("Due for regular Check-Up", practise.getPatientHandler().getTreatmentTypeIndex("Check-Up"));
         } catch (Exception e) {
             logger.error(e.getMessage());
+        //TODO console output
         }
         practise.getPatientHandler().getPatientFileHandler().create("Max", 2001);
         try {
@@ -78,6 +80,7 @@ public class Main {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
+        //TODO console output
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1987);
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1987)
@@ -85,15 +88,14 @@ public class Main {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-
+        //TODO console output
         try {
             practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         logger.info(practise.getBudget());
-
-        practise.getStockHandler().buy(Item.COTTON_PAD, 15, .36);
+        //TODO console output
 
         try {
             logger.info(practise.getStockHandler().getStock(Item.COTTON_PAD));
@@ -103,8 +105,6 @@ public class Main {
         logger.info(practise.getBudget());
 
         //TODO calendar, termine, etc.
-
-        practise.getCalendar().nextHour();
 
         practise.getEmployeeHandler().employeeGo(2);
         practise.getCalendar().advanceMinutes(30);
