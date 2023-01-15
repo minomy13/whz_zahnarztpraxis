@@ -319,7 +319,7 @@ public class Main {
 
         System.out.println("\n --- \n");
 
-        //logger.info("Buying new stock...");
+        logger.info("Buying some additional stock...");
         practise.getStockHandler().buy(Item.PLASTIC_CUP, 9, 0.02);
         practise.getStockHandler().buy(Item.COTTON_PAD, 5, 0.05);
         practise.getStockHandler().buy(Item.MOUTH_MIRROR, 2, 5.99);
