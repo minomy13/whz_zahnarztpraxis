@@ -200,6 +200,9 @@ public class Main {
             logger.error(e.getMessage());
         }
 
+        logger.info("Time is now " + practise.getCalendar().getCurrentTime());
+
+        logger.info("Creating new appointment for patient \"Bob\"...");
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1996)
                     .createReport("Needs tooth removed", practise.getPatientHandler().getTreatmentTypeIndex("Removal"));
@@ -213,8 +216,6 @@ public class Main {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-
-        logger.info("Time is now " + practise.getCalendar().getCurrentTime());
 
         logger.success("Appointments done!");
 
