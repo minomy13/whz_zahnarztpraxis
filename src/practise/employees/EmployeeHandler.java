@@ -76,16 +76,16 @@ public class EmployeeHandler {
     }
 
     /**
-     * calculates work time for given employee index
-     * @param index index of employee in "ArrayList" employees
-     * @return Integer for work hours
+     * calculates work time for given employee index and prints it on console
      */
-    public int getWorkTime(int index) {
-        String a1 = employees.get(index).getGo();
-        String a2 = a1.substring(0, a1.length() - 2);
-        String b1 = employees.get(index).getCome();
-        String b2 = b1.substring(0, b1.length() - 2);
-        return Integer.parseInt(a2) - Integer.parseInt(b2);
+    public void getWorkTime() {
+        for(int i = 0; i < employees.size(); i++) {
+            String a1 = employees.get(i).getGo();
+            String a2 = a1.substring(0, a1.length() - 2);
+            String b1 = employees.get(i).getCome();
+            String b2 = b1.substring(0, b1.length() - 2);
+            System.out.println(employees.get(i).getName() + " worked: " + (Integer.parseInt(a2) - Integer.parseInt(b2)) + " hours today");
+        }
     }
 
     /**
@@ -117,10 +117,10 @@ public class EmployeeHandler {
      * @param keyDate Date in format MM.DD.YYYY
      */
     public void getComeAndGoAll(String keyDate) {
-        System.out.println("Datum: " + keyDate);
+        //System.out.println("Datum: " + keyDate);
         ArrayList<String> j = new ArrayList<>(timeStampMap.get(keyDate).keySet());
         for (int i = 0; i < timeStampMap.get(keyDate).size(); i++) {
-            System.out.println(j.get(i) + timeStampMap.get(keyDate).get(j.get(i)) + " work time: " + getWorkTime(0));
+            System.out.println(j.get(i) + timeStampMap.get(keyDate).get(j.get(i)));
         }
     }
 }

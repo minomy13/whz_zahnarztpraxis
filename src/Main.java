@@ -202,5 +202,6 @@ public class Main {
         practise.getEmployeeHandler().addEmployeeTimeStamp();
         //System.out.println(practise.getEmployeeHandler().getComeAndGo("1.0.2022", practise.getEmployeeHandler().getEmployeeName(0)));
         practise.getEmployeeHandler().getComeAndGoAll("1.0.2022");
+        practise.getEmployeeHandler().getWorkTime();
     }
 }
