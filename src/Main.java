@@ -7,7 +7,7 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Logger logger = new Logger();
-        Practise practise = new Practise(1000, 2005, 0, 1, 8, 00, 00);
+        Practise practise = new Practise(1000, 2022, 0, 1, 8, 00, 00);
 
         System.out.println(practise.getCalendar().getTime());
 
@@ -18,9 +18,17 @@ public class Main {
         //dental hygienists, dental assistants, dental laboratory technicians, and receptionists
 
         practise.getEmployeeHandler().employeeCome(0);
-        practise.getCalendar().advanceMinutes(30);
+        try {
+            practise.advanceTime(0, 0, 30);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
         practise.getEmployeeHandler().employeeCome(1);
-        practise.getCalendar().advanceMinutes(30);
+        try {
+            practise.advanceTime(0, 0, 30);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
         practise.getEmployeeHandler().employeeCome(2);
         System.out.println(practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
@@ -129,13 +137,21 @@ public class Main {
         //TODO calendar, termine, etc.
 
         practise.getEmployeeHandler().employeeGo(2);
-        practise.getCalendar().advanceMinutes(30);
+        try {
+            practise.advanceTime(0, 0, 30);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
         practise.getEmployeeHandler().employeeGo(1);
-        practise.getCalendar().advanceMinutes(30);
+        try {
+            practise.advanceTime(0, 0, 30);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
         practise.getEmployeeHandler().employeeGo(0);
-        System.out.println(practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n" +
-                practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n" +
-                practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeGo(2));
+            //System.out.println(practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n" +
+            // practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n" +
+            // practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeGo(2));
 
         //muss am ende des Tages ausgeführt werden (speichert alle come and go Zeiten in eine Map)
         System.out.println("Alle Employee come and go Zeiten werden, mit dem Datum als Key, abgespeichert");

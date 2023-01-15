@@ -46,12 +46,16 @@ public class Practise {
         roomHandler.add(r);
     }
 
-    public int getRoomNumber(int index) {return roomHandler.get(index).getRoomNumber();}
 
     public void removeRoom(int roomNumber) {
         roomHandler.remove(roomNumber);
     }
 
+    public void viewRoomHandler() {
+        for (int i = 0; i < roomHandler.size(); i++) {
+            System.out.println("roomNumber: " + roomHandler.get(i).getRoomNumber() + " " + "used for: " + roomHandler.get(i).getTreatmentType().getName());
+        }
+    }
 
     /**
      * Advances the time by the specified amount and executes any appointments that are scheduled for the time that is now past or present
@@ -170,12 +174,6 @@ public class Practise {
     }
 
     public ArrayList<Rooms> getRoomHandler() {return roomHandler;}
-
-    public void viewRoomHandler() {
-        for (int i = 0; i < roomHandler.size(); i++) {
-            System.out.println(roomHandler.get(i).getRoomNumber() + " " + roomHandler.get(i).getTreatmentType().getName());
-        }
-    }
 
 
 }
