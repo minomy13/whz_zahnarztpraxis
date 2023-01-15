@@ -22,6 +22,13 @@ public class StockHandler {
     }
 
 
+    /**
+     * Gives back amount of specific item.
+     *
+     * @param item Item of stock
+     * @return Amount of item kept in stock
+     * @throws Exception if Item was never bought
+     */
     public int getStock(Item item) throws Exception {
         for (StockItem i : stock) {
             if (i.getItem().equals(item)) {
@@ -31,6 +38,12 @@ public class StockHandler {
         throw new Exception("Item not in assortment");
     }
 
+    /**
+     * Gives back String showing all the items in stock and their amount.
+     *
+     * @return String with all items and their amount
+     * @throws Exception if no items are in stock
+     */
     public String getAllStocks() throws Exception {
         String buffer = "";
         for (StockItem item : stock) {
@@ -40,6 +53,14 @@ public class StockHandler {
         return buffer;
     }
 
+    /**
+     * Increases stock of specific Item. Budget gets less.
+     * Also saves price for auto refill.
+     *
+     * @param item          Item to increase stock for
+     * @param amount        Amount to increase
+     * @param pricePerPiece Price of a single piece
+     */
     public void buy(Item item, int amount, double pricePerPiece) {
         if (prices.containsKey(item)) {
             prices.replace(item, pricePerPiece);
@@ -56,6 +77,13 @@ public class StockHandler {
         practise.decreaseBudget(amount * pricePerPiece);
     }
 
+    /**
+     * Decreases stock of specific item. Checks for low levels and refills when needed.
+     *
+     * @param item   Item to decrease stock for
+     * @param amount Amount to decrease
+     * @throws Exception if item was never bought or not enough in stock
+     */
     public void take(Item item, int amount) throws Exception {
         for (StockItem i : stock) {
             if (i.getItem().equals(item)) {
@@ -69,6 +97,11 @@ public class StockHandler {
         throw new Exception("Item not in assortment");
     }
 
+    /**
+     * Checks stock for lov levels and refills automatically.
+     *
+     * @param item Item to check
+     */
     private void lowLevelCheck(StockItem item) {
         if (item.getStock() <= criticalStockLevel) {
             Logger logger = new Logger();
