@@ -1,21 +1,21 @@
 package practise.patients.treatment;
 
-import practise.patients.patientFiles.Patient;
+import practise.patients.patientFiles.PatientFile;
 
 public class Treatment {
     private final TreatmentType treatmentType;
-    private final Patient patient;
+    private final PatientFile patientFile;
 
-    public Treatment(TreatmentType treatmentType, Patient patient) {
+    public Treatment(TreatmentType treatmentType, PatientFile patientFile) {
         this.treatmentType = treatmentType;
-        this.patient = patient;
+        this.patientFile = patientFile;
     }
 
     public TreatmentType getTreatmentType() {
         return treatmentType;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public PatientFile getPatientFile() {
+        return patientFile;
     }
 }
