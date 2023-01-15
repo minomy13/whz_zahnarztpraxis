@@ -1,6 +1,7 @@
 package practise.stock;
 
 class StockItem {
+    //TODO documentations
     private Item item;
     private int stock;
 

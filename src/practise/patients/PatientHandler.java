@@ -17,7 +17,6 @@ public class PatientHandler {
     private final ArrayList<TreatmentType> treatments = new ArrayList<>();
     private final Practise practise;
     private ArrayList<Treatment> runningTreatments = new ArrayList<>();
-    //private ArrayList<Rooms> roomHandler = new ArrayList<>();
 
     public PatientHandler(Practise practise) {
         this.practise = practise;
@@ -128,6 +127,7 @@ public class PatientHandler {
         }
     }
 
+    //TODO documentation
     public TreatmentType getTreatmentType(String name) throws Exception {
         TreatmentType t = null;
         for (int i = 0; i < treatments.size(); i++) {
