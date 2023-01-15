@@ -63,6 +63,7 @@ public class Main {
 
         try {
             logger.info("Stock is now: \n " + practise.getStockHandler().getAllStocks());
+            logger.info("Stock is now:\n" + practise.getStockHandler().getAllStocks());
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
@@ -253,6 +254,9 @@ public class Main {
         System.out.println();
         practise.getEmployeeHandler().getWorkTime();
 
+        logger.info(String.format("Practise budget is now %s €", practise.getBudget()));
+
+        System.out.println();
         System.out.println("\n\n ------------------------- \n");
 
         try {
@@ -262,6 +266,7 @@ public class Main {
         }
         System.out.println("Skip to: " + practise.getCalendar().getTime());
         practise.increaseBudget(1293.84);
+        
         System.out.println();
 
         logger.info("Hiring new employee...");
@@ -270,6 +275,7 @@ public class Main {
 
         System.out.println();
         practise.getEmployeeHandler().viewEmployees();
+        System.out.println();
 
         System.out.println("\n ------------------------- \n");
 
@@ -384,9 +390,9 @@ public class Main {
 
         System.out.println("\n --> advance time by 5h --> \n");
         try {
-          practise.advanceTime(0, 5, 0);
+            practise.advanceTime(0, 5, 0);
         } catch (Exception e) {
-          logger.error(e.getMessage());
+            logger.error(e.getMessage());
         }
         practise.getCalendar().getCurrentTime();
 
@@ -395,7 +401,7 @@ public class Main {
 
         System.out.println("\n --> advance time by 2h --> \n");
         try {
-            practise.advanceTime(0, 2,0 );
+            practise.advanceTime(0, 2, 0);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
@@ -434,6 +440,9 @@ public class Main {
         //System.out.println(practise.getEmployeeHandler().getComeAndGo("10.0.2022", practise.getEmployeeHandler().getEmployeeName(0)));
         practise.getEmployeeHandler().getComeAndGoAll("10.0.2022");
         System.out.println();
+
         practise.getEmployeeHandler().getWorkTime();
+        System.out.println();
+        logger.info(String.format("Practise budget is now %s €", Math.floor(practise.getBudget())));
     }
 }
