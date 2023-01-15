@@ -9,7 +9,7 @@ import practise.patients.treatment.TreatmentType;
 import practise.stock.Item;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class PatientHandler {
@@ -29,7 +29,7 @@ public class PatientHandler {
      * @param name Name of treatment
      * @param cost Cost of treatment
      */
-    public void addTreatmentType(String name, double cost, HashMap<Item, Integer> needs) throws Exception {
+    public void addTreatmentType(String name, double cost, Map<Item, Integer> needs) throws Exception {
         if (treatments.stream().filter(t -> t.getName() == name).collect(Collectors.toList()).size() > 0)
             throw new Exception("Treatment type name already in use");
         treatments.add(new TreatmentType(name, cost, needs));

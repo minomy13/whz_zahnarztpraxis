@@ -1,14 +1,16 @@
 package practise.stock;
 
 import practise.Practise;
+import utils.logger.Logger;
 
 import java.util.ArrayList;
 
 public class StockHandler {
     private Practise practise;
     private ArrayList<StockItem> stock;
+    private int criticalStockLevel;
 
-    public StockHandler(Practise practise) {
+    public StockHandler(Practise practise, int criticalStockLevel) {
         this.practise = practise;
         this.stock = new ArrayList<>();
     }
@@ -55,7 +57,9 @@ public class StockHandler {
         throw new Exception("Item not in assortment");
     }
 
-    private void lowLevelCheck(Item item) {
-        // TODO
+    private void lowLevelCheck(StockItem item) {
+        if (item.getStock() <= criticalStockLevel)
+            new Logger().warning(String.format("Stock level for item %s critical.",
+                    item.getItem().name()));
     }
 }

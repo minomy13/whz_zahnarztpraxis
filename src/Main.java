@@ -3,6 +3,7 @@ import practise.stock.Item;
 import utils.logger.Logger;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -37,7 +38,7 @@ public class Main {
         //Treatment(TreatmentType treatmentType, Patient patient)
 
         try {
-            practise.getPatientHandler().addTreatmentType("Check-Up", 25, needs1);
+            practise.getPatientHandler().addTreatmentType("Check-Up", 25, Map.of(Item.MOUTH_MIRROR, 1));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
