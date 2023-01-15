@@ -1,7 +1,7 @@
 package practise.patients;
 
 import practise.Practise;
-import practise.patients.patientFiles.*;
+import practise.patients.patientFiles.PatientFile;
 import practise.patients.patientFiles.PatientFileHandler;
 import practise.patients.treatment.Rooms;
 import practise.patients.treatment.Treatment;
@@ -33,7 +33,6 @@ public class PatientHandler {
         if (treatments.stream().filter(t -> t.getName() == name).collect(Collectors.toList()).size() > 0)
             throw new Exception("Treatment type name already in use");
         treatments.add(new TreatmentType(name, cost, needs));
-        //TODO check if treatment name is already in use
     }
 
     /**
@@ -87,13 +86,14 @@ public class PatientHandler {
 
     /**
      * Returns runningTreatments index for specified patient
+     *
      * @param patientFile Patient to search
      * @return Index of runningTreatments for use with endTreatment()
      * @throws Exception In case specified patient is not in runningTreatments
      */
     public int getIndex(PatientFile patientFile) throws Exception {
         boolean found = false;
-        int i=0;
+        int i = 0;
         while (!found) {
             if (i >= runningTreatments.size()) {
                 throw new Exception("Specified patient not in runningTreatments!");
@@ -130,9 +130,9 @@ public class PatientHandler {
 
     public TreatmentType getTreatmentType(String name) throws Exception {
         TreatmentType t = null;
-        for(int i = 0; i < treatments.size(); i++) {
-            if(treatments.get(i).getName().trim().equalsIgnoreCase(name.trim()))
-            {t = treatments.get(i);
+        for (int i = 0; i < treatments.size(); i++) {
+            if (treatments.get(i).getName().trim().equalsIgnoreCase(name.trim())) {
+                t = treatments.get(i);
                 if (t == null) throw new Exception("Name missing.");
             }
         }
