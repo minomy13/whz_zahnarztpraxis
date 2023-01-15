@@ -62,7 +62,7 @@ public class Main {
         practise.getStockHandler().buy(Item.WHITENING_STRIPS, 8, 11);
 
         try {
-            logger.info("Stock is now: " + practise.getStockHandler().getAllStocks());
+            logger.info("Stock is now:\n" + practise.getStockHandler().getAllStocks());
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
@@ -378,9 +378,9 @@ public class Main {
 
         System.out.println("\n --> advance time by 5h --> \n");
         try {
-          practise.advanceTime(0, 5, 0);
+            practise.advanceTime(0, 5, 0);
         } catch (Exception e) {
-          logger.error(e.getMessage());
+            logger.error(e.getMessage());
         }
         practise.getCalendar().getCurrentTime();
 
@@ -389,7 +389,7 @@ public class Main {
 
         System.out.println("\n --> advance time by 2h --> \n");
         try {
-            practise.advanceTime(0, 2,0 );
+            practise.advanceTime(0, 2, 0);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
