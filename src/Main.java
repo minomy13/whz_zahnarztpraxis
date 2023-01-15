@@ -11,6 +11,8 @@ public class Main {
 
         System.out.println(practise.getCalendar().getTime());
 
+        System.out.println("\n\n");
+
         practise.getEmployeeHandler().hireEmployee("Alice", "Receptionist");
         practise.getEmployeeHandler().hireEmployee("Amy", "Dentist Assistant");
         practise.getEmployeeHandler().hireEmployee("Karl", "Dentist");
@@ -30,10 +32,13 @@ public class Main {
             logger.error(e.getMessage());
         }
         practise.getEmployeeHandler().employeeCome(2);
-        System.out.println(practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
+        logger.info("\n" + practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2));
 
+        System.out.println("\n --- \n");
+
+        logger.info("Buying new stock...");
         practise.getStockHandler().buy(Item.PLASTIC_CUP, 5, 0.02);
         practise.getStockHandler().buy(Item.COTTON_PAD, 15, 0.05);
         practise.getStockHandler().buy(Item.MOUTH_MIRROR, 23, 5.99);
@@ -43,11 +48,14 @@ public class Main {
         practise.getStockHandler().buy(Item.WHITENING_STRIPS, 8, 11);
 
         try {
-            System.out.println(practise.getStockHandler().getAllStocks());
+            logger.info("Stock is now: " + practise.getStockHandler().getAllStocks());
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
 
+        System.out.println("\n --- \n");
+
+        logger.info("Adding treatment types...");
         try {
             practise.getPatientHandler().addTreatmentType("Check-Up", 25, Map.of(Item.MOUTH_MIRROR, 1));
         } catch (Exception e) {
@@ -136,18 +144,28 @@ public class Main {
 
         try {
             practise.getRoomHandler().get(0).getAppointmentCalendar().addAppointment(2022, 0, 1, 11, 20, 11, 40,
-                    practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob",1996));
-        } catch (Exception e) { logger.error(e.getMessage()); }
+                    practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1996));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
         try {
             practise.getRoomHandler().get(0).getAppointmentCalendar().addAppointment(2022, 0, 1, 11, 30, 12, 0,
-                    practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Max",2001));
-        } catch (Exception e) { logger.error(e.getMessage()); }
+                    practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Max", 2001));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
         try {
             practise.getRoomHandler().get(0).getAppointmentCalendar().addAppointment(2022, 0, 1, 13, 0, 13, 20,
-                    practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob",1987));
-        } catch (Exception e) { logger.error(e.getMessage()); }
+                    practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1987));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
 
-        try { practise.advanceTime(0, 8, 0); } catch (Exception e) { logger.error(e.getMessage()); }
+        try {
+            practise.advanceTime(0, 8, 0);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
 
         practise.getEmployeeHandler().employeeGo(2);
         try {
@@ -162,9 +180,9 @@ public class Main {
             logger.error(e.getMessage());
         }
         practise.getEmployeeHandler().employeeGo(0);
-            //System.out.println(practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n" +
-            // practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n" +
-            // practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeGo(2));
+        //System.out.println(practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n" +
+        // practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n" +
+        // practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeGo(2));
 
         practise.getEmployeeHandler().addEmployeeTimeStamp();
         System.out.println(practise.getEmployeeHandler().getComeAndGo("1.0.2022", practise.getEmployeeHandler().getEmployeeName(0)));
