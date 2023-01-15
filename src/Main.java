@@ -15,7 +15,7 @@ public class Main {
 
         logger.info("Hiring new employees...");
         practise.getEmployeeHandler().hireEmployee("Alice", "Receptionist");
-        practise.getEmployeeHandler().hireEmployee("Amy", "Dentist Assistant");
+        practise.getEmployeeHandler().hireEmployee("Amy", "Dental Assistant");
         practise.getEmployeeHandler().hireEmployee("Karl", "Dentist");
         practise.getEmployeeHandler().viewEmployees();
         //dental hygienists, dental assistants, dental laboratory technicians, and receptionists
@@ -200,7 +200,7 @@ public class Main {
         // practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeGo(2));
 
         practise.getEmployeeHandler().addEmployeeTimeStamp();
-        System.out.println(practise.getEmployeeHandler().getComeAndGo("1.0.2022", practise.getEmployeeHandler().getEmployeeName(0)));
+        //System.out.println(practise.getEmployeeHandler().getComeAndGo("1.0.2022", practise.getEmployeeHandler().getEmployeeName(0)));
         practise.getEmployeeHandler().getComeAndGoAll("1.0.2022");
     }
 }

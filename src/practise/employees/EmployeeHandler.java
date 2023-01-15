@@ -81,7 +81,11 @@ public class EmployeeHandler {
      * @return Integer for work hours
      */
     public int getWorkTime(int index) {
-        return Integer.parseInt(employees.get(index).getGo()) - Integer.parseInt(employees.get(index).getCome());
+        String a1 = employees.get(index).getGo();
+        String a2 = a1.substring(0, a1.length() - 2);
+        String b1 = employees.get(index).getCome();
+        String b2 = b1.substring(0, b1.length() - 2);
+        return Integer.parseInt(a2) - Integer.parseInt(b2);
     }
 
     /**
@@ -110,13 +114,13 @@ public class EmployeeHandler {
     /**
      * Gets the timeStamps of all Employees from a specific Date
      *
-     * @param keyDate Date in format "1.14.2029" -> Day, Month, Year
+     * @param keyDate Date in format MM.DD.YYYY
      */
     public void getComeAndGoAll(String keyDate) {
         System.out.println("Datum: " + keyDate);
         ArrayList<String> j = new ArrayList<>(timeStampMap.get(keyDate).keySet());
         for (int i = 0; i < timeStampMap.get(keyDate).size(); i++) {
-            System.out.println(j.get(i) + timeStampMap.get(keyDate).get(j.get(i)));
+            System.out.println(j.get(i) + timeStampMap.get(keyDate).get(j.get(i)) + " work time: " + getWorkTime(0));
         }
     }
 }
