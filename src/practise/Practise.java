@@ -79,7 +79,7 @@ public class Practise {
                         })
                         .forEach(e -> {
                             try {
-                                patientHandler.startTreatment(e.getValue().getReport().getTreatmentType(), e.getValue(), roomHandler);
+                                patientHandler.startTreatment(e.getValue().getReport().getTreatmentType(), e.getValue(), room);
                             } catch (Exception ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -98,7 +98,7 @@ public class Practise {
 
                         through = true;
                     } else {
-                        patientHandler.endTreatment(patientHandler.getIndex(result.getValue()), roomHandler);
+                        patientHandler.endTreatment(patientHandler.getIndex(result.getValue()), room);
                         room.getAppointmentCalendar().removeAppointment(result.getKey());
                     }
                 }   //ends all treatments with past or present end time and deletes the corresponding appointments from the appointment calendar
