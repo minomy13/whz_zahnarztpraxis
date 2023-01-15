@@ -49,11 +49,11 @@ public class EmployeeHandler {
         timeStampMap.put(practise.getCalendar().getDay(), buffer);
     }
 
-    public String getComeAndGo(String keyDate, String keyName) { //gibt Datum und Damen eines Employee wieder
+    public String getComeAndGo(String keyDate, String keyName) { //give date, name and timeStamps of one Employee
         return keyName + ", " + keyDate + timeStampMap.get(keyDate).get(keyName);
     }
 
-    public void getComeAndGoAll(String keyDate) { //gibt Datum und Namen wieder
+    public void getComeAndGoAll(String keyDate) { //give date, name and timeStamps of all Employees
         System.out.println("Datum: " + keyDate);
         ArrayList<String> j = new ArrayList<>();
         timeStampMap.get(keyDate).keySet().stream().forEach(k -> j.add(k));
