@@ -58,7 +58,7 @@ public class Main {
 
         System.out.println("\n --- \n");
 
-        logger.info("Adding treatment types...");
+        logger.info("Adding treatment types and rooms...");
         try {
             practise.getPatientHandler().addTreatmentType("Check-Up", 25, Map.of(Item.MOUTH_MIRROR, 1));
         } catch (Exception e) {
@@ -106,31 +106,43 @@ public class Main {
         }
 
         practise.getPatientHandler().viewTreatmentTypes();
+        System.out.println("\n");
         practise.viewRoomHandler();
 
+        System.out.println("\n --- \n");
+
+        logger.info("Creating patient \"Bob\", born 1996...");
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1996);
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1996)
                     .createReport("Due for regular Check-Up", practise.getPatientHandler().getTreatmentTypeIndex("Check-Up"));
+            logger.success("Succeed!");
         } catch (Exception e) {
             logger.error(e.getMessage());
             //TODO console output
         }
+
+        logger.info("Creating new patient files...");
+        logger.info("Creating patient \"Max\", born 2001...");
         practise.getPatientHandler().getPatientFileHandler().create("Max", 2001);
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Max", 2001)
                     .createReport("Patient requested whitening", practise.getPatientHandler().getTreatmentTypeIndex("Whitening"));
+            logger.success("Succeed!");
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-        //TODO console output
+
+        logger.info("Creating patient \"Bob\", born 1987...");
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1987);
         try {
             practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1987)
                     .createReport("Needs tooth removed", practise.getPatientHandler().getTreatmentTypeIndex("Removal"));
+            logger.success("Succeed!");
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
+
         //TODO console output
         try {
             practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
