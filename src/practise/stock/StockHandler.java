@@ -4,6 +4,7 @@ import practise.Practise;
 import utils.logger.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class StockHandler {
@@ -11,7 +12,7 @@ public class StockHandler {
     private ArrayList<StockItem> stock = new ArrayList<>();
     private int criticalStockLevel;
     private int refillAmount;
-    private Map<Item, Double> prices;
+    private Map<Item, Double> prices = new HashMap<>();
 
     public StockHandler(Practise practise, int criticalStockLevel, int refillAmount) {
         this.practise = practise;
