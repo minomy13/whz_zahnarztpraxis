@@ -46,12 +46,31 @@ public class Main {
             logger.error(e.getMessage());
         }
         try {
+            practise.addRoom(practise.getPatientHandler().getTreatmentType("Check-Up"));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
+        try {
             practise.getPatientHandler().addTreatmentType("Cleaning", 78, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_PROBE, 2, Item.PLASTIC_CUP, 1));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
+
+        try {
+            practise.addRoom(practise.getPatientHandler().getTreatmentType("Cleaning"));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
         try {
             practise.getPatientHandler().addTreatmentType("Removal", 100, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_SYRINGE, 1, Item.ANESTHETIC, 1, Item.DENTAL_PROBE, 3, Item.COTTON_PAD, 4, Item.PLASTIC_CUP, 1));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
+        try {
+            practise.addRoom(practise.getPatientHandler().getTreatmentType("Removal"));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
@@ -61,7 +80,14 @@ public class Main {
             logger.error(e.getMessage());
         }
 
+        try {
+            practise.addRoom(practise.getPatientHandler().getTreatmentType("Whitening"));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
         practise.getPatientHandler().viewTreatmentTypes();
+        practise.viewRoomHandler();
 
         practise.getPatientHandler().getPatientFileHandler().create("Bob", 1996);
         try {

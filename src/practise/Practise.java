@@ -8,7 +8,7 @@ import practise.patients.PatientHandler;
 import practise.patients.patientFiles.Appointment;
 import practise.patients.patientFiles.PatientFile;
 import practise.patients.treatment.Rooms;
-import practise.patients.treatment.Treatment;
+import practise.patients.treatment.TreatmentType;
 import practise.stock.StockHandler;
 import utils.logger.Logger;
 import java.util.ArrayList;
@@ -41,11 +41,12 @@ public class Practise {
         this.calendar = new Calendar1(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
-    public void addRoom(Rooms room) {
-        roomHandler.add(room);
+    public void addRoom(TreatmentType treatmentType) {
+        Rooms r = new Rooms(treatmentType);
+        roomHandler.add(r);
     }
 
-    //public int getRoomNumber(int index) {return rooms.get(index).getRoomNumber();}
+    public int getRoomNumber(int index) {return roomHandler.get(index).getRoomNumber();}
 
     public void removeRoom(int roomNumber) {
         roomHandler.remove(roomNumber);
@@ -168,8 +169,12 @@ public class Practise {
         return stockHandler;
     }
 
-    public ArrayList<Rooms> getRoomHandler() {
-        return roomHandler;
+    public ArrayList<Rooms> getRoomHandler() {return roomHandler;}
+
+    public void viewRoomHandler() {
+        for (int i = 0; i < roomHandler.size(); i++) {
+            System.out.println(roomHandler.get(i).getRoomNumber() + " " + roomHandler.get(i).getTreatmentType().getName());
+        }
     }
 
 
