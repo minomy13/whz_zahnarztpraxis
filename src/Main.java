@@ -73,7 +73,7 @@ public class Main {
         }
         practise.getPatientHandler().getPatientFileHandler().create("Max", 2001);
         try {
-            practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 2001)
+            practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Max", 2001)
                     .createReport("Patient requested whitening", practise.getPatientHandler().getTreatmentTypeIndex("Whitening"));
         } catch (Exception e) {
             logger.error(e.getMessage());
