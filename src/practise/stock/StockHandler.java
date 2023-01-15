@@ -46,7 +46,7 @@ public class StockHandler {
     public String getAllStocks() throws Exception {
         StringBuilder buffer = new StringBuilder();
         for (StockItem item : stock) {
-            buffer.append(String.format("%s: %s; ", item.getItem().name(), item.getStock()));
+            buffer.append(String.format("%s: %s; ", item.getItem().name(), item.getStock() + "\n"));
         }
         if (buffer.length() == 0) throw new Exception("No items in stock.");
         return buffer.toString();

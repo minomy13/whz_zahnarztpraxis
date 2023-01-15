@@ -11,7 +11,7 @@ public class Main {
 
         System.out.println(practise.getCalendar().getTime());
 
-        System.out.println("\n\n");
+        System.out.println("\n");
 
         logger.info("Hiring new employees...");
         practise.getEmployeeHandler().hireEmployee("Alice", "Receptionist");
@@ -20,7 +20,7 @@ public class Main {
         practise.getEmployeeHandler().viewEmployees();
         //dental hygienists, dental assistants, dental laboratory technicians, and receptionists
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Employees arriving...");
 
@@ -50,7 +50,7 @@ public class Main {
                 practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2));
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Buying new stock...");
         practise.getStockHandler().buy(Item.PLASTIC_CUP, 5, 0.02);
@@ -67,7 +67,7 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Adding treatment types and rooms...");
         try {
@@ -153,7 +153,7 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         try {
             logger.info("Amount of mouth mirrors in stock is " + practise.getStockHandler().getStock(Item.MOUTH_MIRROR));
@@ -169,7 +169,7 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Adding appointments to calendar...");
         try {
@@ -220,7 +220,7 @@ public class Main {
 
         logger.success("Appointments done!");
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Employees going home...");
         practise.getEmployeeHandler().employeeGo(2);
@@ -244,7 +244,7 @@ public class Main {
         practise.getEmployeeHandler().employeeGo(0);
         logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(0)));
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Summary of day 1:");
         practise.getEmployeeHandler().addEmployeeTimeStamp();
@@ -253,8 +253,7 @@ public class Main {
         System.out.println();
         practise.getEmployeeHandler().getWorkTime();
 
-        System.out.println("\n\n");
-        System.out.println("\n --- \n");
+        System.out.println("\n\n ------------------------- \n");
 
         try {
             practise.advanceTime(8, 13, 00);
@@ -272,7 +271,7 @@ public class Main {
         System.out.println();
         practise.getEmployeeHandler().viewEmployees();
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Employees arriving...");
 
@@ -317,7 +316,7 @@ public class Main {
                 practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(3) + " " + practise.getEmployeeHandler().getEmployeeCome(3));
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Buying some additional stock...");
         practise.getStockHandler().buy(Item.PLASTIC_CUP, 9, 0.02);
@@ -329,7 +328,7 @@ public class Main {
         practise.getStockHandler().buy(Item.WHITENING_STRIPS, 5, 11);
 
         try {
-            logger.info("Stock is now: " + practise.getStockHandler().getAllStocks());
+            logger.info("Stock is now:\n" + practise.getStockHandler().getAllStocks());
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
@@ -347,7 +346,7 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("New report for existing patient \"Bob\", born in 1996...");
         try {
@@ -358,7 +357,7 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Adding appointments to calendar...");
         try {
@@ -377,30 +376,38 @@ public class Main {
         if (practise.getRoomHandler().get(0).getAppointmentCalendar().getAppointmentMap().size() == 2)
             logger.success("Success!");
 
-        System.out.println("\n --> advance time by 8h --> \n");
+        System.out.println("\n --> advance time by 5h --> \n");
         try {
-            practise.advanceTime(0, 8, 0);
+          practise.advanceTime(0, 5, 0);
         } catch (Exception e) {
-            logger.error(e.getMessage());
+          logger.error(e.getMessage());
         }
         practise.getCalendar().getCurrentTime();
 
+        practise.getEmployeeHandler().employeeGo(2);
+        logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(2)));
+
+        System.out.println("\n --> advance time by 2h --> \n");
+        try {
+            practise.advanceTime(0, 2,0 );
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
         logger.success("Appointments done!");
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Employees going home...");
         practise.getEmployeeHandler().employeeGo(3);
         logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(3)));
 
-        System.out.println("\n --> advance time by 30min --> \n");
+        System.out.println("\n --> advance time by 45 min --> \n");
         try {
-            practise.advanceTime(0, 0, 30);
+            practise.advanceTime(0, 0, 45);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-        practise.getEmployeeHandler().employeeGo(2);
-        logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(2)));
 
         System.out.println("\n --> advance time by 30min --> \n");
         try {
@@ -420,7 +427,7 @@ public class Main {
         practise.getEmployeeHandler().employeeGo(0);
         logger.success(String.format("Employee %s went home", practise.getEmployeeHandler().getEmployeeName(0)));
 
-        System.out.println("\n --- \n");
+        System.out.println("\n ------------------------- \n");
 
         logger.info("Summary of day 10:");
         practise.getEmployeeHandler().addEmployeeTimeStamp();
