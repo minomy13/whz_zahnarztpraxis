@@ -52,6 +52,7 @@ public class StockHandler {
                 if (i.getStock() - amount < 0) throw new Exception(String.format("Not enough of \"%s\" in stock",
                         i.getItem().name()));
                 i.decreaseStock(amount);
+                lowLevelCheck(i);
                 return;
             }
         }
