@@ -12,7 +12,7 @@ public class Main {
         System.out.println(practise.getCalendar().getTime());
 
         practise.getEmployeeHandler().hireEmployee("Alice", "Receptionist");
-        practise.getEmployeeHandler().hireEmployee("Amy", "Dentist Assistant");
+        practise.getEmployeeHandler().hireEmployee("Amy", "Dental Assistant");
         practise.getEmployeeHandler().hireEmployee("Karl", "Dentist");
         practise.getEmployeeHandler().viewEmployees();
         //dental hygienists, dental assistants, dental laboratory technicians, and receptionists
