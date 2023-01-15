@@ -225,9 +225,11 @@ public class Main {
         System.out.println();
         practise.getEmployeeHandler().getWorkTime();
 
+        System.out.println("\n" + "\n");
         System.out.println("\n --- \n");
+
         try {
-            practise.advanceTime(8, 16, 00);
+            practise.advanceTime(8, 13, 00);
         } catch(Exception e ) {
             logger.error(e.getMessage());
         }
@@ -235,9 +237,11 @@ public class Main {
 
         logger.info("Hiring new employee...");
         practise.getEmployeeHandler().hireEmployee("Paul", "dental hygenienist");
+        System.out.println(practise.getEmployeeHandler().getEmployeeName(3) + " : " + practise.getEmployeeHandler().getEmployeesJob(3));
+
+        System.out.println();
         practise.getEmployeeHandler().viewEmployees();
 
-        System.out.println("\n --- \n");
         System.out.println("\n --- \n");
 
         try {
@@ -272,7 +276,7 @@ public class Main {
 
         System.out.println("\n --- \n");
 
-        logger.info("Buying new stock...");
+        //logger.info("Buying new stock...");
         practise.getStockHandler().buy(Item.PLASTIC_CUP, 27, 0.02);
         practise.getStockHandler().buy(Item.COTTON_PAD, 5, 0.05);
         practise.getStockHandler().buy(Item.MOUTH_MIRROR, 12, 5.99);
@@ -287,13 +291,6 @@ public class Main {
         logger.error(e.getMessage());
     }
 
-        System.out.println("\n --- \n");
-
-        practise.getPatientHandler().viewTreatmentTypes();
-        System.out.println();
-        practise.viewRoomHandler();
-
-        System.out.println("\n --- \n");
 
         logger.info("Creating new patient file...");
         logger.info("Creating patient file for \"Kathrine\", born in 1965...");
@@ -317,15 +314,7 @@ public class Main {
         System.out.println("\n --- \n");
 
         try {
-        logger.info("Amount of Cotton Pad in stock is " + practise.getStockHandler().getStock(Item.COTTON_PAD));
-    } catch (Exception e) {
-        logger.error(e.getMessage());
-    } //TODO taken items and stock
-        logger.info("Taking a mouth mirror from stock...");
-        try {
-        practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
-        logger.success("Success! Amount of mouth mirrors in stock is now " +
-                practise.getStockHandler().getStock(Item.MOUTH_MIRROR));
+            practise.getStockHandler().getAllStocks();
     } catch (Exception e) {
         logger.error(e.getMessage());
     }
