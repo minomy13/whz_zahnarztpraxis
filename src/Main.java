@@ -179,13 +179,13 @@ public class Main {
             logger.error(e.getMessage());
         }
         try {
-            practise.getRoomHandler().get(0).getAppointmentCalendar().addAppointment(2022, 0, 1, 11, 30, 12, 0,
+            practise.getRoomHandler().get(3).getAppointmentCalendar().addAppointment(2022, 0, 1, 11, 30, 12, 0,
                     practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Max", 2001));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         try {
-            practise.getRoomHandler().get(0).getAppointmentCalendar().addAppointment(2022, 0, 1, 13, 0, 13, 20,
+            practise.getRoomHandler().get(2).getAppointmentCalendar().addAppointment(2022, 0, 1, 13, 0, 13, 20,
                     practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1987));
         } catch (Exception e) {
             logger.error(e.getMessage());
@@ -199,6 +199,21 @@ public class Main {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
+
+        try {
+            practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1996)
+                    .createReport("Needs tooth removed", practise.getPatientHandler().getTreatmentTypeIndex("Removal"));
+            logger.success("Success!");
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        try {
+            practise.getRoomHandler().get(2).getAppointmentCalendar().addAppointment(2022, 0, 10, 13, 30, 14, 10,
+                    practise.getPatientHandler().getPatientFileHandler().getFileByNameAndBirth("Bob", 1996));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
         logger.info("Time is now " + practise.getCalendar().getCurrentTime());
 
         logger.success("Appointments done!");
