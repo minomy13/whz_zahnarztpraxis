@@ -1,6 +1,8 @@
 package practise.patients;
 
-import practise.patients.patientFiles.*;
+import practise.patients.patientFiles.Appointment;
+import practise.patients.patientFiles.PatientFile;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -11,13 +13,13 @@ public class AppointmentCalendar {
     /**
      * Adds an appointment at the specified time for the specified patient.
      * @param year Year of appointment
-     * @param month Month of appointment
+     * @param month Month of appointment, 0 means January
      * @param dayOfMonth Day of appointment
      * @param hour Time of appointment
      * @param patientFile Patient who the appointment is for
      */
-    public void addAppointment(int year, int month, int dayOfMonth, int hour, PatientFile patientFile) {
-        appointmentMap.put(new Appointment(year, month, dayOfMonth, hour), patientFile);
+    public void addAppointment(int year, int month, int dayOfMonth, int hour, int hour0, PatientFile patientFile) {
+        appointmentMap.put(new Appointment(year, month, dayOfMonth, hour, hour0), patientFile);
     }
 
     /**
@@ -31,28 +33,29 @@ public class AppointmentCalendar {
     /**
      * Displays all appointments for the specified day on the console
      * @param year Current year
-     * @param month Current month
+     * @param month Current month, 0 means January
      * @param dayOfMonth Current day
      */
     public void viewAppointments(int year, int month, int dayOfMonth) {
         appointmentMap.entrySet().stream()
                 .filter(e -> (e.getKey().getYear()==year) && (e.getKey().getMonth()==month) && (e.getKey().getDayOfMonth()==dayOfMonth))
-                .forEach(e -> System.out.println(e.getKey().getHour()+" Uhr: "+e.getValue().getPatient().getName()));
+                .forEach(e -> System.out.println(e.getKey().getHour()+" Uhr bis "+e.getKey().getHour0()+" Uhr: "+e.getValue().getPatient().getName()));
     }
 
     /**
      * Displays the appointment at the specified time on the console, or a notification if there is none
      * @param year Year of appointment
-     * @param month Month of appointment
+     * @param month Month of appointment, 0 means January
      * @param dayOfMonth Day of appointment
      * @param hour Time of appointment
      */
     public void searchAppointmentByTime(int year, int month, int dayOfMonth, int hour) {
         Optional<Map.Entry<Appointment, PatientFile>> o = appointmentMap.entrySet().stream()
-                .filter(e -> (e.getKey().getYear()==year) && (e.getKey().getMonth()==month) && (e.getKey().getDayOfMonth()==dayOfMonth) && (e.getKey().getHour()==hour))
+                .filter(e -> (e.getKey().getYear() == year) && (e.getKey().getMonth() == month) && (e.getKey().getDayOfMonth() == dayOfMonth)
+                        && (e.getKey().getHour() <= hour) && (e.getKey().getHour0() >= hour))
                 .findAny();
         if (o.isPresent()) {
-            System.out.println(o.get().getKey().getHour()+" Uhr: "+o.get().getValue().getPatient().getName());
+            System.out.println(o.get().getKey().getHour()+" Uhr bis "+o.get().getKey().getHour0()+" Uhr: "+o.get().getValue().getPatient().getName());
         } else {
             System.out.println("There is no appointment at this time!");
         }
@@ -61,7 +64,7 @@ public class AppointmentCalendar {
     /**
      * Returns the appointment at the specified time, or throws an Exception if there is none
      * @param year Year of appointment
-     * @param month Month of appointment
+     * @param month Month of appointment, 0 means January
      * @param dayOfMonth Day of appointment
      * @param hour Time of appointment
      * @return Resulting appointment
@@ -69,7 +72,8 @@ public class AppointmentCalendar {
      */
     public Appointment getAppointmentByTime(int year, int month, int dayOfMonth, int hour) throws Exception {
         Optional<Map.Entry<Appointment, PatientFile>> o = appointmentMap.entrySet().stream()
-                .filter(e -> (e.getKey().getYear()==year) && (e.getKey().getMonth()==month) && (e.getKey().getDayOfMonth()==dayOfMonth) && (e.getKey().getHour()==hour))
+                .filter(e -> (e.getKey().getYear() == year) && (e.getKey().getMonth() == month) && (e.getKey().getDayOfMonth() == dayOfMonth)
+                        && (e.getKey().getHour() <= hour) && (e.getKey().getHour0() >= hour))
                 .findAny();
         if (o.isPresent()) {
             return o.get().getKey();
@@ -87,7 +91,7 @@ public class AppointmentCalendar {
                 .filter(e -> e.getValue()==patientFile)
                 .findAny();
         if (o.isPresent()) {
-            System.out.println(o.get().getKey().getHour()+" Uhr: "+o.get().getValue().getPatient().getName());
+            System.out.println(o.get().getKey().getHour()+" Uhr bis "+o.get().getKey().getHour0()+" Uhr: "+o.get().getValue().getPatient().getName());
         } else {
             System.out.println("This patient has no appointment!");
         }

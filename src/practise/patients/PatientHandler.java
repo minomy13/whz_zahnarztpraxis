@@ -1,7 +1,7 @@
 package practise.patients;
 
 import practise.Practise;
-import practise.patients.patientFiles.Patient;
+import practise.patients.patientFiles.PatientFile;
 import practise.patients.patientFiles.PatientFileHandler;
 import practise.patients.treatment.Rooms;
 import practise.patients.treatment.Treatment;
@@ -17,7 +17,6 @@ public class PatientHandler {
     private final ArrayList<TreatmentType> treatments = new ArrayList<>();
     private final Practise practise;
     private ArrayList<Treatment> runningTreatments = new ArrayList<>();
-    //private ArrayList<Rooms> roomHandler = new ArrayList<>();
 
     public PatientHandler(Practise practise) {
         this.practise = practise;
@@ -49,11 +48,10 @@ public class PatientHandler {
      * Starts new treatment, closes Room, takes needed items from stock and occupies room
      *
      * @param treatmentIndex Index of treatment type to do
-     * @param patient        Patient to be treated
+     * @param patientFile    Patient to be treated
      */
-
-    public void startTreatment(int treatmentIndex, Patient patient, ArrayList<Rooms> roomHandler) throws Exception {
-        runningTreatments.add(new Treatment(treatments.get(treatmentIndex), patient));
+    public void startTreatment(int treatmentIndex, PatientFile patientFile, ArrayList<Rooms> roomHandler) throws Exception {
+        runningTreatments.add(new Treatment(treatments.get(treatmentIndex), patientFile));
         // takes needed items from stock
         treatments.get(treatmentIndex).getNeeds().forEach((key, val) -> {
             try {
@@ -87,6 +85,27 @@ public class PatientHandler {
     }
 
     /**
+     * Returns runningTreatments index for specified patient
+     * @param patientFile Patient to search
+     * @return Index of runningTreatments for use with endTreatment()
+     * @throws Exception In case specified patient is not in runningTreatments
+     */
+    public int getIndex(PatientFile patientFile) throws Exception {
+        boolean found = false;
+        int i=0;
+        while (!found) {
+            if (i >= runningTreatments.size()) {
+                throw new Exception("Specified patient not in runningTreatments!");
+            } else if (runningTreatments.get(i).getPatientFile() == patientFile) {
+                found = true;
+            } else {
+                i++;
+            }
+        }
+        return i;
+    }
+
+    /**
      * Displays all Treatment names and costs with their index
      */
     public void viewTreatmentTypes() {
@@ -104,7 +123,7 @@ public class PatientHandler {
         int i = 0;
         for (Treatment t : runningTreatments) {
             practise.logger.info(String.format("%s: %s, %s",
-                    (i++), t.getPatient().getName(), t.getTreatmentType().getName()));
+                    (i++), t.getPatientFile().getPatient().getName(), t.getTreatmentType().getName()));
         }
     }
 
