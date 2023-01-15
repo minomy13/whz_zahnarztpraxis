@@ -7,15 +7,14 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class StockHandler {
-    private Practise practise;
-    private ArrayList<StockItem> stock;
+    private final Practise practise;
+    private ArrayList<StockItem> stock = new ArrayList<>();
     private int criticalStockLevel;
     private int refillAmount;
     private Map<Item, Double> prices;
 
     public StockHandler(Practise practise, int criticalStockLevel, int refillAmount) {
         this.practise = practise;
-        this.stock = new ArrayList<>();
         this.criticalStockLevel = criticalStockLevel;
         this.refillAmount = refillAmount;
     }

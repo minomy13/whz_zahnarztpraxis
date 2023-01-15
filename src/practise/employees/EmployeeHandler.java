@@ -82,7 +82,7 @@ public class EmployeeHandler {
     public void addEmployeeTimeStamp() {
         HashMap<String, String> buffer = new HashMap<>();
         for (Employee e : employees) {
-            buffer.put(e.getName(), ": " + "Gekommen: " + e.getCome() + ", Gegangen: " + e.getGo());
+            buffer.put(e.getName(), ": " + "Came: " + e.getCome() + ", Gone: " + e.getGo());
         }
         timeStampMap.put(practise.getCalendar().getDay(), buffer);
     }
