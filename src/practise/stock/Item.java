@@ -1,7 +1,7 @@
 package practise.stock;
 
 public enum Item {
-    BEAKER,
+    PLASTIC_CUP,
     COTTON_PAD,
     MOUTH_MIRROR,
     DENTAL_SYRINGE,

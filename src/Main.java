@@ -26,7 +26,7 @@ public class Main {
                 practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2));
 
-        practise.getStockHandler().buy(Item.BEAKER, 5, 0.02);
+        practise.getStockHandler().buy(Item.PLASTIC_CUP, 5, 0.02);
         practise.getStockHandler().buy(Item.COTTON_PAD, 15, 0.05);
         practise.getStockHandler().buy(Item.MOUTH_MIRROR, 23, 5.99);
         practise.getStockHandler().buy(Item.DENTAL_SYRINGE, 11, 1.3);
@@ -46,17 +46,17 @@ public class Main {
             logger.error(e.getMessage());
         }
         try {
-            practise.getPatientHandler().addTreatmentType("Cleaning", 78, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_PROBE, 2));
+            practise.getPatientHandler().addTreatmentType("Cleaning", 78, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_PROBE, 2, Item.PLASTIC_CUP, 1));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         try {
-            practise.getPatientHandler().addTreatmentType("Removal", 100, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_SYRINGE, 1, Item.ANESTHETIC, 1, Item.DENTAL_PROBE, 3, Item.COTTON_PAD, 4));
+            practise.getPatientHandler().addTreatmentType("Removal", 100, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_SYRINGE, 1, Item.ANESTHETIC, 1, Item.DENTAL_PROBE, 3, Item.COTTON_PAD, 4, Item.PLASTIC_CUP, 1));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         try {
-            practise.getPatientHandler().addTreatmentType("Whitening", 164, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_PROBE, 3, Item.COTTON_PAD, 2, Item.WHITENING_STRIPS, 2));
+            practise.getPatientHandler().addTreatmentType("Whitening", 164, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_PROBE, 3, Item.COTTON_PAD, 2, Item.WHITENING_STRIPS, 2, Item.PLASTIC_CUP, 1));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
