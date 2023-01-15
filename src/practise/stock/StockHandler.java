@@ -5,6 +5,7 @@ import practise.Practise;
 import java.util.ArrayList;
 
 public class StockHandler {
+    //TODO documentations
     private Practise practise;
     private ArrayList<StockItem> stock;
 
