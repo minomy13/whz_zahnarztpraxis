@@ -154,7 +154,7 @@ public class Main {
             // practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeGo(2));
 
         practise.getEmployeeHandler().addEmployeeTimeStamp();
-        System.out.println(practise.getEmployeeHandler().getComeAndGo("1.0.2022", practise.getEmployeeHandler().getEmployeeName(0)));
+        //System.out.println(practise.getEmployeeHandler().getComeAndGo("1.0.2022", practise.getEmployeeHandler().getEmployeeName(0)));
         practise.getEmployeeHandler().getComeAndGoAll("1.0.2022");
     }
 }
