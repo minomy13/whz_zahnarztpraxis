@@ -12,6 +12,7 @@ import practise.patients.treatment.Treatment;
 import practise.patients.treatment.TreatmentType;
 import practise.stock.StockHandler;
 import utils.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -43,11 +44,12 @@ public class Practise {
         roomHandler.add(room);
     }
 
-    public int getRoomNumber(int index) {return roomHandler.get(index).getRoomNumber();}
+    //public int getRoomNumber(int index) {return rooms.get(index).getRoomNumber();}
 
     public void removeRoom(int roomNumber) {
         roomHandler.remove(roomNumber);
     }
+
 
     public void addTreatment(TreatmentType treatmentType, PatientFile patientFile) {
         treatments.add(
@@ -56,7 +58,8 @@ public class Practise {
 
     /**
      * Advances the time by the specified amount and executes any appointments that are scheduled for the time that is now past or present
-     * @param days Amount of days to advance by
+     *
+     * @param days  Amount of days to advance by
      * @param hours Amount of hours to advance by
      * @throws Exception In case the stock was not sufficient for the treatments that need to be executed
      */
@@ -90,7 +93,7 @@ public class Practise {
                 boolean through = false;
                 while (!through) {
                     Entry<Appointment, PatientFile> result = findFirstEndedAppointment(room.getAppointmentCalendar());
-                    if (result == null) {   //Wenn es keinen Termin mit vergangenem Endzeitpunkt mehr im Terminkalender gibt
+                    if (result == null) {   // If there is no longer an appointment with a past end time in the appointment calendar
                         through = true;
                     } else {
                         patientHandler.endTreatment(patientHandler.getIndex(result.getValue()), roomHandler);
@@ -169,5 +172,6 @@ public class Practise {
     public ArrayList<Rooms> getRoomHandler() {
         return roomHandler;
     }
+
 
 }
