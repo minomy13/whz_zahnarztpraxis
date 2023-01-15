@@ -4,9 +4,7 @@ public class Employee {
 
     private final String name;
     private final String job;
-
     private String come = null;
-
     private String go = null;
 
     public Employee(String name, String job) {

@@ -21,8 +21,8 @@ public class Main {
         practise.getEmployeeHandler().employeeCome(1);
         practise.getCalendar().addMinutes(30);
         practise.getEmployeeHandler().employeeCome(2);
-        System.out.println (practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n"
-                            practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n"
+        System.out.println (practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
+                            practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
                             practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2));
 
         practise.getPatientHandler().getPatientFileHandler().create("Bob");
@@ -117,16 +117,16 @@ public class Main {
         practise.getEmployeeHandler().employeeGo(1);
         practise.getCalendar().addMinutes(30);
         practise.getEmployeeHandler().employeeGo(0);
-        System.out.println (practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n"
-                            practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n"
+        System.out.println (practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n" +
+                            practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n" +
                             practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeGo(2));
 
         //muss am ende des Tages ausgeführt werden (speichert alle come and go Zeiten in eine Map)
-        System.out.println("Alle Employee come and go Zeiten werden mit dem Datum als Key abgespeichert");
+        System.out.println("Alle Employee come and go Zeiten werden, mit dem Datum als Key, abgespeichert");
         practise.getEmployeeHandler().addEmployeeTimeStamp();
-        System.out.println("come and go eines bestimmten Employee (Key Datum + Key Name) wird ausgelesen");
+        System.out.println("come and go eines bestimmten Employee (Key = Datum + Key = Name) wird ausgelesen");
         System.out.println(practise.getEmployeeHandler().getComeAndGo("1.0.2005", practise.getEmployeeHandler().getEmployeeName(1)));
-        System.out.println("come and go aller Employees (Key Datum) werden ausgegeben");
+        System.out.println("come and go aller Employees (Key = Datum) werden ausgegeben");
         practise.getEmployeeHandler().getComeAndGoAll("1.0.2005");
     }
 }
