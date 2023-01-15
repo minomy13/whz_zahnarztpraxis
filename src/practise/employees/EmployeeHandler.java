@@ -22,9 +22,9 @@ public class EmployeeHandler {
     }
 
     public void viewEmployees() {
-        int i = 0;
+        int i = 1;
         for (Employee e : employees) {
-            System.out.println(i + ": " + e.getName());
+            System.out.println(i + ": " + e.getName() + e.getJob());
             i++;
         }
     }
@@ -35,6 +35,14 @@ public class EmployeeHandler {
 
     public void employeeCome(int index) {
         employees.get(index).setCome(practise.getCalendar().getCurrentTime());
+    }
+
+    public String getEmployeeCome(int index) {
+        return employees.get(index).getCome();
+    }
+
+    public String getEmployeeGo(int index) {
+        return employees.get(index).getGo();
     }
 
     public void employeeGo(int index) {

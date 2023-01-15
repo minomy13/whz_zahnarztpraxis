@@ -6,6 +6,7 @@ public enum Item {
     MOUTH_MIRROR,
     DENTAL_SYRINGE,
     DENTAL_PROBE,
-    
+    ANESTHETIC,
+    WHITENING_STRIPS,
 
 }
