@@ -60,17 +60,18 @@ public class Practise {
      * @param hours Amount of hours to advance by
      * @throws Exception In case the stock was not sufficient for the treatments that need to be executed
      */
-    public void advanceTime(int days, int hours) throws Exception {
-        if (days < 0 || hours < 0) {
+    public void advanceTime(int days, int hours, int minutes) throws Exception {
+        if (days < 0 || hours < 0 || minutes < 0) {
             throw new RuntimeException("Invalid parameters! Need to be at least 0!");
         } else {
             calendar.advanceDays(days);
             calendar.advanceHours(hours);
+            calendar.advanceMinutes(minutes);
             for (Rooms room : roomHandler) {
                 room.getAppointmentCalendar().getAppointmentMap().entrySet().stream()
                         .filter(e -> {
                             Calendar ca = Calendar.getInstance();
-                            ca.set(e.getKey().getYear(), e.getKey().getMonth(), e.getKey().getDayOfMonth(), e.getKey().getHour(), 0);
+                            ca.set(e.getKey().getYear(), e.getKey().getMonth(), e.getKey().getDayOfMonth(), e.getKey().getHour(), e.getKey().getMinute());
                             return !calendar.getCal().before(ca);
                         })
                         .forEach(e -> {
@@ -90,7 +91,7 @@ public class Practise {
                 boolean through = false;
                 while (!through) {
                     Entry<Appointment, PatientFile> result = findFirstEndedAppointment(room.getAppointmentCalendar());
-                    if (result == null) {   //Wenn es keinen Termin mit vergangenem Endzeitpunkt mehr im Terminkalender gibt
+                    if (result == null) {   //if there are no more appointments with past or present end time
                         through = true;
                     } else {
                         patientHandler.endTreatment(patientHandler.getIndex(result.getValue()), roomHandler);
@@ -118,7 +119,7 @@ public class Practise {
             } else {
                 Entry<Appointment, PatientFile> entry = it.next();
                 Calendar ca = Calendar.getInstance();
-                ca.set(entry.getKey().getYear(), entry.getKey().getMonth(), entry.getKey().getDayOfMonth(), entry.getKey().getHour0(), 0);
+                ca.set(entry.getKey().getYear(), entry.getKey().getMonth(), entry.getKey().getDayOfMonth(), entry.getKey().getHour0(), entry.getKey().getMinute0());
                 if (!calendar.getCal().before(ca)) {
                     result = entry;
                     found = true;

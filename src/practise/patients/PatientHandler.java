@@ -11,7 +11,6 @@ import practise.stock.Item;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class PatientHandler {
     final PatientFileHandler patientFileHandler = new PatientFileHandler();
@@ -98,6 +97,27 @@ public class PatientHandler {
             if (i >= runningTreatments.size()) {
                 throw new Exception("Specified patient not in runningTreatments!");
             } else if (runningTreatments.get(i).getPatientFile() == patientFile) {
+                found = true;
+            } else {
+                i++;
+            }
+        }
+        return i;
+    }
+
+    /**
+     * Returns index for treatment type with specified name
+     * @param name Name of treatment type
+     * @return Index for use with createReport in PatientFile
+     * @throws Exception In case there is no treatment type with specified name
+     */
+    public int getTreatmentTypeIndex(String name) throws Exception {
+        boolean found = false;
+        int i = 0;
+        while (!found) {
+            if (i >= treatments.size()) {
+                throw new Exception("No such treatment type!");
+            } else if (treatments.get(i).getName() == name) {
                 found = true;
             } else {
                 i++;

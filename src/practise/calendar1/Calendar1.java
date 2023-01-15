@@ -53,7 +53,7 @@ public class Calendar1 {
      * Advances the time
      * @param minutes Amount of minutes to advance time by
      */
-    public void addMinutes(int minutes){
+    public void advanceMinutes(int minutes){
         cal.add(Calendar.MINUTE, +minutes);
     }
 

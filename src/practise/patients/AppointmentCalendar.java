@@ -15,11 +15,14 @@ public class AppointmentCalendar {
      * @param year Year of appointment
      * @param month Month of appointment, 0 means January
      * @param dayOfMonth Day of appointment
-     * @param hour Time of appointment
+     * @param hour Start time hour of appointment
+     * @param minute Start time minute of appointment
+     * @param hour0 End time hour of appointment
+     * @param minute0 End time minute of appointment
      * @param patientFile Patient who the appointment is for
      */
-    public void addAppointment(int year, int month, int dayOfMonth, int hour, int hour0, PatientFile patientFile) {
-        appointmentMap.put(new Appointment(year, month, dayOfMonth, hour, hour0), patientFile);
+    public void addAppointment(int year, int month, int dayOfMonth, int hour, int minute, int hour0, int minute0, PatientFile patientFile) {
+        appointmentMap.put(new Appointment(year, month, dayOfMonth, hour, minute, hour0, minute0), patientFile);
     }
 
     /**
@@ -49,10 +52,10 @@ public class AppointmentCalendar {
      * @param dayOfMonth Day of appointment
      * @param hour Time of appointment
      */
-    public void searchAppointmentByTime(int year, int month, int dayOfMonth, int hour) {
+    public void searchAppointmentByTime(int year, int month, int dayOfMonth, int hour, int minute) {
         Optional<Map.Entry<Appointment, PatientFile>> o = appointmentMap.entrySet().stream()
                 .filter(e -> (e.getKey().getYear() == year) && (e.getKey().getMonth() == month) && (e.getKey().getDayOfMonth() == dayOfMonth)
-                        && (e.getKey().getHour() <= hour) && (e.getKey().getHour0() >= hour))
+                        && ((e.getKey().getHour()*60+e.getKey().getMinute()) <= (hour*60+minute)) && ((e.getKey().getHour0()*60+e.getKey().getMinute0()) >= (hour*60+minute)))
                 .findAny();
         if (o.isPresent()) {
             System.out.println(o.get().getKey().getHour()+" Uhr bis "+o.get().getKey().getHour0()+" Uhr: "+o.get().getValue().getPatient().getName());
@@ -70,10 +73,10 @@ public class AppointmentCalendar {
      * @return Resulting appointment
      * @throws Exception In case there is no appointment at the specified time
      */
-    public Appointment getAppointmentByTime(int year, int month, int dayOfMonth, int hour) throws Exception {
+    public Appointment getAppointmentByTime(int year, int month, int dayOfMonth, int hour, int minute) throws Exception {
         Optional<Map.Entry<Appointment, PatientFile>> o = appointmentMap.entrySet().stream()
                 .filter(e -> (e.getKey().getYear() == year) && (e.getKey().getMonth() == month) && (e.getKey().getDayOfMonth() == dayOfMonth)
-                        && (e.getKey().getHour() <= hour) && (e.getKey().getHour0() >= hour))
+                        && ((e.getKey().getHour()*60+e.getKey().getMinute()) <= (hour*60+minute)) && ((e.getKey().getHour0()*60+e.getKey().getMinute0()) >= (hour*60+minute)))
                 .findAny();
         if (o.isPresent()) {
             return o.get().getKey();
