@@ -23,7 +23,7 @@ public class Practise {
     private final ArrayList<Rooms> roomHandler = new ArrayList<>();
     public Logger logger = new Logger();
     private double budget;
-    private Calendar1 calendar;
+    private final Calendar1 calendar;
 
     /**
      * Creates a new practise.

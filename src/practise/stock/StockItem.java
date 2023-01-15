@@ -1,7 +1,7 @@
 package practise.stock;
 
 class StockItem {
-    private Item item;
+    private final Item item;
     private int stock;
 
     public StockItem(Item item, int stock) {

@@ -9,10 +9,10 @@ import java.util.Map;
 
 public class StockHandler {
     private final Practise practise;
-    private ArrayList<StockItem> stock = new ArrayList<>();
-    private int criticalStockLevel;
-    private int refillAmount;
-    private Map<Item, Double> prices = new HashMap<>();
+    private final ArrayList<StockItem> stock = new ArrayList<>();
+    private final int criticalStockLevel;
+    private final int refillAmount;
+    private final Map<Item, Double> prices = new HashMap<>();
 
     public StockHandler(Practise practise, int criticalStockLevel, int refillAmount) {
         this.practise = practise;
@@ -44,12 +44,12 @@ public class StockHandler {
      * @throws Exception if no items are in stock
      */
     public String getAllStocks() throws Exception {
-        String buffer = "";
+        StringBuilder buffer = new StringBuilder();
         for (StockItem item : stock) {
-            buffer += String.format("%s: %s; ", item.getItem().name(), item.getStock());
+            buffer.append(String.format("%s: %s; ", item.getItem().name(), item.getStock()));
         }
-        if (buffer.isEmpty()) throw new Exception("No items in stock.");
-        return buffer;
+        if (buffer.length() == 0) throw new Exception("No items in stock.");
+        return buffer.toString();
     }
 
     /**
