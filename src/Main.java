@@ -13,11 +13,14 @@ public class Main {
 
         System.out.println("\n\n");
 
+        logger.info("Hiring new employees...");
         practise.getEmployeeHandler().hireEmployee("Alice", "Receptionist");
         practise.getEmployeeHandler().hireEmployee("Amy", "Dentist Assistant");
         practise.getEmployeeHandler().hireEmployee("Karl", "Dentist");
         practise.getEmployeeHandler().viewEmployees();
         //dental hygienists, dental assistants, dental laboratory technicians, and receptionists
+
+        System.out.println("\n --- \n");
 
         practise.getEmployeeHandler().employeeCome(0);
         try {
@@ -32,7 +35,7 @@ public class Main {
             logger.error(e.getMessage());
         }
         practise.getEmployeeHandler().employeeCome(2);
-        logger.info("\n" + practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
+        logger.info("Employees arriving...\n" + practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2));
 
