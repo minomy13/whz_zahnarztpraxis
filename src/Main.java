@@ -22,20 +22,31 @@ public class Main {
 
         System.out.println("\n --- \n");
 
+        logger.info("Employees arriving...");
+
         practise.getEmployeeHandler().employeeCome(0);
+        logger.success(String.format("Employee %s arrived", practise.getEmployeeHandler().getEmployeeName(0)));
+
+        System.out.println("\n --> advance time by 30min --> \n");
         try {
             practise.advanceTime(0, 0, 30);
+
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         practise.getEmployeeHandler().employeeCome(1);
+        logger.success(String.format("Employee %s arrived", practise.getEmployeeHandler().getEmployeeName(1)));
+
+        System.out.println("\n --> advance time by 30min --> \n");
         try {
             practise.advanceTime(0, 0, 30);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         practise.getEmployeeHandler().employeeCome(2);
-        logger.info("Employees arriving...\n" + practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
+        logger.success(String.format("Employee %s arrived", practise.getEmployeeHandler().getEmployeeName(2)));
+
+        logger.info("Employees arrived:\n" + practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
                 practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2));
 
@@ -183,12 +194,12 @@ public class Main {
             logger.success("Success!");
 
         System.out.println("\n --> advance time by 8h --> \n");
-        logger.info("Time is now " + practise.getCalendar().getCurrentTime());
         try {
             practise.advanceTime(0, 8, 0);
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
+        logger.info("Time is now " + practise.getCalendar().getCurrentTime());
 
         logger.success("Appointments done!");
 
