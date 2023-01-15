@@ -21,13 +21,12 @@ public class Rooms {
     this.open = true;
     }
 
-    //TODO documentation
     public int getRoomNumber() {return roomNumber;}
     public TreatmentType getTreatmenttype() {return treatmentType;}
     public boolean isOpen() {return open;}
 
     /**
-     * if a room is open this method closes it
+     * closes an open room
      */
     public void closeRoom() {
         if(open){open = false;}

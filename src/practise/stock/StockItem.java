@@ -18,6 +18,10 @@ class StockItem {
         return stock;
     }
 
+    /**
+     * Increases stock by given amount
+     * @param amount
+     */
     public void increaseStock(int amount) {
         this.stock += amount;
     }

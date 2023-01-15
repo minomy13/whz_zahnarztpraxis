@@ -10,6 +10,8 @@ public class Main {
         Logger logger = new Logger();
         Practise practise = new Practise(1000, 2005, 0, 1, 8, 00, 00);
 
+        System.out.println(practise.getCalendar().getTime());
+
         practise.getEmployeeHandler().hireEmployee("Alice", "Receptionist");
         practise.getEmployeeHandler().hireEmployee("Amy", "Dentist Assistant");
         practise.getEmployeeHandler().hireEmployee("Karl", "Dentist");
@@ -66,32 +68,8 @@ public class Main {
         }
 
 
-        try {
-            practise.addTreatment(practise.getPatientHandler().getTreatmentType("CHECK-UP"),
-                    practise.getPatientHandler().getPatientFileHandler().getFiles().get(0));
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
-        try {
-            practise.addTreatment(practise.getPatientHandler().getTreatmentType("Whitening"),
-                    practise.getPatientHandler().getPatientFileHandler().getFiles().get(1));
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
-        try {
-            practise.addTreatment(practise.getPatientHandler().getTreatmentType("CHECK-UP"),
-                    practise.getPatientHandler().getPatientFileHandler().getFiles().get(2));
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
-        try {
-            practise.addTreatment(practise.getPatientHandler().getTreatmentType("Removal"),
-                    practise.getPatientHandler().getPatientFileHandler().getFiles().get(3));
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
-
         System.out.println(practise.getPatientHandler().getTreatmentTypes());
+
         try {
             practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
         } catch (Exception e) {
@@ -107,7 +85,7 @@ public class Main {
             logger.error(e.getMessage());
         }
         logger.info(practise.getBudget());
-        System.out.println(practise.getCalendar().getTime());
+
         //TODO calendar, termine, etc.
 
         practise.getCalendar().nextHour();

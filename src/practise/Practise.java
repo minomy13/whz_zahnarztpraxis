@@ -43,12 +43,11 @@ public class Practise {
         roomHandler.add(room);
     }
 
-    //public int getRoomNumber(int index) {return rooms.get(index).getRoomNumber();}
+    public int getRoomNumber(int index) {return roomHandler.get(index).getRoomNumber();}
 
     public void removeRoom(int roomNumber) {
         roomHandler.remove(roomNumber);
     }
-
 
     public void addTreatment(TreatmentType treatmentType, PatientFile patientFile) {
         treatments.add(
@@ -170,7 +169,5 @@ public class Practise {
     public ArrayList<Rooms> getRoomHandler() {
         return roomHandler;
     }
-
-
 
 }

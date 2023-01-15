@@ -49,9 +49,12 @@ public class Calendar1 {
         //System.out.println("Date: " + cal.getTime());
     }
 
-    //TODO documentation
-    public void addMinutes(int time){
-        cal.add(Calendar.MINUTE, +time);
+    /**
+     * Advances the time
+     * @param minutes Amount of minutes to advance time by
+     */
+    public void addMinutes(int minutes){
+        cal.add(Calendar.MINUTE, +minutes);
     }
 
     /**
