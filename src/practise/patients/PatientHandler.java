@@ -7,6 +7,7 @@ import practise.patients.treatment.Treatment;
 import practise.patients.treatment.TreatmentType;
 import practise.stock.Item;
 import practise.patients.treatment.Rooms;
+import practise.Practise;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,8 +17,7 @@ public class PatientHandler {
     private final ArrayList<TreatmentType> treatments = new ArrayList<>();
     private final Practise practise;
     private ArrayList<Treatment> runningTreatments = new ArrayList<>();
-
-    private ArrayList<Rooms> roomHandler = new ArrayList<>();
+    //private ArrayList<Rooms> roomHandler = new ArrayList<>();
 
     public PatientHandler(Practise practise) {
         this.practise = practise;
@@ -31,12 +31,9 @@ public class PatientHandler {
      */
     public void addTreatmentType(String name, double cost, HashMap<Item, Integer> needs) {
         treatments.add(new TreatmentType(name, cost, needs));
+        //TODO check if treatment name is already in use
     }
 
-    public void addRoom(Rooms room) {roomHandler.add(room);}
-    //public int getRoomNumber(int index) {return rooms.get(index).getRoomNumber();}
-
-    public void removeRoom(int roomNumber) {roomHandler.remove(roomNumber);}
     /**
      * Removes a type of treatment
      *
@@ -52,7 +49,8 @@ public class PatientHandler {
      * @param treatmentIndex Index of treatment type to do
      * @param patient        Patient to be treated
      */
-    public void startTreatment(int treatmentIndex, Patient patient) throws Exception {
+
+    public void startTreatment(int treatmentIndex, Patient patient, ArrayList<Rooms> roomHandler) throws Exception {
         runningTreatments.add(new Treatment(treatments.get(treatmentIndex), patient));
         // takes needed items from stock
         treatments.get(treatmentIndex).getNeeds().forEach((key, val) -> {
@@ -63,7 +61,7 @@ public class PatientHandler {
             }
         });
         for (int i = 0; i < roomHandler.size(); i++) {
-            if (roomHandler.get(i).getTreatmenttype().equals(treatments.get(treatmentIndex)))
+            if (roomHandler.get(i).isOpen() && roomHandler.get(i).getTreatmenttype().equals(treatments.get(treatmentIndex)))
             {roomHandler.get(i).closeRoom();}
 
         }
@@ -74,7 +72,7 @@ public class PatientHandler {
      *
      * @param index Index of treatment to be ended
      */
-    public void endTreatment(int index) {
+    public void endTreatment(int index, ArrayList<Rooms> roomHandler) {
         practise.increaseBudget(treatments.get(index).getCost());
         runningTreatments.remove(index);
         for (int i = 0; i < roomHandler.size(); i++) {
@@ -107,7 +105,17 @@ public class PatientHandler {
         }
     }
 
-    public ArrayList<Rooms> getRooms() {return roomHandler;}
+    public TreatmentType getTreatmenttype(String name) throws Exception {
+        TreatmentType t = null;
+        for(int i = 0; i < treatments.size(); i++) {
+            if(treatments.get(i).getName().trim().toLowerCase().equals(name.trim().toLowerCase()))
+            {t = treatments.get(i);
+                if (t == null) throw new Exception("Name missing.");
+        }
+        }
+        return t;
+    }
+
     public ArrayList<TreatmentType> getTreatmentTypes() {return treatments;}
 
     public ArrayList<Treatment> getRunningTreatments() {return runningTreatments;}

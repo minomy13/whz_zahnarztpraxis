@@ -2,6 +2,7 @@ import practise.Practise;
 import practise.stock.Item;
 import utils.logger.Logger;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import practise.*;
 public class Main {
@@ -16,20 +17,32 @@ public class Main {
 
         System.out.println("Die Employees stempeln sich ein: Alice kommt; +1/2 Stunde; Amy kommt; +1/2 Stunde; Karl kommt;");
         practise.getEmployeeHandler().employeeCome(0);
-        //TODO halbe stunde vergeht
+        practise.getCalendar().addMinutes(30);
         practise.getEmployeeHandler().employeeCome(1);
-        //TODO halbe stunde vergeht
+        practise.getCalendar().addMinutes(30);
         practise.getEmployeeHandler().employeeCome(2);
 
         practise.getPatientHandler().getPatientFileHandler().create("Bob");
         //TODO create more Patients & their Reports
 
-        HashMap<Item, Integer> n = new HashMap<>();
-        n.put(Item.COTTON_PAD, 15);
+        HashMap<Item, Integer> stock = new HashMap<>();
+        stock.put(Item.BEAKER, 4);
+        stock.put(Item.COTTON_PAD, 15);
+        stock.put(Item.MOUTH_MIRROR, 23);
+        stock.put(Item.DENTAL_SYRINGE, 11);
+        stock.put(Item.DENTAL_PROBE, 18);
+
+        HashMap<Item, Integer> needs1 = new HashMap<>();
+        needs1.put(Item.MOUTH_MIRROR, 1);
+        //TreatmentType(String name, double cost, HashMap<Item, Integer> needs)
+        //Treatment(TreatmentType treatmentType, Patient patient)
+
+        practise.getPatientHandler().addTreatmentType("Check-Up", 25, needs1);
+        practise.addTreatment(practise.getPatientHandler().getTreatmenType(),);
+        practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
         logger.info(practise.getBudget());
 
         practise.getStockHandler().buy(Item.COTTON_PAD, 15, .36);
-        //TODO enter more items
 
         try {
             logger.info(practise.getStockHandler().getStock(Item.COTTON_PAD));
@@ -44,9 +57,9 @@ public class Main {
 
         System.out.println("Die Employees stempeln sich aus: Karl geht; +1/2 Stunde; Amy geht; +1/2 Stunde; Alice geht");
         practise.getEmployeeHandler().employeeGo(2);
-        //TODO halbe stunde vergeht
+        practise.getCalendar().addMinutes(30);
         practise.getEmployeeHandler().employeeGo(1);
-        //TODO halbe stunde vergeht
+        practise.getCalendar().addMinutes(30);
         practise.getEmployeeHandler().employeeGo(0);
 
         //muss am ende des Tages ausgeführt werden (speichert alle come and go Zeiten in eine Map)

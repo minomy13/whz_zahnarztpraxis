@@ -1,8 +1,11 @@
 package practise.patients.treatment;
 
+import practise.patients.AppointmentCalendar;
+
 public class Rooms {
     private final int roomNumber;
     private final TreatmentType treatmenttype;
+    private final AppointmentCalendar appointmentCalendar;
     private static int currentRoomNumber = 1;
     private boolean open;
 
@@ -11,9 +14,10 @@ public class Rooms {
      *
      * @param treatmenttype type of treatments that can be performed in this room
      */
-    public Rooms(TreatmentType treatmenttype) {
+    public Rooms(TreatmentType treatmenttype, AppointmentCalendar appointmentCalendar) {
     this.roomNumber = currentRoomNumber++;
     this.treatmenttype = treatmenttype;
+    this.appointmentCalendar = appointmentCalendar;
     this.open = true;
     }
 
@@ -36,4 +40,6 @@ public class Rooms {
             open = true;
         }
     }
+
+    public AppointmentCalendar getAppointmentCalendar() {return appointmentCalendar;}
 }

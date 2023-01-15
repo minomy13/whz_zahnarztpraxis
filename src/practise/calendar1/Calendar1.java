@@ -43,6 +43,10 @@ public class Calendar1 {
     public void nextHour(){
         cal.add(Calendar.HOUR_OF_DAY, +1);
         //System.out.println("Date: " + cal.getTime());
+     }
+
+    public void addMinutes(int time){
+        cal.add(Calendar.MINUTE, +time);
     }
 
     public void advanceHours(int hours) {

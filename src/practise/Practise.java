@@ -24,7 +24,7 @@ public class Practise {
     private final EmployeeHandler employeeHandler = new EmployeeHandler(this);
     private Calendar1 calendar;
     private ArrayList<Rooms> roomHandler = new ArrayList<>();
-    private final AppointmentCalendar appointmentCalendar = new AppointmentCalendar();
+    private ArrayList<Treatment> treatments = new ArrayList<>();
 
     /**
      * Creates a new practise.
@@ -38,11 +38,16 @@ public class Practise {
         this.calendar = new Calendar1(year, month, dayOfMonth, hour, minute, second);
     }
 
-    public void addRoom(TreatmentType treatmenttype)
-    {
-        roomHandler.add(new Rooms(treatmenttype));
-    }
+    public void addRoom(Rooms room) {roomHandler.add(room);
+    
+    //public int getRoomNumber(int index) {return rooms.get(index).getRoomNumber();}
 
+    public void removeRoom(int roomNumber) {roomHandler.remove(roomNumber);}
+
+
+
+    public void addTreatment(Treatment treatment) {treatments.add(treatment);}
+    
     public void advanceTime(int days, int hours) throws Exception {
         if (days<0 || hours<0) {
             throw new Exception("Invalid parameters! Need to be at least 0!");
@@ -118,4 +123,7 @@ public class Practise {
     public StockHandler getStockHandler() {
         return stockHandler;
     }
+
+    public ArrayList<Rooms> getRoomHandler() {return roomHandler;}
+
 }
