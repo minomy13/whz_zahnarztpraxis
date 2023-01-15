@@ -9,10 +9,8 @@ import practise.patients.patientFiles.Appointment;
 import practise.patients.patientFiles.PatientFile;
 import practise.patients.treatment.Rooms;
 import practise.patients.treatment.Treatment;
-import practise.patients.treatment.TreatmentType;
 import practise.stock.StockHandler;
 import utils.logger.Logger;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -23,7 +21,6 @@ public class Practise {
     private final StockHandler stockHandler = new StockHandler(this, 5, 10);
     private final EmployeeHandler employeeHandler = new EmployeeHandler(this);
     private final ArrayList<Rooms> roomHandler = new ArrayList<>();
-    private final ArrayList<TreatmentType> treatmentType = new ArrayList<>();
     public Logger logger = new Logger();
     private double budget;
     private Calendar1 calendar;
