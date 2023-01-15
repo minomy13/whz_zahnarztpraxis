@@ -7,15 +7,16 @@ public class Calendar1 {
     private final Calendar cal = Calendar.getInstance();
 
     public Calendar1(int year, int month, int dayOfMonth, int hours, int minutes, int seconds) {
-        cal.set(year, month, dayOfMonth, hours, minutes, seconds);
+        setCalendar( year, month, dayOfMonth, hours, minutes, seconds);
     }
 
-    public void setCalendar(int year, int month, int dayOfMonth, int hours, int minutes) {
+    public void setCalendar(int year, int month, int dayOfMonth, int hours, int minutes, int seconds) {
         cal.set(Calendar.YEAR, year);
         cal.set(Calendar.MONTH, month);
         cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         cal.set(Calendar.HOUR_OF_DAY, hours);
         cal.set(Calendar.MINUTE, minutes);
+        cal.set(Calendar.SECOND, seconds);
     }
 
     public Calendar getCal() {

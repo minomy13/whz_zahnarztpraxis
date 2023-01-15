@@ -29,12 +29,16 @@ public class Practise {
      * Creates a new practise.
      *
      * @param budget Budget to start with
-     * @param hour   Time: amount of full hours since 00:00
+     * @param year Time: year
+     * @param month Time: month, 0 equals january
+     * @param hourOfDay   Time: amount of full hours since 00:00
      * @param minute Time: amount of full minutes since last full hour
+     * @param second Time: amount of seconds since last full minute
+     *
      */
-    public Practise(double budget, int year, int month, int dayOfMonth, int hour, int minute, int second) {
+    public Practise(double budget, int year, int month, int dayOfMonth, int hourOfDay, int minute, int second) {
         this.budget = budget;
-        this.calendar = new Calendar1(year, month, dayOfMonth, hour, minute, second);
+        this.calendar = new Calendar1(year, month, dayOfMonth, hourOfDay, minute, second);
     }
 
     public void addRoom(Rooms room) {
