@@ -109,7 +109,7 @@ public class PatientHandler {
         while (!found) {
             if (i >= treatments.size()) {
                 throw new Exception("No such treatment type!");
-            } else if (treatments.get(i).getName() == name) {
+            } else if (treatments.get(i).getName().equals(name)) {
                 found = true;
             } else {
                 i++;
