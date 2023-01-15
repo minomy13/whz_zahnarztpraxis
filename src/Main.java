@@ -2,7 +2,6 @@ import practise.Practise;
 import practise.stock.Item;
 import utils.logger.Logger;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
@@ -23,23 +22,24 @@ public class Main {
         practise.getEmployeeHandler().employeeCome(1);
         practise.getCalendar().advanceMinutes(30);
         practise.getEmployeeHandler().employeeCome(2);
-        System.out.println (practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
-                            practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
-                            practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2));
+        System.out.println(practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
+                practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
+                practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeCome(2));
 
 
-        HashMap<Item, Integer> stock = new HashMap<>();
-        stock.put(Item.BEAKER, 5);
-        stock.put(Item.COTTON_PAD, 15);
-        stock.put(Item.MOUTH_MIRROR, 23);
-        stock.put(Item.DENTAL_SYRINGE, 11);
-        stock.put(Item.DENTAL_PROBE, 18);
-        stock.put(Item.ANESTHETIC, 5);
-        stock.put(Item.WHITENING_STRIPS, 8);
+        practise.getStockHandler().buy(Item.BEAKER, 5, 0.02);
+        practise.getStockHandler().buy(Item.COTTON_PAD, 15, 0.05);
+        practise.getStockHandler().buy(Item.MOUTH_MIRROR, 23, 5.99);
+        practise.getStockHandler().buy(Item.DENTAL_SYRINGE, 11, 1.3);
+        practise.getStockHandler().buy(Item.DENTAL_PROBE, 18, 4.03);
+        practise.getStockHandler().buy(Item.ANESTHETIC, 5, 23);
+        practise.getStockHandler().buy(Item.WHITENING_STRIPS, 8, 11);
 
-        try{System.out.println(practise.getStockHandler().getAllStocks());
+        try {
+            System.out.println(practise.getStockHandler().getAllStocks());
         } catch (Exception e) {
-            logger.error(e.getMessage());}
+            logger.error(e.getMessage());
+        }
 
         try {
             practise.getPatientHandler().addTreatmentType("Check-Up", 25, Map.of(Item.MOUTH_MIRROR, 1));
@@ -47,17 +47,17 @@ public class Main {
             logger.error(e.getMessage());
         }
         try {
-            practise.getPatientHandler().addTreatmentType("Cleaning", 78, Map.of(Item.MOUTH_MIRROR, 1,Item.DENTAL_PROBE, 2));
+            practise.getPatientHandler().addTreatmentType("Cleaning", 78, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_PROBE, 2));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         try {
-            practise.getPatientHandler().addTreatmentType("Removal", 100, Map.of(Item.MOUTH_MIRROR, 1,Item.DENTAL_SYRINGE,1,Item.ANESTHETIC,1,Item.DENTAL_PROBE, 3,Item.COTTON_PAD, 4));
+            practise.getPatientHandler().addTreatmentType("Removal", 100, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_SYRINGE, 1, Item.ANESTHETIC, 1, Item.DENTAL_PROBE, 3, Item.COTTON_PAD, 4));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         try {
-            practise.getPatientHandler().addTreatmentType("Whitening", 164, Map.of(Item.MOUTH_MIRROR, 1,Item.DENTAL_PROBE, 3,Item.COTTON_PAD, 2, Item.WHITENING_STRIPS, 2));
+            practise.getPatientHandler().addTreatmentType("Whitening", 164, Map.of(Item.MOUTH_MIRROR, 1, Item.DENTAL_PROBE, 3, Item.COTTON_PAD, 2, Item.WHITENING_STRIPS, 2));
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
@@ -111,9 +111,9 @@ public class Main {
         practise.getEmployeeHandler().employeeGo(1);
         practise.getCalendar().advanceMinutes(30);
         practise.getEmployeeHandler().employeeGo(0);
-        System.out.println (practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n" +
-                            practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n" +
-                            practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeGo(2));
+        System.out.println(practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n" +
+                practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n" +
+                practise.getEmployeeHandler().getEmployeeName(2) + " " + practise.getEmployeeHandler().getEmployeeGo(2));
 
         //muss am ende des Tages ausgeführt werden (speichert alle come and go Zeiten in eine Map)
         System.out.println("Alle Employee come and go Zeiten werden, mit dem Datum als Key, abgespeichert");
