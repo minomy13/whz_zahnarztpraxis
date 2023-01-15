@@ -19,9 +19,9 @@ public class Main {
         //dental hygienists, dental assistants, dental laboratory technicians, and receptionists
 
         practise.getEmployeeHandler().employeeCome(0);
-        practise.getCalendar().addMinutes(30);
+        practise.getCalendar().advanceMinutes(30);
         practise.getEmployeeHandler().employeeCome(1);
-        practise.getCalendar().addMinutes(30);
+        practise.getCalendar().advanceMinutes(30);
         practise.getEmployeeHandler().employeeCome(2);
         System.out.println (practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeCome(0) + "\n" +
                             practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeCome(1) + "\n" +
@@ -42,9 +42,6 @@ public class Main {
         try{System.out.println(practise.getStockHandler().getAllStocks());
         } catch (Exception e) {
             logger.error(e.getMessage());}
-
-        //TreatmentType(String name, double cost, HashMap<Item, Integer> needs)
-        //Treatment(TreatmentType treatmentType, Patient patient)
 
         try {
             practise.getPatientHandler().addTreatmentType("Check-Up", 25, Map.of(Item.MOUTH_MIRROR, 1));
@@ -91,9 +88,9 @@ public class Main {
         practise.getCalendar().nextHour();
 
         practise.getEmployeeHandler().employeeGo(2);
-        practise.getCalendar().addMinutes(30);
+        practise.getCalendar().advanceMinutes(30);
         practise.getEmployeeHandler().employeeGo(1);
-        practise.getCalendar().addMinutes(30);
+        practise.getCalendar().advanceMinutes(30);
         practise.getEmployeeHandler().employeeGo(0);
         System.out.println (practise.getEmployeeHandler().getEmployeeName(0) + " " + practise.getEmployeeHandler().getEmployeeGo(0) + "\n" +
                             practise.getEmployeeHandler().getEmployeeName(1) + " " + practise.getEmployeeHandler().getEmployeeGo(1) + "\n" +

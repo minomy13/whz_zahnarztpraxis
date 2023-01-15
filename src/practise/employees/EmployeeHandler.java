@@ -88,7 +88,7 @@ public class EmployeeHandler {
      * @param keyName Name of the Employee
      * @return timeStamps
      */
-    public String getComeAndGo(String keyDate, String keyName) { //give date, name and timeStamps of one Employee
+    public String getComeAndGo(String keyDate, String keyName) {
         return keyName + ", " + keyDate + timeStampMap.get(keyDate).get(keyName);
     }
 
@@ -96,10 +96,9 @@ public class EmployeeHandler {
      * Gets the timeStamps of all Employees from a specific Date
      * @param keyDate Date in format "1.14.2029" -> Day, Month, Year
      */
-    public void getComeAndGoAll(String keyDate) { //give date, name and timeStamps of all Employees
+    public void getComeAndGoAll(String keyDate) {
         System.out.println("Datum: " + keyDate);
-        ArrayList<String> j = new ArrayList<>();
-        timeStampMap.get(keyDate).keySet().stream().forEach(k -> j.add(k));
+        ArrayList<String> j = new ArrayList<>(timeStampMap.get(keyDate).keySet());
         for(int i = 0; i < timeStampMap.get(keyDate).size(); i++) {
             System.out.println(j.get(i) + timeStampMap.get(keyDate).get(j.get(i)));
         }
