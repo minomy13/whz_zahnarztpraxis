@@ -2,13 +2,12 @@ import practise.Practise;
 import practise.stock.Item;
 import utils.logger.Logger;
 
-import java.util.Calendar;
 import java.util.HashMap;
-import practise.*;
+
 public class Main {
     public static void main(String[] args) {
         Logger logger = new Logger();
-        Practise practise = new Practise(1000,2005,0,1 ,8,00, 00);
+        Practise practise = new Practise(1000, 2005, 0, 1, 8, 00, 00);
 
         System.out.println("Es werden drei Employees eingestellt: Karl, Dentist; Amy, Dentist Assistant; Alice, Receptionist");
         practise.getEmployeeHandler().hireEmployee("Alice", "Receptionist");
@@ -37,9 +36,18 @@ public class Main {
         //TreatmentType(String name, double cost, HashMap<Item, Integer> needs)
         //Treatment(TreatmentType treatmentType, Patient patient)
 
-        practise.getPatientHandler().addTreatmentType("Check-Up", 25, needs1);
-        practise.addTreatment(practise.getPatientHandler().getTreatmenType(),);
-        practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
+        try {
+            practise.getPatientHandler().addTreatmentType("Check-Up", 25, needs1);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
+        practise.addTreatment(practise.getPatientHandler().getTreatmenType());
+        try {
+            practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
         logger.info(practise.getBudget());
 
         practise.getStockHandler().buy(Item.COTTON_PAD, 15, .36);

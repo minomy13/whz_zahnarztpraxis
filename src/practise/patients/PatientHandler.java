@@ -1,23 +1,22 @@
 package practise.patients;
 
 import practise.Practise;
-import practise.patients.patientFiles.Patient;
+import practise.patients.patientFiles.PatientFile;
 import practise.patients.patientFiles.PatientFileHandler;
+import practise.patients.treatment.Rooms;
 import practise.patients.treatment.Treatment;
 import practise.patients.treatment.TreatmentType;
 import practise.stock.Item;
-import practise.patients.treatment.Rooms;
-import practise.Practise;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class PatientHandler {
     final PatientFileHandler patientFileHandler = new PatientFileHandler();
     private final ArrayList<TreatmentType> treatments = new ArrayList<>();
     private final Practise practise;
     private ArrayList<Treatment> runningTreatments = new ArrayList<>();
-    //private ArrayList<Rooms> roomHandler = new ArrayList<>();
 
     public PatientHandler(Practise practise) {
         this.practise = practise;
@@ -29,7 +28,9 @@ public class PatientHandler {
      * @param name Name of treatment
      * @param cost Cost of treatment
      */
-    public void addTreatmentType(String name, double cost, HashMap<Item, Integer> needs) {
+    public void addTreatmentType(String name, double cost, HashMap<Item, Integer> needs) throws Exception {
+        if (treatments.stream().filter(t -> t.getName() == name).collect(Collectors.toList()).size() > 0)
+            throw new Exception("Treatment type name already in use");
         treatments.add(new TreatmentType(name, cost, needs));
         //TODO check if treatment name is already in use
     }
@@ -47,11 +48,10 @@ public class PatientHandler {
      * Starts new treatment, closes Room, takes needed items from stock and occupies room
      *
      * @param treatmentIndex Index of treatment type to do
-     * @param patient        Patient to be treated
+     * @param patientFile    Patient to be treated
      */
-
-    public void startTreatment(int treatmentIndex, Patient patient, ArrayList<Rooms> roomHandler) throws Exception {
-        runningTreatments.add(new Treatment(treatments.get(treatmentIndex), patient));
+    public void startTreatment(int treatmentIndex, PatientFile patientFile, ArrayList<Rooms> roomHandler) throws Exception {
+        runningTreatments.add(new Treatment(treatments.get(treatmentIndex), patientFile));
         // takes needed items from stock
         treatments.get(treatmentIndex).getNeeds().forEach((key, val) -> {
             try {
@@ -61,8 +61,9 @@ public class PatientHandler {
             }
         });
         for (int i = 0; i < roomHandler.size(); i++) {
-            if (roomHandler.get(i).isOpen() && roomHandler.get(i).getTreatmenttype().equals(treatments.get(treatmentIndex)))
-            {roomHandler.get(i).closeRoom();}
+            if (roomHandler.get(i).isOpen() && roomHandler.get(i).getTreatmenttype().equals(treatments.get(treatmentIndex))) {
+                roomHandler.get(i).closeRoom();
+            }
 
         }
     }
@@ -84,13 +85,34 @@ public class PatientHandler {
     }
 
     /**
+     * Returns runningTreatments index for specified patient
+     * @param patientFile Patient to search
+     * @return Index of runningTreatments for use with endTreatment()
+     * @throws Exception In case specified patient is not in runningTreatments
+     */
+    public int getIndex(PatientFile patientFile) throws Exception {
+        boolean found = false;
+        int i=0;
+        while (!found) {
+            if (i >= runningTreatments.size()) {
+                throw new Exception("Specified patient not in runningTreatments!");
+            } else if (runningTreatments.get(i).getPatientFile() == patientFile) {
+                found = true;
+            } else {
+                i++;
+            }
+        }
+        return i;
+    }
+
+    /**
      * Displays all Treatment names and costs with their index
      */
     public void viewTreatmentTypes() {
-            int i = 0;
+        int i = 0;
         for (TreatmentType t : treatments) {
             System.out.println(i + ": " + t.getName() + ", " + t.getCost());
-                i++;
+            i++;
         }
     }
 
@@ -101,24 +123,30 @@ public class PatientHandler {
         int i = 0;
         for (Treatment t : runningTreatments) {
             practise.logger.info(String.format("%s: %s, %s",
-                    (i++), t.getPatient().getName(), t.getTreatmentType().getName()));
+                    (i++), t.getPatientFile().getPatient().getName(), t.getTreatmentType().getName()));
         }
     }
 
     public TreatmentType getTreatmenttype(String name) throws Exception {
         TreatmentType t = null;
-        for(int i = 0; i < treatments.size(); i++) {
-            if(treatments.get(i).getName().trim().toLowerCase().equals(name.trim().toLowerCase()))
-            {t = treatments.get(i);
+        for (int i = 0; i < treatments.size(); i++) {
+            if (treatments.get(i).getName().trim().toLowerCase().equals(name.trim().toLowerCase())) {
+                t = treatments.get(i);
                 if (t == null) throw new Exception("Name missing.");
-        }
+            }
         }
         return t;
     }
 
-    public ArrayList<TreatmentType> getTreatmentTypes() {return treatments;}
+    public ArrayList<TreatmentType> getTreatmentTypes() {
+        return treatments;
+    }
 
-    public ArrayList<Treatment> getRunningTreatments() {return runningTreatments;}
+    public ArrayList<Treatment> getRunningTreatments() {
+        return runningTreatments;
+    }
 
-    public PatientFileHandler getPatientFileHandler() {return patientFileHandler;}
+    public PatientFileHandler getPatientFileHandler() {
+        return patientFileHandler;
+    }
 }
