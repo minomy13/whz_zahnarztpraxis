@@ -29,12 +29,12 @@ public class Practise {
      * Creates a new practise.
      *
      * @param budget Budget to start with
-     * @param year Time: year
-     * @param month Time: month, 0 equals january
-     * @param hourOfDay   Time: amount of full hours since 00:00
-     * @param minute Time: amount of full minutes since last full hour
-     * @param second Time: amount of seconds since last full minute
-     *
+     * @param year Current year
+     * @param month Current month
+     * @param dayOfMonth Current day of month
+     * @param hourOfDay Current hour of day
+     * @param minute Current minute of hour
+     * @param second Current second of minute
      */
     public Practise(double budget, int year, int month, int dayOfMonth, int hourOfDay, int minute, int second) {
         this.budget = budget;
@@ -57,6 +57,7 @@ public class Practise {
      *
      * @param days  Amount of days to advance by
      * @param hours Amount of hours to advance by
+     * @param minutes Amount of minutes to advance by
      * @throws Exception In case the stock was not sufficient for the treatments that need to be executed
      */
     public void advanceTime(int days, int hours, int minutes) throws Exception {
