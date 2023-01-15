@@ -1,13 +1,20 @@
 import practise.Practise;
-import practise.stock.Item;
+import practise.employees.*;
+import practise.calendar1.*;
+import practise.patients.patientFiles.*;
+import practise.patients.treatment.*;
+import practise.patients.treatment.*;
+import practise.stock.*;
+import practise.patients.*;
 import utils.logger.Logger;
 
+import java.util.Calendar;
 import java.util.HashMap;
-
+import practise.*;
 public class Main {
     public static void main(String[] args) {
         Logger logger = new Logger();
-        Practise practise = new Practise(1000, 2005, 0, 1, 8, 00, 00);
+        Practise practise = new Practise(1000,2005,0,1 ,8,00, 00);
 
         System.out.println("Es werden drei Employees eingestellt: Karl, Dentist; Amy, Dentist Assistant; Alice, Receptionist");
         practise.getEmployeeHandler().hireEmployee("Alice", "Receptionist");
@@ -42,7 +49,7 @@ public class Main {
             logger.error(e.getMessage());
         }
 
-        practise.addTreatment(practise.getPatientHandler().getTreatmenType());
+        practise.addTreatment(practise.getPatientHandler().getTreatmentType("CHECK-UP"));
         try {
             practise.getStockHandler().take(Item.MOUTH_MIRROR, 1);
         } catch (Exception e) {
