@@ -19,7 +19,7 @@ import java.util.Map.Entry;
 
 public class Practise {
     private final PatientHandler patientHandler = new PatientHandler(this);
-    private final StockHandler stockHandler = new StockHandler(this, 5);
+    private final StockHandler stockHandler = new StockHandler(this, 5, 10);
     private final EmployeeHandler employeeHandler = new EmployeeHandler(this);
     private final ArrayList<Rooms> roomHandler = new ArrayList<>();
     private final ArrayList<Treatment> treatments = new ArrayList<>();

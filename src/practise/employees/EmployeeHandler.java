@@ -13,14 +13,27 @@ public class EmployeeHandler {
     public EmployeeHandler(Practise practise) {
         this.practise = practise;
     }
+
+    /**
+     * Creates a new Employee
+     * @param name Name of new Employee
+     * @param job Job of new Employee
+     */
     public void hireEmployee(String name, String job) {
         employees.add(new Employee(name, job));
     }
 
+    /**
+     * Deletes a Employee
+     * @param index Index of Employee in ArrayList "employees"
+     */
     public void fireEmployee(int index) {
         employees.remove(index);
     }
 
+    /**
+     * Shows all Employees
+     */
     public void viewEmployees() {
         int i = 1;
         for (Employee e : employees) {
@@ -33,8 +46,20 @@ public class EmployeeHandler {
         return employees.get(index).getName();
     }
 
+    /**
+     * Sets "come" of an Employee
+     * @param index Index of Employee in Arraylist "employees"
+     */
     public void employeeCome(int index) {
         employees.get(index).setCome(practise.getCalendar().getCurrentTime());
+    }
+
+    /**
+     * Sets "go" of an Employee
+     * @param index Index of Employee in Arraylist "employees"
+     */
+    public void employeeGo(int index) {
+        employees.get(index).setGo(practise.getCalendar().getCurrentTime());
     }
 
     public String getEmployeeCome(int index) {
@@ -45,10 +70,10 @@ public class EmployeeHandler {
         return employees.get(index).getGo();
     }
 
-    public void employeeGo(int index) {
-        employees.get(index).setGo(practise.getCalendar().getCurrentTime());
-    }
-
+    /**
+     * At the End of the Day: safes all Employee timeStamps to a HashMap with:
+     * first key: today date, second key: employee.name, entry: timeStamps
+     */
     public void addEmployeeTimeStamp() {
         HashMap<String, String> buffer = new HashMap<>();
         for(Employee e: employees) {
@@ -57,10 +82,20 @@ public class EmployeeHandler {
         timeStampMap.put(practise.getCalendar().getDay(), buffer);
     }
 
+    /**
+     * Gets the timeStamps of an Employee
+     * @param keyDate Date in format "1.14.2029" -> Day, Month, Year
+     * @param keyName Name of the Employee
+     * @return timeStamps
+     */
     public String getComeAndGo(String keyDate, String keyName) { //give date, name and timeStamps of one Employee
         return keyName + ", " + keyDate + timeStampMap.get(keyDate).get(keyName);
     }
 
+    /**
+     * Gets the timeStamps of all Employees from a specific Date
+     * @param keyDate Date in format "1.14.2029" -> Day, Month, Year
+     */
     public void getComeAndGoAll(String keyDate) { //give date, name and timeStamps of all Employees
         System.out.println("Datum: " + keyDate);
         ArrayList<String> j = new ArrayList<>();
