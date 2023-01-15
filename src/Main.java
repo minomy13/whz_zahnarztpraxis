@@ -62,7 +62,6 @@ public class Main {
         practise.getStockHandler().buy(Item.WHITENING_STRIPS, 8, 11);
 
         try {
-            logger.info("Stock is now: \n " + practise.getStockHandler().getAllStocks());
             logger.info("Stock is now:\n" + practise.getStockHandler().getAllStocks());
         } catch (Exception e) {
             logger.error(e.getMessage());
@@ -266,7 +265,7 @@ public class Main {
         }
         System.out.println("Skip to: " + practise.getCalendar().getTime());
         practise.increaseBudget(1293.84);
-        
+
         System.out.println();
 
         logger.info("Hiring new employee...");
