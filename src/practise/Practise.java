@@ -1,5 +1,6 @@
 package practise;
 
+import org.jetbrains.annotations.NotNull;
 import practise.calendar1.Calendar1;
 import practise.employees.EmployeeHandler;
 import practise.patients.AppointmentCalendar;
@@ -11,7 +12,6 @@ import practise.patients.treatment.Treatment;
 import practise.patients.treatment.TreatmentType;
 import practise.stock.StockHandler;
 import utils.logger.Logger;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -19,7 +19,7 @@ import java.util.Map.Entry;
 
 public class Practise {
     private final PatientHandler patientHandler = new PatientHandler(this);
-    private final StockHandler stockHandler = new StockHandler(this);
+    private final StockHandler stockHandler = new StockHandler(this, 5);
     private final EmployeeHandler employeeHandler = new EmployeeHandler(this);
     private final ArrayList<Rooms> roomHandler = new ArrayList<>();
     private final ArrayList<Treatment> treatments = new ArrayList<>();
@@ -55,6 +55,12 @@ public class Practise {
                 new Treatment(treatmentType, patientFile));
     }
 
+    /**
+     * Advances the time by the specified amount and executes any appointments that are scheduled for the time that is now past or present
+     * @param days Amount of days to advance by
+     * @param hours Amount of hours to advance by
+     * @throws Exception In case the stock was not sufficient for the treatments that need to be executed
+     */
     public void advanceTime(int days, int hours) throws Exception {
         if (days < 0 || hours < 0) {
             throw new RuntimeException("Invalid parameters! Need to be at least 0!");
@@ -74,14 +80,14 @@ public class Practise {
                             } catch (Exception ex) {
                                 throw new RuntimeException(ex);
                             }
-                        });   //Startet alle Behandlungen, deren Startzeitpunkt vergangen oder genau jetzt eingetreten ist
-//                for (Entry<Appointment, PatientFile> entry : room.getAppointmentCalendar().getAppointmentMap().entrySet()) {  //Nichtfunktionale Alternative
+                        });   //Starts all treatments with past or present start time
+//                for (Entry<Appointment, PatientFile> entry : room.getAppointmentCalendar().getAppointmentMap().entrySet()) {  //non-functional alternative
 //                    Calendar ca = Calendar.getInstance();
 //                    ca.set(entry.getKey().getYear(), entry.getKey().getMonth(), entry.getKey().getDayOfMonth(), entry.getKey().getHour(), 0);
 //                    if (!calendar.getCal().before(ca)) {
 //                        patientHandler.startTreatment(entry.getValue().getReport().getTreatmentType(), entry.getValue());
 //                    }
-//                }   //Startet alle Behandlungen, deren Startzeitpunkt vergangen oder genau jetzt eingetreten ist
+//                }   //Starts all treatments with past or present start time
                 boolean through = false;
                 while (!through) {
                     Entry<Appointment, PatientFile> result = findFirstEndedAppointment(room.getAppointmentCalendar());
@@ -91,13 +97,13 @@ public class Practise {
                         patientHandler.endTreatment(patientHandler.getIndex(result.getValue()), roomHandler);
                         room.getAppointmentCalendar().removeAppointment(result.getKey());
                     }
-                }   //Beendet alle Behandlungen, deren Endzeitpunkt vergangen oder genau jetzt eingetreten ist, und löscht die betreffenden Termine aus dem Terminkalender
+                }   //ends all treatments with past or present end time and deletes the corresponding appointments from the appointment calendar
             }
         }
     }
 
     /**
-     * Returns first Appointment with past end time in specified Appointment Calendar
+     * Returns first Appointment with past or present end time in specified Appointment Calendar
      *
      * @param appointmentCalendar Appointment Calendar to search
      * @return Resulting Entry of Appointment and PatientFile, or null if there are no more Appointments with past end time
@@ -164,5 +170,7 @@ public class Practise {
     public ArrayList<Rooms> getRoomHandler() {
         return roomHandler;
     }
+
+
 
 }

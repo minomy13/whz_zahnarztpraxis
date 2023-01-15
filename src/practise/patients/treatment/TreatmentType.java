@@ -2,14 +2,14 @@ package practise.patients.treatment;
 
 import practise.stock.Item;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class TreatmentType {
     final String name;
     final double cost;
-    private HashMap<Item, Integer> needs;
+    private Map<Item, Integer> needs;
 
-    public TreatmentType(String name, double cost, HashMap<Item, Integer> needs) {
+    public TreatmentType(String name, double cost, Map<Item, Integer> needs) {
         this.name = name;
         this.cost = cost;
         this.needs = needs;
@@ -23,7 +23,7 @@ public class TreatmentType {
         return cost;
     }
 
-    public HashMap<Item, Integer> getNeeds() {
+    public Map<Item, Integer> getNeeds() {
         return needs;
     }
 }
